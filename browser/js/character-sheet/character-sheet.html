@@ -1,0 +1,60 @@
+<section id="characterSheet">
+	<div class="bg-primary row">
+		<h1 class="header col-lg-4">Character Sheet</h1>
+		<h1 style="text-align: right" class="header col-lg-8">{{ character.name }}</h1>
+	</div>
+   
+    <div class="row">
+	    <div class="bg-primary col-lg-4 col-md-4 col-sm-4 section">
+	    	<ul>
+	    		<li>
+	    			Name: {{ character.name }}
+	    		</li>
+	    		<li>
+	    			Player: {{ character.player }}
+	    		</li>
+	    		<li>
+	    			Class:
+	    		</li>
+	    		<ul> 
+		    		<li ng-repeat="class in character.class">
+		    			{{ class.name }} {{ class.level }}
+		    		</li>
+		    	</ul>
+	    		<li>
+	    			Race: {{ character.race }}
+	    		</li>
+	    		<li>
+	    			Subtype: {{ character.subtype || 'none' }}
+	    		</li>
+	    		<li>
+	    			Deity: {{ character.deity || 'none'}}
+	    		</li>
+	    		<li>
+	    			Alignment: {{ character.alignment }}
+	    		</li>
+	    		<li>
+	    			Size: {{ character.size }}
+	    		</li>
+	    		<li>
+	    			Age: {{ character.age }}
+	    		</li>
+	    		<li>
+	    			Gender: {{ character.gender }}
+	    		</li>
+	    		<li>
+	    			Height: {{ character.height }}
+	    		</li>
+	    		<li>
+	    			Weight: {{ character.weight }}
+	    		</li>
+	    		<li>
+	    			Eyes: {{ character.eyes }}
+	    		</li>
+	    		<li>
+	    			Skin: {{ character.skin }}
+	    		</li>
+	    	</ul>
+	    </div>
+	</div>
+</section>
