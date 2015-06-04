@@ -75,6 +75,9 @@ var schema = new mongoose.Schema({
         maxhitpoints: {
             type: Number
         },
+        experience: {
+            type: Number
+        },
         baseattackbonus: {
             type: Number
         }, 
@@ -102,10 +105,12 @@ var schema = new mongoose.Schema({
         },
         alchemy: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -121,10 +126,12 @@ var schema = new mongoose.Schema({
         },
         animalempathy: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -140,10 +147,12 @@ var schema = new mongoose.Schema({
         },
         appraise: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -159,10 +168,12 @@ var schema = new mongoose.Schema({
         },
         autohypnosis: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -178,10 +189,12 @@ var schema = new mongoose.Schema({
         },
         balance: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -197,10 +210,12 @@ var schema = new mongoose.Schema({
         },
         bluff: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -216,10 +231,12 @@ var schema = new mongoose.Schema({
         },
         climb: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -235,10 +252,12 @@ var schema = new mongoose.Schema({
         },
         concentration: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -254,10 +273,12 @@ var schema = new mongoose.Schema({
         },
         controlshape: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -273,10 +294,12 @@ var schema = new mongoose.Schema({
         },
         craft: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -292,10 +315,12 @@ var schema = new mongoose.Schema({
         },
         decipherscript: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -311,10 +336,12 @@ var schema = new mongoose.Schema({
         },
         diplomacy: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -330,10 +357,12 @@ var schema = new mongoose.Schema({
         },
         disabledevice: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -349,10 +378,12 @@ var schema = new mongoose.Schema({
         },
         disguise: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -368,10 +399,12 @@ var schema = new mongoose.Schema({
         },
         escapeartist: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -387,10 +420,12 @@ var schema = new mongoose.Schema({
         },
         forgery: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -406,10 +441,12 @@ var schema = new mongoose.Schema({
         },
         gatherinformation: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -425,10 +462,12 @@ var schema = new mongoose.Schema({
         },
         handleanimal: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -444,10 +483,12 @@ var schema = new mongoose.Schema({
         },
         heal: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -463,10 +504,12 @@ var schema = new mongoose.Schema({
         },
         hide: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -482,10 +525,12 @@ var schema = new mongoose.Schema({
         },
         iaijutsufocus: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -501,10 +546,12 @@ var schema = new mongoose.Schema({
         },
         innuendo: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -520,10 +567,12 @@ var schema = new mongoose.Schema({
         },
         intimidate: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -539,10 +588,12 @@ var schema = new mongoose.Schema({
         },
         intuitdirection: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -558,10 +609,12 @@ var schema = new mongoose.Schema({
         },
         jump: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -959,10 +1012,12 @@ var schema = new mongoose.Schema({
         },
         listen: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -978,10 +1033,12 @@ var schema = new mongoose.Schema({
         },
         luciddreaming: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -997,10 +1054,12 @@ var schema = new mongoose.Schema({
         },
         martiallore: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1016,10 +1075,12 @@ var schema = new mongoose.Schema({
         },
         movesilently: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1035,10 +1096,12 @@ var schema = new mongoose.Schema({
         },
         openlock: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1054,10 +1117,12 @@ var schema = new mongoose.Schema({
         },
         perform: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1073,10 +1138,12 @@ var schema = new mongoose.Schema({
         },
         pickpocket: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1092,10 +1159,12 @@ var schema = new mongoose.Schema({
         },
         profession: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1111,10 +1180,12 @@ var schema = new mongoose.Schema({
         },
         psicraft: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1130,10 +1201,12 @@ var schema = new mongoose.Schema({
         },
         readlips: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1149,10 +1222,12 @@ var schema = new mongoose.Schema({
         },
         remoteview: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1168,10 +1243,12 @@ var schema = new mongoose.Schema({
         },
         ride: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1187,10 +1264,12 @@ var schema = new mongoose.Schema({
         },
         scry: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1206,10 +1285,12 @@ var schema = new mongoose.Schema({
         },
         search: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1225,10 +1306,12 @@ var schema = new mongoose.Schema({
         },
         sensemotive: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1244,10 +1327,12 @@ var schema = new mongoose.Schema({
         },
         sleightofhand: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1263,10 +1348,12 @@ var schema = new mongoose.Schema({
         },
         speaklanguage: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1282,10 +1369,12 @@ var schema = new mongoose.Schema({
         },
         spot: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1301,10 +1390,12 @@ var schema = new mongoose.Schema({
         },
         survival: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1320,10 +1411,12 @@ var schema = new mongoose.Schema({
         },
         swim: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1339,10 +1432,12 @@ var schema = new mongoose.Schema({
         },
         truespeak: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1358,10 +1453,12 @@ var schema = new mongoose.Schema({
         },
         tumble: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1377,10 +1474,12 @@ var schema = new mongoose.Schema({
         },
         usemagicdevice: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1396,10 +1495,12 @@ var schema = new mongoose.Schema({
         },
         usepsionicdevice: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1415,10 +1516,12 @@ var schema = new mongoose.Schema({
         },
         userope: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1434,10 +1537,12 @@ var schema = new mongoose.Schema({
         },
         wildernesslore: {
             inclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             crossclass: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
             trainedonly: {
                 type: Boolean,
@@ -1467,7 +1572,10 @@ var schema = new mongoose.Schema({
         },
         type: {
             type: String
-        }, 
+        },
+        twohanded: {
+            type: Boolean
+        },
         specialqualities: [{
             name: {
                 type: String
@@ -1508,7 +1616,7 @@ var schema = new mongoose.Schema({
         weight: {
             type: Number
         },
-        specialproperties: {
+        specialproperties: [{
             name: {
                 type: String
             },
@@ -1518,6 +1626,9 @@ var schema = new mongoose.Schema({
             description: {
                 type: String
             }
+        }],
+        notes: {
+            type: String
         }
     }],
     inventory: [{
@@ -2128,7 +2239,7 @@ var schema = new mongoose.Schema({
         }
     },
     miscellaneousstats: {
-        racialtraits: {
+        racialtraits: [{
             name: {
                 type: String
             },
@@ -2143,10 +2254,10 @@ var schema = new mongoose.Schema({
                     type: Number
                 }
             }]
-        },
-        languages: {
+        }],
+        languages: [{
             type: String
-        },
+        }],
         reigonoforigin: {
             type: String
         },

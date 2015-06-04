@@ -25,7 +25,6 @@ var q = require('q');
 var chalk = require('chalk');
 
 var User = mongoose.model('User');
-var Character = mongoose.model('Character')
 
 var getCurrentUserData = function () {
     return q.ninvoke(User, 'find', {});
@@ -41,7 +40,7 @@ var seedUsers = function () {
         {
             email: 'obama@gmail.com',
             password: 'potus',
-            characters: ['556dfa1eab550daa72dd2506']
+            characters: ['5570e5340d1c6d410e3cd676']
         }
     ];
 
@@ -49,64 +48,12 @@ var seedUsers = function () {
 
 };
 
-var getCurrentCharacterData = function () {
-    return q.ninvoke(Character, 'find', {})
-}
-
-var seedCharacters = function () {
-
-    var characters = {
-        name: "Sir Addon Vance",
-        player: "James Nissenbaum",
-        class: [{
-            name: "Fighter",
-            level: 5
-        },
-        {
-            name: "Mythic Exemplar",
-            level: 7
-        }],
-        race: "Human",
-        subtype: null,
-        deity: null,
-        alignment: "Lawful Good",
-        size: "Medium",
-        age: 30,
-        gender: "Male",
-        height: 77,
-        weight: 270,
-        eyes: "Brown",
-        hair: "Black",
-        skin: "Fair"
-    }
-
-    return q.invoke(Character, 'create', characters);
-
-}
-
 connectToDb.then(function () {
     getCurrentUserData().then(function (users) {
         if (users.length === 0) {
             return seedUsers();
         } else {
             console.log(chalk.magenta('Seems to already be user data, exiting!'));
-            process.kill(0);
-        }
-    }).then(function () {
-        console.log(chalk.green('Seed successful!'));
-        process.kill(0);
-    }).catch(function (err) {
-        console.error(err);
-        process.kill(1);
-    });
-});
-
-connectToDb.then(function () {
-    getCurrentCharacterData().then(function (characters) {
-        if (characters.length === 0) {
-            return seedCharacters();
-        } else {
-            console.log(chalk.magenta('Seems to already be character data, exiting!'));
             process.kill(0);
         }
     }).then(function () {
