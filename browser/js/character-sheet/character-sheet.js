@@ -19,6 +19,7 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, CharacterShe
     .then(function(characters){
         $scope.characters = characters
         $scope.character = characters[0]
+        console.log($scope.character)
     })
 
 });

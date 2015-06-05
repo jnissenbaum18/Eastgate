@@ -5,13 +5,32 @@
     padding-right: 100px;
 	}
 
-	div {
+  h2 {
+    padding-left: 10%;
+  }
+
+	div {  
+
+    hr {
+      border: 0;
+      height: 1px;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.10));
+    }  
+
+    #master-row {
+      margin: 10px;
+    }
+
 		.section {
-			margin: 50px;
 			border: 5px solid;
       border-radius: 25px;
 		}
+
     .header {
+    }
+
+    #skills {
+      margin-top: 15px;
     }
 	}
 
