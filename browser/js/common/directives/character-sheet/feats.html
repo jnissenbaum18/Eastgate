@@ -1,0 +1,20 @@
+<div id="feats" class="bg-primary section">
+	<h2>Feats</h2>
+	<hr>
+	<button type="button" class="btn btn-default" ng-click="addfeat()">Add Feat</button>
+
+	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="feat in feats">
+	<span class="input-group-addon" id="feat-{{feat.name}}">Feat</span>
+
+	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Name</span>
+ 	 <input type="text" class="form-control" placeholder="feat-name" aria-describedby="character-{{feat.name}}" ng-model="feat.name">
+	</div>
+
+	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Description</span>
+ 	 <input type="text" class="form-control" placeholder="feat-description" aria-describedby="character-{{feat.name}}-description" ng-model="feat.description">
+ 	</div>
+
+ 	</div>
+</div>

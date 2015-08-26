@@ -11,6 +11,14 @@ var db = mongoose.connect(DATABASE_URI).connection;
 // Require our models -- these should register the model into mongoose
 // so the rest of the application can simply call mongoose.model('User')
 // anywhere the User model needs to be used.
+require('./models/attack')
+require('./models/classfeature')
+require('./models/feat')
+require('./models/inventoryitem')
+require('./models/protectiveitem')
+require('./models/skill')
+require('./models/specialability')
+require('./models/spell')
 require('./models/user');
 require('./models/character')
 

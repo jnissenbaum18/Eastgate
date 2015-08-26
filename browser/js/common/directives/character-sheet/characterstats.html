@@ -1,0 +1,72 @@
+<div id="characterstats" class="bg-primary section">
+	<h2>Character Stats</h2>
+	<hr>
+
+	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	<span class="input-group-addon" id="name">Name</span>
+ 	 <input type="text" class="form-control" placeholder="name" aria-describedby="character-name" ng-model="characterstats.name">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4" ng-repeat="class in characterstats.class">
+	<span class="input-group-addon" id="class-{{class.name}}">Class</span>
+	 <input type="text" class="form-control" placeholder="class-{{class.name}}" aria-describedby="character-class-{{class.name}}" ng-model="class.name">
+
+ 	 <input type="number" class="form-control" placeholder="class-{{class.name}}-{{class.level}}" aria-describedby="character-class-{{class.name}}-{{class.level}}" ng-model="class.level">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	<span class="input-group-addon" id="race">Race</span>
+ 	 <input type="text" class="form-control" placeholder="race" aria-describedby="character-race" ng-model="characterstats.race">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	<span class="input-group-addon" id="subtype">Subtype</span>
+ 	 <input type="text" class="form-control" placeholder="subtype" aria-describedby="character-subtype" ng-model="characterstats.subtype">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	<span class="input-group-addon" id="deity">Deity</span>
+ 	 <input type="text" class="form-control" placeholder="deity" aria-describedby="character-deity" ng-model="characterstats.deity">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	<span class="input-group-addon" id="alignment">Alignment</span>
+ 	 <input type="text" class="form-control" placeholder="alignment" aria-describedby="character-alignment" ng-model="characterstats.alignment">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	<span class="input-group-addon" id="size">Size</span>
+ 	 <input type="text" class="form-control" placeholder="size" aria-describedby="character-size" ng-model="characterstats.size">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	<span class="input-group-addon" id="age">Age</span>
+ 	 <input type="number" class="form-control" placeholder="age" aria-describedby="character-age" ng-model="characterstats.age">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	<span class="input-group-addon" id="gender">Gender</span>
+ 	 <input type="text" class="form-control" placeholder="gender" aria-describedby="character-gender" ng-model="characterstats.gender">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	<span class="input-group-addon" id="height">Height</span>
+ 	 <input type="number" class="form-control" placeholder="height" aria-describedby="character-height" ng-model="characterstats.height">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	<span class="input-group-addon" id="weight">Weight</span>
+ 	 <input type="number" class="form-control" placeholder="weight" aria-describedby="character-weight" ng-model="characterstats.weight">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	<span class="input-group-addon" id="eyes">Eyes</span>
+ 	 <input type="text" class="form-control" placeholder="eyes" aria-describedby="character-eyes" ng-model="characterstats.eyes">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	<span class="input-group-addon" id="skin">Skin</span>
+ 	 <input type="text" class="form-control" placeholder="skin" aria-describedby="character-skin" ng-model="characterstats.skin">
+ 	</div>
+
+</div>

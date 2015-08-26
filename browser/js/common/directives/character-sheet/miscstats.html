@@ -1,0 +1,34 @@
+<div id="miscellaneousstats" class="bg-primary section">
+	<h2>Miscellaneous Stats</h2>
+	<hr>
+
+	<button type="button" class="btn btn-default" ng-click="addracialtrait()">Add Racial Trait</button>
+
+	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="trait in miscstats.racialtraits">
+	<span class="input-group-addon" id="trait-{{trait.name}}">Trait</span>
+
+	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Name</span>
+ 	 <input type="text" class="form-control" placeholder="trait-name" aria-describedby="character-{{trait.name}}" ng-model="trait.name">
+	</div>
+
+	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Description</span>
+ 	 <input type="text" class="form-control" placeholder="trait-description" aria-describedby="character-{{trait.name}}-description" ng-model="trait.description">
+ 	</div>
+
+ 	</div>
+
+ 	<button type="button" class="btn btn-default" ng-click="addlanguage()">Add Language</button>
+
+ 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="language in miscstats.languages">
+	<span class="input-group-addon" id="language-{{language.name}}">Language</span>
+
+	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Name</span>
+ 	 <input type="text" class="form-control" placeholder="language-name" aria-describedby="character-{{language.name}}" ng-model="language.name">
+	</div>
+
+ 	</div>
+	
+</div>

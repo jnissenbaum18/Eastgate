@@ -1,13 +1,33 @@
 'use strict';
 var mongoose = require('mongoose');
+var Promise = require('bluebird')
+var User = mongoose.model('User')
+
+// var setSkill = function () {
+//     var obj = {
+//         inclass: {
+//             type: false
+//         },
+//         crossclass: {
+//             type: false
+//         },
+//         trainedonly: {
+//             type: true
+//         },
+//         armorcheckpenalty: {
+//             type: false
+//         },
+//         ranks: {
+//             type: Number
+//         }
+//     }
+//     return obj
+// }
 
 var schema = new mongoose.Schema({
 
-    playerstats: {
+    characterstats: {
         name: {
-            type: String
-        },
-        player: {
             type: String
         },
         class: [{
@@ -61,15 +81,15 @@ var schema = new mongoose.Schema({
         constitution: {
             type: Number
         },
-        Intelligence: {
+        intelligence: {
             type: Number
         },
-        Wisdom: {
+        wisdom: {
             type: Number
         },
-        Charisma: {
+        charisma: {
             type: Number
-        },
+        }
     },
     combatstats: {
         maxhitpoints: {
@@ -103,2061 +123,362 @@ var schema = new mongoose.Schema({
         totalpoints: {
             type: Number
         },
+        pointsperlevel: {
+            type: Number
+        },
         alchemy: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         animalempathy: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            },
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         appraise: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         autohypnosis: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         balance: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: true
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         bluff: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         climb: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: true
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         concentration: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         controlshape: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         craft: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         decipherscript: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         diplomacy: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         disabledevice: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         disguise: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         escapeartist: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: true
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         forgery: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         gatherinformation: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         handleanimal: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         heal: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         hide: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: true
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         iaijutsufocus: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         innuendo: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         intimidate: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         intuitdirection: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         jump: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: true
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         knowledge: {
             base: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             arcana: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             architectureandengineering: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             barbarianlore: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             codeofmartialhonor: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             dungeoneering: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             geography: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             history: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             law: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             local: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             nature: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             nobilityandroyalty: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             psionics: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             religion: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             shadowlands: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             spirits: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             tactics: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             theplanes: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             war: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
             weaponry: {
-                inclass: {
-                    type: Boolean
-                },
-                crossclass: {
-                    type: Boolean
-                },
-                trainedonly: {
-                    type: Boolean,
-                    default: true
-                },
-                armorcheckpenalty: {
-                    type: Boolean,
-                    default: false
-                },
-                ranks: {
-                    type: Number
-                }
+                type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
             },
         },
         listen: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         luciddreaming: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         martiallore: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         movesilently: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: true
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         openlock: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         perform: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         pickpocket: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: true
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         profession: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         psicraft: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         readlips: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         remoteview: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         ride: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         scry: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         search: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         sensemotive: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         sleightofhand: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: true
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         speaklanguage: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         spot: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         survival: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         swim: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: false
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: true
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         truespeak: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         tumble: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: true
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill',
         },
         usemagicdevice: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         usepsionicdevice: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         userope: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         },
         wildernesslore: {
-            inclass: {
-                type: Boolean,
-                default: false
-            },
-            crossclass: {
-                type: Boolean,
-                default: false
-            },
-            trainedonly: {
-                type: Boolean,
-                default: true
-            },
-            armorcheckpenalty: {
-                type: Boolean,
-                default: false
-            },
-            ranks: {
-                type: Number
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
         }
     },
     attacks: [{
-        name: {
-            type: String
-        },
-        damage: {
-            type: String
-        },
-        critical: {
-            type: String
-        },
-        range: {
-            type: Number
-        },
-        type: {
-            type: String
-        },
-        twohanded: {
-            type: Boolean
-        },
-        specialqualities: [{
-            name: {
-                type: String
-            },
-            modifier: {
-                type: Number
-            },
-            description: {
-                type: String
-            }
-        }],
-        notes: {
-            type: String
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Attack'
     }],
-    armorandprotectiveitems: [{
-        name: {
-            type: String
-        },
-        type: {
-            type: String
-        },
-        armorclassbonus: {
-            type: Number
-        },
-        maximumdexterity: {
-            type: Number
-        },
-        armorcheckpenalty: {
-            type: Number
-        },
-        spellfailure: {
-            type: Number
-        },
-        speed: {
-            type: Number
-        },
-        weight: {
-            type: Number
-        },
-        specialproperties: [{
-            name: {
-                type: String
-            },
-            modifier: {
-                type: Number
-            },
-            description: {
-                type: String
-            }
-        }],
-        notes: {
-            type: String
-        }
+    protectiveitems: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Protectiveitem'
     }],
     inventory: [{
-        name: {
-            type: String
-        },
-        page: {
-            type: String
-        },
-        weight: {
-            type: Number
-        },
-        quantity: {
-            type: Number
-        },
-        description: {
-            type: String
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Inventoryitem'
     }],
     feats: [{
-        name: {
-            type: String
-        },
-        description: {
-            type: String
-        },
-        reference: {
-            book: {
-                type: String
-            },
-            page: {
-                type: Number
-            }
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Feat'
     }],
     specialabilities: [{
-        name: {
-            type: String
-        },
-        description: {
-            type: String
-        },
-        reference: {
-            book: {
-                type: String
-            },
-            page: {
-                type: Number
-            }
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Specialability'
     }],
     classfeatures: [{
-        name: {
-            type: String
-        },
-        description: {
-            type: String
-        },
-        reference: {
-            book: {
-                type: String
-            },
-            page: {
-                type: Number
-            }
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Classfeature'
     }],
-    spellsandinfusions: {
+    spells: {
         level: {
             0: [{
-                name: {
-                    type: String
-                },
-                school: {
-                    type: String
-                },
-                type: {
-                    type: String
-                },
-                components: {
-                    v: {
-                        type: Boolean,
-                        default: true
-                    },
-                    s: {
-                        type: Boolean,
-                        default: true
-                    },
-                    m: {
-                        type: Boolean,
-                        default: true
-                    }
-                },
-                castingtime: {
-                    type: Number
-                },
-                range: {
-                    type: Number
-                },
-                area: {
-                    type: String
-                },
-                duration: {
-                    type: String
-                },
-                savingthrow: [{
-                    type: String
-                }],
-                spellresistance: {
-                    type: Boolean
-                },
-                description: {
-                    type: String
-                }
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Spell'
             }],
             1: [{
-                name: {
-                    type: String
-                },
-                school: {
-                    type: String
-                },
-                type: {
-                    type: String
-                },
-                components: {
-                    v: {
-                        type: Boolean,
-                        default: true
-                    },
-                    s: {
-                        type: Boolean,
-                        default: true
-                    },
-                    m: {
-                        type: Boolean,
-                        default: true
-                    }
-                },
-                castingtime: {
-                    type: Number
-                },
-                range: {
-                    type: Number
-                },
-                area: {
-                    type: String
-                },
-                duration: {
-                    type: String
-                },
-                savingthrow: [{
-                    type: String
-                }],
-                spellresistance: {
-                    type: Boolean
-                },
-                description: {
-                    type: String
-                }
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Spell'
             }],
             2: [{
-                name: {
-                    type: String
-                },
-                school: {
-                    type: String
-                },
-                type: {
-                    type: String
-                },
-                components: {
-                    v: {
-                        type: Boolean,
-                        default: true
-                    },
-                    s: {
-                        type: Boolean,
-                        default: true
-                    },
-                    m: {
-                        type: Boolean,
-                        default: true
-                    }
-                },
-                castingtime: {
-                    type: Number
-                },
-                range: {
-                    type: Number
-                },
-                area: {
-                    type: String
-                },
-                duration: {
-                    type: String
-                },
-                savingthrow: [{
-                    type: String
-                }],
-                spellresistance: {
-                    type: Boolean
-                },
-                description: {
-                    type: String
-                }
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Spell'
             }],
             3: [{
-                name: {
-                    type: String
-                },
-                school: {
-                    type: String
-                },
-                type: {
-                    type: String
-                },
-                components: {
-                    v: {
-                        type: Boolean,
-                        default: true
-                    },
-                    s: {
-                        type: Boolean,
-                        default: true
-                    },
-                    m: {
-                        type: Boolean,
-                        default: true
-                    }
-                },
-                castingtime: {
-                    type: Number
-                },
-                range: {
-                    type: Number
-                },
-                area: {
-                    type: String
-                },
-                duration: {
-                    type: String
-                },
-                savingthrow: [{
-                    type: String
-                }],
-                spellresistance: {
-                    type: Boolean
-                },
-                description: {
-                    type: String
-                }
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Spell'
             }],
             4: [{
-                name: {
-                    type: String
-                },
-                school: {
-                    type: String
-                },
-                type: {
-                    type: String
-                },
-                components: {
-                    v: {
-                        type: Boolean,
-                        default: true
-                    },
-                    s: {
-                        type: Boolean,
-                        default: true
-                    },
-                    m: {
-                        type: Boolean,
-                        default: true
-                    }
-                },
-                castingtime: {
-                    type: Number
-                },
-                range: {
-                    type: Number
-                },
-                area: {
-                    type: String
-                },
-                duration: {
-                    type: String
-                },
-                savingthrow: [{
-                    type: String
-                }],
-                spellresistance: {
-                    type: Boolean
-                },
-                description: {
-                    type: String
-                }
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Spell'
             }],
             5: [{
-                name: {
-                    type: String
-                },
-                school: {
-                    type: String
-                },
-                type: {
-                    type: String
-                },
-                components: {
-                    v: {
-                        type: Boolean,
-                        default: true
-                    },
-                    s: {
-                        type: Boolean,
-                        default: true
-                    },
-                    m: {
-                        type: Boolean,
-                        default: true
-                    }
-                },
-                castingtime: {
-                    type: Number
-                },
-                range: {
-                    type: Number
-                },
-                area: {
-                    type: String
-                },
-                duration: {
-                    type: String
-                },
-                savingthrow: [{
-                    type: String
-                }],
-                spellresistance: {
-                    type: Boolean
-                },
-                description: {
-                    type: String
-                }
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Spell'
             }],
             6: [{
-                name: {
-                    type: String
-                },
-                school: {
-                    type: String
-                },
-                type: {
-                    type: String
-                },
-                components: {
-                    v: {
-                        type: Boolean,
-                        default: true
-                    },
-                    s: {
-                        type: Boolean,
-                        default: true
-                    },
-                    m: {
-                        type: Boolean,
-                        default: true
-                    }
-                },
-                castingtime: {
-                    type: Number
-                },
-                range: {
-                    type: Number
-                },
-                area: {
-                    type: String
-                },
-                duration: {
-                    type: String
-                },
-                savingthrow: [{
-                    type: String
-                }],
-                spellresistance: {
-                    type: Boolean
-                },
-                description: {
-                    type: String
-                }
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Spell'
             }],
             7: [{
-                name: {
-                    type: String
-                },
-                school: {
-                    type: String
-                },
-                type: {
-                    type: String
-                },
-                components: {
-                    v: {
-                        type: Boolean,
-                        default: true
-                    },
-                    s: {
-                        type: Boolean,
-                        default: true
-                    },
-                    m: {
-                        type: Boolean,
-                        default: true
-                    }
-                },
-                castingtime: {
-                    type: Number
-                },
-                range: {
-                    type: Number
-                },
-                area: {
-                    type: String
-                },
-                duration: {
-                    type: String
-                },
-                savingthrow: [{
-                    type: String
-                }],
-                spellresistance: {
-                    type: Boolean
-                },
-                description: {
-                    type: String
-                }
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Spell'
             }],
             8: [{
-                name: {
-                    type: String
-                },
-                school: {
-                    type: String
-                },
-                type: {
-                    type: String
-                },
-                components: {
-                    v: {
-                        type: Boolean,
-                        default: true
-                    },
-                    s: {
-                        type: Boolean,
-                        default: true
-                    },
-                    m: {
-                        type: Boolean,
-                        default: true
-                    }
-                },
-                castingtime: {
-                    type: Number
-                },
-                range: {
-                    type: Number
-                },
-                area: {
-                    type: String
-                },
-                duration: {
-                    type: String
-                },
-                savingthrow: [{
-                    type: String
-                }],
-                spellresistance: {
-                    type: Boolean
-                },
-                description: {
-                    type: String
-                }
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Spell'
             }],
             9: [{
-                name: {
-                    type: String
-                },
-                school: {
-                    type: String
-                },
-                type: {
-                    type: String
-                },
-                components: {
-                    v: {
-                        type: Boolean,
-                        default: true
-                    },
-                    s: {
-                        type: Boolean,
-                        default: true
-                    },
-                    m: {
-                        type: Boolean,
-                        default: true
-                    }
-                },
-                castingtime: {
-                    type: Number
-                },
-                range: {
-                    type: Number
-                },
-                area: {
-                    type: String
-                },
-                duration: {
-                    type: String
-                },
-                savingthrow: [{
-                    type: String
-                }],
-                spellresistance: {
-                    type: Boolean
-                },
-                description: {
-                    type: String
-                }
-            }],
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Spell'
+            }]
         },
         spellsave: {
             type: Number
@@ -2238,7 +559,7 @@ var schema = new mongoose.Schema({
             },
         }
     },
-    miscellaneousstats: {
+    miscstats: {
         racialtraits: [{
             name: {
                 type: String
@@ -2271,5 +592,30 @@ var schema = new mongoose.Schema({
         }]
     }
 });
+
+schema.methods.removal = function () {
+    var self = this
+    return new Promise(function (resolve, reject) {
+        resolve(
+            User.findOne({
+                characters: {
+                    $in: [self._id]
+                }
+            }).exec()
+            .then(function (user) {
+                user.characters.pull(self._id);
+                return new Promise(function (resolve, reject) {
+                    resolve(user.save());
+                })
+            })
+            .then(function(){
+                return mongoose.model('Character').remove({_id: self._id}).exec();
+            })
+            .then(function(){
+                return;
+            })
+        )
+    })
+}
 
 mongoose.model('Character', schema);

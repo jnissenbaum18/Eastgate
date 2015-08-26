@@ -10,7 +10,8 @@ var schema = new mongoose.Schema({
         type: String
     },
     characters: [{
-        type: mongoose.Schema.Types.ObjectId, ref: 'Character'
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Character'
     }],
     salt: {
         type: String

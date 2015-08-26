@@ -1,0 +1,36 @@
+<div id="Inventory" class="bg-primary section">
+	<h2>Inventory</h2>
+	<hr>
+
+	<button type="button" class="btn btn-default" ng-click="additem()">Add Class Feature</button>
+
+	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="item in inventory">
+	<span class="input-group-addon" id="item-{{item.name}}">Item</span>
+
+	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Name</span>
+ 	 <input type="text" class="form-control" placeholder="item-name" aria-describedby="character-{{item.name}}" ng-model="item.name">
+	</div>
+
+	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Description</span>
+ 	 <input type="text" class="form-control" placeholder="item-description" aria-describedby="character-{{item.name}}-description" ng-model="item.description">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Quantity</span>
+ 	 <input type="number" class="form-control" placeholder="item-quantity" aria-describedby="character-{{item.name}}-quantity" ng-model="item.quantity">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Page Ref</span>
+ 	 <input type="text" class="form-control" placeholder="item-pagereference" aria-describedby="character-{{item.name}}-page-reference" ng-model="item.pagereference">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Weight</span>
+ 	 <input type="number" class="form-control" placeholder="item-weight" aria-describedby="character-{{item.name}}-weight" ng-model="item.weight">
+ 	</div>
+
+ 	</div>
+</div>

@@ -1,0 +1,22 @@
+<div id="classfeatures" class="bg-primary section">
+	<h2>Class Features</h2>
+	<hr>
+
+	<button type="button" class="btn btn-default" ng-click="addfeature()">Add Class Feature</button>
+
+	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="feature in classfeatures">
+	<span class="input-group-addon" id="feature-{{feature.name}}">Feature</span>
+
+	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Name</span>
+ 	 <input type="text" class="form-control" placeholder="feature-name" aria-describedby="character-{{feature.name}}" ng-model="feature.name">
+	</div>
+
+	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Description</span>
+ 	 <input type="text" class="form-control" placeholder="feature-description" aria-describedby="character-{{feature.name}}-description" ng-model="feature.description">
+ 	</div>
+
+ 	</div>
+
+</div>

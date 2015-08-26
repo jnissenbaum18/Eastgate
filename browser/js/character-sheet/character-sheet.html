@@ -1,195 +1,44 @@
 <section id="characterSheet">
-	<div class="bg-primary row">
-		<h1 class="header col-lg-6 col-md-6 col-sm-6">Character Sheet</h1>
-		<h1 style="text-align: right" class="header col-lg-6 col-md-6 col-sm-6">{{ character.playerstats.name }}</h1>
-	</div>
+
+	<button ng-click="log()">Log</button>
+
+	<button ng-click="saveCharacter()">Save</button>
    
 	<div style="margin: 10px" id="master-row" class="row">
 
 		<div id="left-side" class="col-lg-8 col-md-8 col-sm-8">
 
 		    <div class="row">
-			    <div id="playerstats" class="bg-primary col-lg-4 col-md-4 col-sm-4 section">
-			    	<h2>Player Stats</h2>
-			    	<hr>
-			    	<ul>
-			    		<li>
-			    			Name: {{ character.playerstats.name }}
-			    		</li>
-			    		<li>
-			    			Player: {{ character.playerstats.player }}
-			    		</li>
-			    		<li>
-			    			Class:
-			    		</li>
-			    		<ul> 
-				    		<li ng-repeat="class in character.playerstats.class">
-				    			{{ class.name }} {{ class.level }}
-				    		</li>
-				    	</ul>
-			    		<li>
-			    			Race: {{ character.playerstats.race }}
-			    		</li>
-			    		<li>
-			    			Subtype: {{ character.playerstats.subtype || 'none' }}
-			    		</li>
-			    		<li>
-			    			Deity: {{ character.playerstats.deity || 'none'}}
-			    		</li>
-			    		<li>
-			    			Alignment: {{ character.playerstats.alignment }}
-			    		</li>
-			    		<li>
-			    			Size: {{ character.playerstats.size }}
-			    		</li>
-			    		<li>
-			    			Age: {{ character.playerstats.age }}
-			    		</li>
-			    		<li>
-			    			Gender: {{ character.playerstats.gender }}
-			    		</li>
-			    		<li>
-			    			Height: {{ character.playerstats.height }}
-			    		</li>
-			    		<li>
-			    			Weight: {{ character.playerstats.weight }}
-			    		</li>
-			    		<li>
-			    			Eyes: {{ character.playerstats.eyes }}
-			    		</li>
-			    		<li>
-			    			Skin: {{ character.playerstats.skin }}
-			    		</li>
-			    	</ul>
-			    </div>
-			    <div id="abilityscores" class="bg-primary col-lg-4 col-md-4 col-sm-4 section">
-			    	<h2>Ability Scores</h2>
-			    	<hr>
-			    	<ul>
-			    		<li>Strength: {{ character.abilityscores.strength }}</li>
-			    		<li>Dexterity: {{ character.abilityscores.dexterity }}</li>
-			    		<li>Constitution: {{ character.abilityscores.constitution }}</li>
-			    		<li>Intelligence: {{ character.abilityscores.intelligence }}</li>
-			    		<li>Wisdom: {{ character.abilityscores.wisdom }}</li>
-			    		<li>Charisma: {{ character.abilityscores.charisma }}</li>
-			    	</ul>
-			    </div>    
-				<div id="combatstats" class="bg-primary col-lg-4 col-md-4 col-sm-4 section">
-			    	<h2>Combat Stats</h2>
-			    	<hr>
-			    	<ul>
-			    		<li>Hit Points: {{ character.combatstats.maxhitpoints }}</li>
-			    		<li>Experience{{ character.combatstats.experience }}</li>
-			    		<li>Base Attack Bonus: {{ character.combatstats.baseattackbonus }}</li>
-			    		<li>Fortitude: {{ character.combatstats.basesaves.fortitude }}</li>
-			    		<li>Reflex: {{ character.combatstats.basesaves.reflex }}</li>
-			    		<li>Will: {{ character.combatstats.basesaves.will }}</li>
-			    		<li>Damage Reduction: {{ character.combatstats.damagereduction }}</li>
-			    		<li>Spell Resistance: {{ character.combatstats.spellresistance }}</li>
-			    	</ul>
-			    </div>
+			    <abilityscores abilityscores="abilityscores"></abilityscores>		    
+			    <combatstats combatstats="combatstats"></combatstats>		    
+			    <characterstats characterstats="characterstats"></characterstats>	
 			</div>
 
 			<div class="row">
-				<div id="armorandprotectiveitems" class="bg-primary col-lg-6 col-md-6 col-sm-6 section">
-					<h2>Armor & Protective Items</h2>
-					<hr>
-					<h2>Attacks</h2>
-					<ul ng-repeat="item in character.armorandprotectiveitems">
-						<h3>Name: {{ item.name }}</h3>
-						<li>Armor Class Bonus: {{ item.armorclassbonus }}</li>
-						<li>Maximum Dexterity: {{ item.maximumdexterity }}</li>
-						<li>Armor Check Penalty: {{ item.armorcheckpenalty }}</li>
-						<li>Weight: {{ item.weight }}</li>
-						<ul ng-repeat="quality in item.specialproperties">
-							<h4>Special Properties</h4>
-							<li>Name: {{ quality.name }}</li>
-							<li>Modifier: {{ quality.modifier }}</li>
-							<li>Description: {{ quality.description }}</li>
-						</ul>
-						<li>Notes: {{ item.notes }}</li>
-					</ul>
-				</div>
-				<div id="attacks" class="bg-primary col-lg-6 col-md-6 col-sm-6 section">
-					<h2>Attacks</h2>
-					<hr>
-					<ul ng-repeat="attack in character.attacks">
-						<h3>Attack: {{ attack.name }}</h3>
-						<li>Damage: {{ attack.damage }}</li>
-						<li>Critical: {{ attack.critical }}</li>
-						<ul ng-repeat="quality in attack.specialqualities">
-							<h4>Special Qualities</h4>
-							<li>Name: {{ quality.name }}</li>
-							<li>Modifier: {{ quality.modifier }}</li>
-							<li>Description: {{ quality.description }}</li>
-						</ul>
-						<li>Notes: {{ attack.notes }}</li>
-					</ul>
-				</div>
-
+				<attacks attacks="attacks"></attacks>
+				<protectiveitems protectiveitems="protectiveitems"></protectiveitems>
 			</div>
 
 			<div class="row">
-				<div id="feats" class="bg-primary col-lg-4 col-md-4 col-sm-4 section">
-					<h2>Feats</h2>
-					<hr>
-					<ul ng-repeat="feat in character.feats">
-						<li>{{ feat.name }}</li>
-					</ul>
-				</div>
-				<div id="specialabilities" class="bg-primary col-lg-4 col-md-4 col-sm-4 section">
-					<h2>Special Abilities</h2>
-					<hr>
-					<ul ng-repeat="ability in character.specialabilities">
-						<li>{{ ability.name }}</li>
-					</ul>
-				</div>
-				<div id="classfeatures" class="bg-primary col-lg-4 col-md-4 col-sm-4 section">
-					<h2>Class Features</h2>
-					<hr>
-					<ul ng-repeat="feature in character.classfeatures">
-						<li>{{ feature.name }}</li>
-					</ul>
-				</div>
+				<classfeatures classfeatures="classfeatures"></classfeatures>
+				<feats feats="feats"></feats>
+				<specialabilities specialabilities="specialabilities"></specialabilities>	
 			</div>
 
 			<div class="row">
-				<div id="Inventory" class="bg-primary col-lg-6 col-md-6 col-sm-6 section">
-					<h2>Inventory</h2>
-					<hr>
-					<ul ng-repeat="item in character.inventory">
-						<li>{{ item.name }}</li>
-					</ul>
-				</div>
-				<div id="miscellaneousstats" class="bg-primary col-lg-6 col-md-6 col-sm-6 section">
-					<h2>Miscellaneous Stats</h2>
-					<hr>
-					<h3>Racial Traits</h3>
-					<ul ng-repeat="trait in character.miscellaneousstats.racialtraits">
-						<li>Trait: {{ trait.name }}</li>
-					</ul>	
-					<h3>Languages</h3>
-					<ul ng-repeat="language in character.miscellaneousstats.languages">
-						<li>{{ language.name }}</li>
-					</ul>	
-				</div>
+				<inventory inventory="inventory"></inventory>
+			    <miscstats miscstats="miscstats"></miscstats>
+			    <spells spells="spells"></spells>
 			</div>
 
 		</div>
 
-		<div id="right-side col-lg-4 col-md-4 col-sm-4">
+		<div id="right-side" class="col-lg-4 col-md-4 col-sm-4">
 
-			<div id="skills" class="bg-primary col-lg-4 col-md-4 col-sm-4 section">
-				<h2>Skills</h2>
-				<hr>
-				<ul ng-repeat="(key,skill) in character.skills">
-					<li>{{ key }}</li>
-					<li>In Class: {{ skill.inclass }}</li>
-					<li>Ranks: {{ skill.ranks }}</li>
-				</ul>
-			</div>
+			<skills skills="skills"></skills>
 
 		</div>
 
 	</div>
+</div>
 </section>

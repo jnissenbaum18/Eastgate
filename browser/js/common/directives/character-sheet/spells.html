@@ -1,0 +1,20 @@
+<div id="spells" class="bg-primary section">
+	<h2>spells</h2>
+	<hr>
+	<button type="button" class="btn btn-default" ng-click="addspell()">Add Spell</button>
+
+	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="spell in spells">
+	<span class="input-group-addon" id="spell-{{spell.name}}">Spell</span>
+
+	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Name</span>
+ 	 <input type="text" class="form-control" placeholder="spell-name" aria-describedby="character-{{spell.name}}" ng-model="spell.name">
+	</div>
+
+	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Description</span>
+ 	 <input type="text" class="form-control" placeholder="spell-description" aria-describedby="character-{{spell.name}}-description" ng-model="spell.description">
+ 	</div>
+
+ 	</div>
+</div>

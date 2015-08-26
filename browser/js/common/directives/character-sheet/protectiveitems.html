@@ -1,0 +1,57 @@
+<div id="armorandprotectiveitems" class="bg-primary section">
+	<h2>Armor & Protective Items</h2>
+	<hr>
+
+	<button type="button" class="btn btn-default" ng-click="addprotectiveitem()">Add Protective Item</button>
+
+	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="item in protectiveitems">
+	<span class="input-group-addon" id="item-{{item.name}}">Item</span>
+
+	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Name</span>
+ 	 <input type="text" class="form-control" placeholder="item-name" aria-describedby="character-{{item.name}}" ng-model="item.name">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">AC Bonus</span>
+ 	 <input type="number" class="form-control" placeholder="item-armorclassbonus" aria-describedby="character-{{item.name}}-{{item.armorclassbonus}}" ng-model="item.armorclassbonus">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Max Dex</span>
+ 	 <input type="number" class="form-control" placeholder="item-maximumdexterity" aria-describedby="character-{{item.name}}-{{item.maximumdexterity}}" ng-model="item.maximumdexterity">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Armor Check Penalty</span>
+ 	 <input type="number" class="form-control" placeholder="item-armorcheckpenalty" aria-describedby="character-{{item.name}}-{{item.armorcheckpenalty}}" ng-model="item.armorcheckpenalty">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Weight</span>
+ 	 <input type="number" class="form-control" placeholder="item-weight" aria-describedby="character-{{item.name}}-{{item.weight}}" ng-model="item.weight">
+ 	</div>
+
+ 	 <div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="quality in item.specialqualities">
+
+	 <span class="input-group-addon" id="item-quality-{{quality.name}}">Special Quality</span>
+
+	 <div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Name</span>
+ 	  <input type="text" class="form-control" placeholder="item-quality-name" aria-describedby="item-quality-{{quality.name}}" ng-model="quality.name">
+ 	 </div>
+
+ 	 <div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Modifier</span>
+ 	  <input type="number" class="form-control" placeholder="item-quality-modifier" aria-describedby="item-quality-{{quality.name}}-{{quality.modifier}}" ng-model="quality.modifier">
+ 	 </div>
+
+ 	 <div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Description</span>
+ 	  <input type="text" class="form-control" placeholder="item-quality-description" aria-describedby="item-quality-{{quality.name}}-description" ng-model="quality.description">
+ 	 </div>
+
+ 	 </div>
+
+ 	</div>
+</div>
