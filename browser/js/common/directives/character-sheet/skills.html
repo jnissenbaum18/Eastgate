@@ -1,9 +1,21 @@
 <div id="skills" class="bg-primary section">
 	<h2>Skills</h2>
 	<hr>
-	<ul ng-repeat="(key,skill) in skills">
-		<li>{{ key }}</li>
-		<li>In Class: {{ skill.inclass }}</li>
-		<li>Ranks: {{ skill.ranks }}</li>
-	</ul>
+
+ 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(skillName, skill) in skills">
+
+ 		<span class="input-group-addon" id="skill-{{skillName}}">{{skillName}}</span>
+
+ 		<input type="text" class="form-control" placeholder="skill-ranks" aria-describedby="character-{{skill.ranks}}" ng-model="skill.ranks">
+ 		
+ 		<input type="text" class="form-control" placeholder="skill-inclass" aria-describedby="character-{{skill.inclass}}" ng-model="skill.inclass">
+
+ 		<input type="text" class="form-control" placeholder="skill-crossclass" aria-describedby="character-{{skill.crossclass}}" ng-model="skill.crossclass">
+
+ 		<input type="text" class="form-control" placeholder="skill-armorcheckpenalty" aria-describedby="character-{{skill.armorcheckpenalty}}" ng-model="skill.armorcheckpenalty">
+
+ 		<input type="text" class="form-control" placeholder="skill-trainedonly" aria-describedby="character-{{skill.trainedonly}}" ng-model="skill.trainedonly">
+
+ 	</div>
+
 </div>

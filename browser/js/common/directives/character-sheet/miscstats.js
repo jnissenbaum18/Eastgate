@@ -20,6 +20,13 @@ app.directive('miscstats', function ($state, $rootScope) {
         		})
         	}
 
+            scope.addaffiliationorenemy = function () {
+                scope.miscstats.affiliationsandenemies.push({
+                    name: '',
+                    description: ''
+                })
+            }
+
         }
    };
 });

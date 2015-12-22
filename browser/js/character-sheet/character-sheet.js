@@ -17,6 +17,15 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
         console.log(character)
         $scope.character = character
         $scope.abilityscores = $scope.character.abilityscores
+        $scope.abilitymodifiers = {}
+        var str = $scope.abilityscores.strength * 2
+        console.log('str', str)
+        function calculateAbilityScores () {
+            for (var key in $scope.abilityscores) {
+                $scope.abilitymodifiers[key] = Math.floor(($scope.abilityscores[key] - 10)/2)
+            }
+        }
+        calculateAbilityScores()
         $scope.combatstats = $scope.character.combatstats
         $scope.characterstats = $scope.character.characterstats
         $scope.attacks = $scope.character.attacks

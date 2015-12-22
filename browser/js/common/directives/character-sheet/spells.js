@@ -6,11 +6,11 @@ app.directive('spells', function ($state, $rootScope) {
         },
         templateUrl: 'js/common/directives/character-sheet/spells.html',
         link: function (scope) {
-        	scope.addspell = function () {
-        		// scope.spells.push({
-        		// 	name: '',
-        		// 	description: ''
-        		// })
+        	scope.addspell = function (spellLevel) {
+                scope.spells.level[spellLevel].push({
+        			name: '',
+        			description: ''
+        		})
         	}
         }
    };

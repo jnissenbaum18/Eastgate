@@ -22,7 +22,51 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
     $scope.characters = characters
     $scope.newCharacter = {
         characterstats: {
-            name: ''
+            name: '',
+            race: '',
+            subtype: '',
+            deity: '',
+            alignment: '',
+            size: '',
+            age: 0,
+            gender: '',
+            height: 0,
+            weight: 0,
+            eyes: '',
+            hair: '',
+            skin: ''
+        },
+        skills: {
+            totalpoints: 0,
+            pointsperlevel: 0
+        },
+        abilityscores: {
+            strength: 0,
+            dexterity: 0,
+            constitution: 0,
+            intelligence: 0,
+            wisdom: 0,
+            charisma: 0
+        },
+        combatstats: {
+            maxhitpoints: 0,
+            experience: 0,
+            baseattackbonus: 0,
+            basesaves: {
+                fortitude: 0,
+                reflex: 0,
+                will: 0
+            },
+            damagereduction: 0,
+            spellresistance: 0,
+            skillpointsperlevel: 0
+        },
+        spells: {
+            spellsave: 0,
+            arcanespellfailure: 0
+        },
+        miscstats: {
+            reigonoforigin: ''
         }
     }
 
