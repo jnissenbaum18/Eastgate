@@ -14,6 +14,9 @@ app.directive('specialabilities', function ($state, $rootScope) {
         		})
         	}
 
+            scope.recalculate = function () {
+                scope.$emit('recalculate') 
+            }
 
         }
    };

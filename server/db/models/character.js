@@ -106,15 +106,48 @@ var schema = new mongoose.Schema({
         baseattackbonus: {
             type: Number
         }, 
-        basesaves: {
+        saves: {
             fortitude: {
-                type: Number
+                fortitudebase: {
+                    type: Number
+                },
+                fortitudemagic: {
+                    type: Number
+                }, 
+                fortitudemisc: {
+                    type: Number
+                },
+                fortitudetemp: {
+                    type: Number
+                }      
             },
             reflex: {
-                type: Number
+                reflexbase: {
+                    type: Number
+                },
+                reflexmagic: {
+                    type: Number
+                }, 
+                reflexmisc: {
+                    type: Number
+                },
+                reflextemp: {
+                    type: Number
+                } 
             },
             will: {
-                type: Number
+                willbase: {
+                    type: Number
+                },
+                willmagic: {
+                    type: Number
+                }, 
+                willmisc: {
+                    type: Number
+                },
+                willtemp: {
+                    type: Number
+                } 
             }
         },
         damagereduction: {

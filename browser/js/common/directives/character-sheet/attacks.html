@@ -9,17 +9,17 @@
 
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>
- 	 <input type="text" class="form-control" placeholder="attack-name" aria-describedby="character-{{attack.name}}" ng-model="attack.name">
+ 	 <input type="text" class="form-control" placeholder="attack-name" aria-describedby="character-{{attack.name}}" ng-model="attack.name" ng-change="recalculate()">
 	</div>
 
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Damage</span>
- 	 <input type="text" class="form-control" placeholder="attack-damage" aria-describedby="character-{{attack.name}}-{{attack.damage}}" ng-model="attack.damage">
+ 	 <input type="text" class="form-control" placeholder="attack-damage" aria-describedby="character-{{attack.name}}-{{attack.damage}}" ng-model="attack.damage" ng-change="recalculate()">
  	</div>
 
  	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Critical</span>
- 	 <input type="text" class="form-control" placeholder="attack-critical" aria-describedby="character-{{attack.name}}-{{attack.critical}}" ng-model="attack.critical">
+ 	 <input type="text" class="form-control" placeholder="attack-critical" aria-describedby="character-{{attack.name}}-{{attack.critical}}" ng-model="attack.critical" ng-change="recalculate()">
  	</div>
 
  	 <div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="quality in attack.specialqualities">
@@ -27,17 +27,17 @@
 
 	 <div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>
- 	  <input type="text" class="form-control" placeholder="attack-quality-name" aria-describedby="attack-quality-{{quality.name}}" ng-model="quality.name">
+ 	  <input type="text" class="form-control" placeholder="attack-quality-name" aria-describedby="attack-quality-{{quality.name}}" ng-model="quality.name" ng-change="recalculate()">
  	 </div>
 
  	 <div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Modifier</span>
- 	  <input type="number" class="form-control" placeholder="attack-quality-modifier" aria-describedby="attack-quality-{{quality.name}}-{{quality.modifier}}" ng-model="quality.modifier">
+ 	  <input type="number" class="form-control" placeholder="attack-quality-modifier" aria-describedby="attack-quality-{{quality.name}}-{{quality.modifier}}" ng-model="quality.modifier" ng-change="recalculate()">
  	 </div>
 
  	 <div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Description</span>
- 	  <input type="text" class="form-control" placeholder="attack-quality-description" aria-describedby="attack-quality-{{quality.name}}-description" ng-model="quality.description">
+ 	  <input type="text" class="form-control" placeholder="attack-quality-description" aria-describedby="attack-quality-{{quality.name}}-description" ng-model="quality.description" ng-change="recalculate()">
  	 </div>
 
  	 </div>

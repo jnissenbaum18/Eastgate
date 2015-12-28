@@ -14,6 +14,10 @@ app.directive('classfeatures', function ($state, $rootScope) {
         		})
         	}
 
+            scope.recalculate = function () {
+                scope.$emit('recalculate') 
+            }
+
         }
    };
 });

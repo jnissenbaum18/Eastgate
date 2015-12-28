@@ -12,6 +12,10 @@ app.directive('spells', function ($state, $rootScope) {
         			description: ''
         		})
         	}
+
+            scope.recalculate = function () {
+                scope.$emit('recalculate') 
+            }
         }
    };
 });

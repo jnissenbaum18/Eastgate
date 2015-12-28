@@ -1,49 +1,97 @@
 <div id="combatstats" class="bg-primary section">
 	<h4>Combat Stats</h4>
 	<hr>
-	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	<span class="input-group-addon" id="hitpoints">Hit Points</span>
- 	 <input type="number" class="form-control" placeholder="hitpoints" aria-describedby="character-hitpoints" ng-model="combatstats.maxhitpoints">
+ 	 <input type="number" class="form-control" placeholder="hitpoints" aria-describedby="character-hitpoints" ng-model="combatstats.maxhitpoints" ng-change="recalculate()">
  	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+ 	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	<span class="input-group-addon" id="experience">Experience</span>
- 	 <input type="number" class="form-control" placeholder="experience" aria-describedby="character-experience" ng-model="combatstats.experience">
+ 	 <input type="number" class="form-control" placeholder="experience" aria-describedby="character-experience" ng-model="combatstats.experience" ng-change="recalculate()">
  	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+ 	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	<span class="input-group-addon" id="baseattackbonus">Base Attack Bonus</span>
- 	 <input type="number" class="form-control" placeholder="baseattackbonus" aria-describedby="character-baseattackbonus" ng-model="combatstats.baseattackbonus">
+ 	 <input type="number" class="form-control" placeholder="baseattackbonus" aria-describedby="character-baseattackbonus" ng-model="combatstats.baseattackbonus" ng-change="recalculate()">
  	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+ 	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	<span class="input-group-addon" id="fortitude">Fortitude</span>
- 	 <input type="number" class="form-control" placeholder="fortitude" aria-describedby="character-fortitude" ng-model="combatstats.basesaves.fortitude">
+	 <p>Total: {{calculatedcombatstats.fortitude}}</p>
+	 <div class="character-input input-group input-group-sm">
+	  <span class="input-group-addon" id="fortitude">Base Save:</span>
+ 	  <input type="number" class="form-control" placeholder="fortitudebase" aria-describedby="character-fortitudebase" ng-model="combatstats.saves.fortitude.fortitudebase" ng-change="recalculate()">
+ 	 </div>
+ 	 <div class="character-input input-group input-group-sm">
+ 	  <span class="input-group-addon" id="fortitude">Magic Modifier:</span>
+ 	  <input type="number" class="form-control" placeholder="fortitudemagic" aria-describedby="character-fortitudemagic" ng-model="combatstats.saves.fortitude.fortitudemagic" ng-change="recalculate()">
+ 	 </div>
+ 	 <div class="character-input input-group input-group-sm">
+ 	  <span class="input-group-addon" id="fortitude">Misc Modifier:</span>
+ 	  <input type="number" class="form-control" placeholder="fortitudemisc" aria-describedby="character-fortitudemisc" ng-model="combatstats.saves.fortitude.fortitudemisc" ng-change="recalculate()">
+ 	 </div>
+ 	 <div class="character-input input-group input-group-sm">
+ 	  <span class="input-group-addon" id="fortitude">Temp Modifier:</span>
+ 	  <input type="number" class="form-control" placeholder="fortitudetemp" aria-describedby="character-fortitudetemp" ng-model="combatstats.saves.fortitude.fortitudetemp" ng-change="recalculate()">
+ 	 </div>
  	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+ 	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	<span class="input-group-addon" id="reflex">Reflex</span>
- 	 <input type="number" class="form-control" placeholder="reflex" aria-describedby="character-reflex" ng-model="combatstats.basesaves.reflex">
+	 <p>Total: {{calculatedcombatstats.reflex}}</p>
+	 <div class="character-input input-group input-group-sm">
+	  <span class="input-group-addon" id="reflex">Base Save:</span>
+ 	  <input type="number" class="form-control" placeholder="reflexbase" aria-describedby="character-reflexbase" ng-model="combatstats.saves.reflex.reflexbase" ng-change="recalculate()">
+ 	 </div>
+ 	 <div class="character-input input-group input-group-sm">
+ 	  <span class="input-group-addon" id="reflex">Magic Modifier:</span>
+ 	  <input type="number" class="form-control" placeholder="reflexmagic" aria-describedby="character-reflexmagic" ng-model="combatstats.saves.reflex.reflexmagic" ng-change="recalculate()">
+ 	 </div>
+ 	 <div class="character-input input-group input-group-sm">
+ 	  <span class="input-group-addon" id="reflex">Misc Modifier:</span>
+ 	  <input type="number" class="form-control" placeholder="reflexmisc" aria-describedby="character-reflexmisc" ng-model="combatstats.saves.reflex.reflexmisc" ng-change="recalculate()">
+ 	 </div>
+ 	 <div class="character-input input-group input-group-sm">
+ 	  <span class="input-group-addon" id="reflex">Temp Modifier:</span>
+ 	  <input type="number" class="form-control" placeholder="reflextemp" aria-describedby="character-reflextemp" ng-model="combatstats.saves.reflex.reflextemp" ng-change="recalculate()">
+ 	 </div>
  	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+ 	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	<span class="input-group-addon" id="will">Will</span>
- 	 <input type="number" class="form-control" placeholder="will" aria-describedby="character-will" ng-model="combatstats.basesaves.will">
+     <p>Total: {{calculatedcombatstats.will}}</p>
+	 <div class="character-input input-group input-group-sm">
+	  <span class="input-group-addon" id="will">Base Save:</span>
+ 	  <input type="number" class="form-control" placeholder="willbase" aria-describedby="character-willbase" ng-model="combatstats.saves.will.willbase" ng-change="recalculate()">
+ 	 </div>
+ 	 <div class="character-input input-group input-group-sm">
+ 	  <span class="input-group-addon" id="will">Magic Modifier:</span>
+ 	  <input type="number" class="form-control" placeholder="willmagic" aria-describedby="character-willmagic" ng-model="combatstats.saves.will.willmagic" ng-change="recalculate()">
+ 	 </div>
+ 	 <div class="character-input input-group input-group-sm">
+ 	  <span class="input-group-addon" id="will">Misc Modifier:</span>
+ 	  <input type="number" class="form-control" placeholder="willmisc" aria-describedby="character-willmisc" ng-model="combatstats.saves.will.willmisc" ng-change="recalculate()">
+ 	 </div>
+ 	 <div class="character-input input-group input-group-sm">
+ 	  <span class="input-group-addon" id="will">Temp Modifier:</span>
+ 	  <input type="number" class="form-control" placeholder="willtemp" aria-describedby="character-willtemp" ng-model="combatstats.saves.will.willtemp" ng-change="recalculate()">
+ 	 </div>
  	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+ 	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	<span class="input-group-addon" id="damagereduction">Damage Reduction</span>
- 	 <input type="number" class="form-control" placeholder="damagereduction" aria-describedby="character-damagereduction" ng-model="combatstats.damagereduction">
+ 	 <input type="number" class="form-control" placeholder="damagereduction" aria-describedby="character-damagereduction" ng-model="combatstats.damagereduction" ng-change="recalculate()">
  	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+ 	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	<span class="input-group-addon" id="spellresistance">Spell Resistance</span>
- 	 <input type="number" class="form-control" placeholder="spellresistance" aria-describedby="character-spellresistance" ng-model="combatstats.spellresistance">
+ 	 <input type="number" class="form-control" placeholder="spellresistance" aria-describedby="character-spellresistance" ng-model="combatstats.spellresistance" ng-change="recalculate()">
  	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+ 	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	<span class="input-group-addon" id="skillpointsperlevel">Base Skill Points Per Level</span>
- 	 <input type="number" class="form-control" placeholder="skillpointsperlevel" aria-describedby="character-skillpointsperlevel" ng-model="combatstats.skillpointsperlevel">
+ 	 <input type="number" class="form-control" placeholder="skillpointsperlevel" aria-describedby="character-skillpointsperlevel" ng-model="combatstats.skillpointsperlevel" ng-change="recalculate()">
  	</div>
 
 </div>

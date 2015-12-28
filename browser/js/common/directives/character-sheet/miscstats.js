@@ -27,6 +27,10 @@ app.directive('miscstats', function ($state, $rootScope) {
                 })
             }
 
+            scope.recalculate = function () {
+                scope.$emit('recalculate') 
+            }
+
         }
    };
 });

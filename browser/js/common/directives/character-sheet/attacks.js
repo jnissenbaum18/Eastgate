@@ -20,6 +20,10 @@ app.directive('attacks', function ($state, $rootScope) {
         		})
         	}
 
+            scope.recalculate = function () {
+                scope.$emit('recalculate') 
+            }
+
         }
    };
 });

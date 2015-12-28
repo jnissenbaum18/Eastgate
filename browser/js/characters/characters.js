@@ -52,10 +52,25 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
             maxhitpoints: 0,
             experience: 0,
             baseattackbonus: 0,
-            basesaves: {
-                fortitude: 0,
-                reflex: 0,
-                will: 0
+            saves: {
+                fortitude: {
+                    fortitudebase: 0,
+                    fortitudemagic: 0, 
+                    fortitudemisc: 0,
+                    fortitudetemp: 0      
+                },
+                reflex: {
+                    reflexbase: 0,
+                    reflexmagic: 0, 
+                    reflexmisc: 0,
+                    reflextemp: 0 
+                },
+                will: {
+                    willbase: 0,
+                    willmagic: 0, 
+                    willmisc: 0,
+                    willtemp: 0 
+                }
             },
             damagereduction: 0,
             spellresistance: 0,

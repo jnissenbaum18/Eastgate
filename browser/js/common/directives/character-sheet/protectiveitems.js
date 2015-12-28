@@ -22,6 +22,10 @@ app.directive('protectiveitems', function ($state, $rootScope) {
         		})
         	}
 
+            scope.recalculate = function () {
+                scope.$emit('recalculate') 
+            }
+
         }
    };
 });

@@ -12,6 +12,10 @@ app.directive('feats', function ($state, $rootScope) {
         			description: ''
         		})
         	}
+
+            scope.recalculate = function () {
+                scope.$emit('recalculate') 
+            }
         }
    };
 });

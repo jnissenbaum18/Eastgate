@@ -7,7 +7,9 @@ app.directive('abilityscores', function ($state, $rootScope) {
         },
         templateUrl: 'js/common/directives/character-sheet/abilityscores.html',
         link: function (scope) {
-
+            scope.recalculate = function () {
+                scope.$emit('recalculate') 
+            }
         }
    };
 });

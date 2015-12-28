@@ -4,7 +4,7 @@
 
 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
 		<span class="input-group-addon" id="reigonoforigin">Reigon of Origin</span>
- 	 	<input type="number" class="form-control" placeholder="reigonoforigin" aria-describedby="character-reigonoforigin" ng-model="miscstats.reigonoforigin">
+ 	 	<input type="string" class="form-control" placeholder="reigonoforigin" aria-describedby="character-reigonoforigin" ng-model="miscstats.reigonoforigin" ng-change="recalculate()">
  	</div>
 
 	<button type="button" class="btn btn-default" ng-click="addracialtrait()">Add Racial Trait</button>
@@ -14,12 +14,12 @@
 
 		<div class="character-input input-group input-group-sm">
 	 		<span class="input-group-addon">Name</span>
- 	 		<input type="text" class="form-control" placeholder="trait-name" aria-describedby="character-{{trait.name}}" ng-model="trait.name">
+ 	 		<input type="text" class="form-control" placeholder="trait-name" aria-describedby="character-{{trait.name}}" ng-model="trait.name" ng-change="recalculate()">
 		</div>
 
 		<div class="character-input input-group input-group-sm">
 	 		<span class="input-group-addon">Description</span>
- 	 		<input type="text" class="form-control" placeholder="trait-description" aria-describedby="character-{{trait.name}}-description" ng-model="trait.description">
+ 	 		<input type="text" class="form-control" placeholder="trait-description" aria-describedby="character-{{trait.name}}-description" ng-model="trait.description" ng-change="recalculate()">
  		</div>
 
  	</div>
@@ -31,7 +31,7 @@
 
 		<div class="character-input input-group input-group-sm">
 	 		<span class="input-group-addon">Name</span>
- 	 		<input type="text" class="form-control" placeholder="language-name" aria-describedby="character-{{language.name}}" ng-model="language.name">
+ 	 		<input type="text" class="form-control" placeholder="language-name" aria-describedby="character-{{language.name}}" ng-model="language.name" ng-change="recalculate()">
 		</div>
 
  	</div>
@@ -43,12 +43,12 @@
 
 		<div class="character-input input-group input-group-sm">
 	 		<span class="input-group-addon">Name</span>
- 	 		<input type="text" class="form-control" placeholder="affiliation-name" aria-describedby="character-{{affiliation.name}}" ng-model="affiliation.name">
+ 	 		<input type="text" class="form-control" placeholder="affiliation-name" aria-describedby="character-{{affiliation.name}}" ng-model="affiliation.name" ng-change="recalculate()">
 		</div>
 
 		<div class="character-input input-group input-group-sm">
 	 		<span class="input-group-addon">Description</span>
- 	 		<input type="text" class="form-control" placeholder="affiliation-description" aria-describedby="character-{{affiliation.name}}-description" ng-model="affiliation.description">
+ 	 		<input type="text" class="form-control" placeholder="affiliation-description" aria-describedby="character-{{affiliation.name}}-description" ng-model="affiliation.description" ng-change="recalculate()">
  		</div>
 
  	</div>

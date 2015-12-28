@@ -9,27 +9,27 @@
 
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>
- 	 <input type="text" class="form-control" placeholder="item-name" aria-describedby="character-{{item.name}}" ng-model="item.name">
+ 	 <input type="text" class="form-control" placeholder="item-name" aria-describedby="character-{{item.name}}" ng-model="item.name" ng-change="recalculate()">
  	</div>
 
  	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">AC Bonus</span>
- 	 <input type="number" class="form-control" placeholder="item-armorclassbonus" aria-describedby="character-{{item.name}}-{{item.armorclassbonus}}" ng-model="item.armorclassbonus">
+ 	 <input type="number" class="form-control" placeholder="item-armorclassbonus" aria-describedby="character-{{item.name}}-{{item.armorclassbonus}}" ng-model="item.armorclassbonus" ng-change="recalculate()">
  	</div>
 
  	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Max Dex</span>
- 	 <input type="number" class="form-control" placeholder="item-maximumdexterity" aria-describedby="character-{{item.name}}-{{item.maximumdexterity}}" ng-model="item.maximumdexterity">
+ 	 <input type="number" class="form-control" placeholder="item-maximumdexterity" aria-describedby="character-{{item.name}}-{{item.maximumdexterity}}" ng-model="item.maximumdexterity" ng-change="recalculate()">
  	</div>
 
  	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Armor Check Penalty</span>
- 	 <input type="number" class="form-control" placeholder="item-armorcheckpenalty" aria-describedby="character-{{item.name}}-{{item.armorcheckpenalty}}" ng-model="item.armorcheckpenalty">
+ 	 <input type="number" class="form-control" placeholder="item-armorcheckpenalty" aria-describedby="character-{{item.name}}-{{item.armorcheckpenalty}}" ng-model="item.armorcheckpenalty" ng-change="recalculate()">
  	</div>
 
  	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Weight</span>
- 	 <input type="number" class="form-control" placeholder="item-weight" aria-describedby="character-{{item.name}}-{{item.weight}}" ng-model="item.weight">
+ 	 <input type="number" class="form-control" placeholder="item-weight" aria-describedby="character-{{item.name}}-{{item.weight}}" ng-model="item.weight" ng-change="recalculate()">
  	</div>
 
  	 <div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="quality in item.specialqualities">
@@ -38,17 +38,17 @@
 
 	 <div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>
- 	  <input type="text" class="form-control" placeholder="item-quality-name" aria-describedby="item-quality-{{quality.name}}" ng-model="quality.name">
+ 	  <input type="text" class="form-control" placeholder="item-quality-name" aria-describedby="item-quality-{{quality.name}}" ng-model="quality.name" ng-change="recalculate()">
  	 </div>
 
  	 <div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Modifier</span>
- 	  <input type="number" class="form-control" placeholder="item-quality-modifier" aria-describedby="item-quality-{{quality.name}}-{{quality.modifier}}" ng-model="quality.modifier">
+ 	  <input type="number" class="form-control" placeholder="item-quality-modifier" aria-describedby="item-quality-{{quality.name}}-{{quality.modifier}}" ng-model="quality.modifier" ng-change="recalculate()">
  	 </div>
 
  	 <div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Description</span>
- 	  <input type="text" class="form-control" placeholder="item-quality-description" aria-describedby="item-quality-{{quality.name}}-description" ng-model="quality.description">
+ 	  <input type="text" class="form-control" placeholder="item-quality-description" aria-describedby="item-quality-{{quality.name}}-description" ng-model="quality.description" ng-change="recalculate()">
  	 </div>
 
  	 </div>

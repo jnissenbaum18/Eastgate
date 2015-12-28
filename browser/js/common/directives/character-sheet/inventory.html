@@ -9,27 +9,27 @@
 
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>
- 	 <input type="text" class="form-control" placeholder="item-name" aria-describedby="character-{{item.name}}" ng-model="item.name">
+ 	 <input type="text" class="form-control" placeholder="item-name" aria-describedby="character-{{item.name}}" ng-model="item.name" ng-change="recalculate()">
 	</div>
 
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Description</span>
- 	 <input type="text" class="form-control" placeholder="item-description" aria-describedby="character-{{item.name}}-description" ng-model="item.description">
+ 	 <input type="text" class="form-control" placeholder="item-description" aria-describedby="character-{{item.name}}-description" ng-model="item.description" ng-change="recalculate()">
  	</div>
 
  	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Quantity</span>
- 	 <input type="number" class="form-control" placeholder="item-quantity" aria-describedby="character-{{item.name}}-quantity" ng-model="item.quantity">
+ 	 <input type="number" class="form-control" placeholder="item-quantity" aria-describedby="character-{{item.name}}-quantity" ng-model="item.quantity" ng-change="recalculate()">
  	</div>
 
  	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Page Ref</span>
- 	 <input type="text" class="form-control" placeholder="item-pagereference" aria-describedby="character-{{item.name}}-page-reference" ng-model="item.pagereference">
+ 	 <input type="text" class="form-control" placeholder="item-pagereference" aria-describedby="character-{{item.name}}-page-reference" ng-model="item.pagereference" ng-change="recalculate()">
  	</div>
 
  	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Weight</span>
- 	 <input type="number" class="form-control" placeholder="item-weight" aria-describedby="character-{{item.name}}-weight" ng-model="item.weight">
+ 	 <input type="number" class="form-control" placeholder="item-weight" aria-describedby="character-{{item.name}}-weight" ng-model="item.weight" ng-change="recalculate()">
  	</div>
 
  	</div>

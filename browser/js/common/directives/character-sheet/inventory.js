@@ -17,6 +17,10 @@ app.directive('inventory', function ($state, $rootScope) {
         		})
         	}
 
+            scope.recalculate = function () {
+                scope.$emit('recalculate') 
+            }
+
         }
    };
 });

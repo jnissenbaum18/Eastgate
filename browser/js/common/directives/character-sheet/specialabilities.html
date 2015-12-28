@@ -8,12 +8,12 @@
 
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>
- 	 <input type="text" class="form-control" placeholder="ability-name" aria-describedby="character-{{ability.name}}" ng-model="ability.name">
+ 	 <input type="text" class="form-control" placeholder="ability-name" aria-describedby="character-{{ability.name}}" ng-model="ability.name" ng-change="recalculate()">
 	</div>
 
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Description</span>
- 	 <input type="text" class="form-control" placeholder="ability-description" aria-describedby="character-{{ability.name}}-description" ng-model="ability.description">
+ 	 <input type="text" class="form-control" placeholder="ability-description" aria-describedby="character-{{ability.name}}-description" ng-model="ability.description" ng-change="recalculate()">
  	</div>
 
  	</div>

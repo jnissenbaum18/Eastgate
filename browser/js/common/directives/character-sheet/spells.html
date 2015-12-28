@@ -4,15 +4,13 @@
 
 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
 		<span class="input-group-addon" id="arcanespellfailure">Arcane Spell Failure</span>
- 	 	<input type="number" class="form-control" placeholder="arcanespellfailure" aria-describedby="character-arcanespellfailure" ng-model="spells.arcanespellfailure">
+ 	 	<input type="number" class="form-control" placeholder="arcanespellfailure" aria-describedby="character-arcanespellfailure" ng-model="spells.arcanespellfailure" ng-change="recalculate()">
  	</div>
 
  	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
 		<span class="input-group-addon" id="spellsave">Spell Save</span>
- 	 	<input type="number" class="form-control" placeholder="spellsave" aria-describedby="character-spellsave" ng-model="spells.spellsave">
+ 	 	<input type="number" class="form-control" placeholder="spellsave" aria-describedby="character-spellsave" ng-model="spells.spellsave" ng-change="recalculate()">
  	</div>
-
-	<button type="button" class="btn btn-default" ng-click="addspell()">Add Spell</button>
 
 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(spellLevel, spellList) in spells.level">
 
@@ -23,12 +21,12 @@
 
 			<div class="character-input input-group input-group-sm">
 		 		<span class="input-group-addon">Name</span>
-	 	 		<input type="text" class="form-control" placeholder="spell-name" aria-describedby="character-{{spell.name}}" ng-model="spell.name">
+	 	 		<input type="text" class="form-control" placeholder="spell-name" aria-describedby="character-{{spell.name}}" ng-model="spell.name" ng-change="recalculate()">
 			</div>
 
 			<div class="character-input input-group input-group-sm">
 			 	<span class="input-group-addon">Description</span>
-		 	 	<input type="text" class="form-control" placeholder="spell-description" aria-describedby="character-{{spell.name}}-description" ng-model="spell.description">
+		 	 	<input type="text" class="form-control" placeholder="spell-description" aria-describedby="character-{{spell.name}}-description" ng-model="spell.description" ng-change="recalculate()">
 		 	</div>
 
 		</div>
@@ -41,12 +39,12 @@
 
 		<div class="character-input input-group input-group-sm">
 	 		<span class="input-group-addon">Prohibited</span>
- 	 		<input type="text" class="form-control" placeholder="school-prohibited" aria-describedby="character-{{school.prohibited}}" ng-model="data.prohibited">
+ 	 		<input type="text" class="form-control" placeholder="school-prohibited" aria-describedby="character-{{school.prohibited}}" ng-model="data.prohibited" ng-change="recalculate()">
 		</div>
 
 		<div class="character-input input-group input-group-sm">
 		 	<span class="input-group-addon">Speciality</span>
-	 	 	<input type="text" class="form-control" placeholder="school-specialty" aria-describedby="character-{{school.specialty}}-specialty" ng-model="data.speciality">
+	 	 	<input type="text" class="form-control" placeholder="school-specialty" aria-describedby="character-{{school.specialty}}-specialty" ng-model="data.speciality" ng-change="recalculate()">
 	 	</div>
 
 	</div>

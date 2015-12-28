@@ -9,12 +9,12 @@
 
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>
- 	 <input type="text" class="form-control" placeholder="feature-name" aria-describedby="character-{{feature.name}}" ng-model="feature.name">
+ 	 <input type="text" class="form-control" placeholder="feature-name" aria-describedby="character-{{feature.name}}" ng-model="feature.name" ng-change="recalculate()">
 	</div>
 
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Description</span>
- 	 <input type="text" class="form-control" placeholder="feature-description" aria-describedby="character-{{feature.name}}-description" ng-model="feature.description">
+ 	 <input type="text" class="form-control" placeholder="feature-description" aria-describedby="character-{{feature.name}}-description" ng-model="feature.description" ng-change="recalculate()">
  	</div>
 
  	</div>
