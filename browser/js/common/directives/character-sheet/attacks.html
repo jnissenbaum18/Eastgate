@@ -4,8 +4,12 @@
 
 	<button type="button" class="btn btn-default" ng-click="addattack()">Add Attack</button>
 
+	
+
 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="attack in attacks">
 	<span class="input-group-addon" id="attack-{{attack.name}}">Attack</span>
+
+	<button type="button" class="btn btn-default" ng-click="deleteattack(attack)">Delete Attack</button>
 
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>
@@ -15,6 +19,7 @@
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Damage</span>
  	 <input type="text" class="form-control" placeholder="attack-damage" aria-describedby="character-{{attack.name}}-{{attack.damage}}" ng-model="attack.damage" ng-change="recalculate()">
+ 	 <p>{{attack.damagebonus}}</p>
  	</div>
 
  	<div class="character-input input-group input-group-sm">
@@ -34,17 +39,24 @@
      </select>
  	</div>
 
- 	 <div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="quality in attack.specialqualities">
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Masterwork</span>
+	 <input type="checkbox" placeholder="attack-mwk" aria-describedby="character-{{attack.name}}-{{attack.masterwork}}" ng-model="attack.masterwork" ng-change="recalculate()" bs-switch/>
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Modifier</span>
+ 	 <input type="number" class="form-control" placeholder="attack-modifier" aria-describedby="character-{{attack.name}}-{{attack.modifier}}" ng-model="attack.modifier" ng-change="recalculate()">
+ 	</div>
+
+ 	<button type="button" class="btn btn-default" ng-click="addquality()">Add Quality</button>
+
+ 	 <div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="quality in attack.specialqualities track by $index">
 	 <span class="input-group-addon" id="attack-quality-{{quality.name}}">Special Quality</span>
 
 	 <div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>
  	  <input type="text" class="form-control" placeholder="attack-quality-name" aria-describedby="attack-quality-{{quality.name}}" ng-model="quality.name" ng-change="recalculate()">
- 	 </div>
-
- 	 <div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Modifier</span>
- 	  <input type="number" class="form-control" placeholder="attack-quality-modifier" aria-describedby="attack-quality-{{quality.name}}-{{quality.modifier}}" ng-model="quality.modifier" ng-change="recalculate()">
  	 </div>
 
  	 <div class="character-input input-group input-group-sm">

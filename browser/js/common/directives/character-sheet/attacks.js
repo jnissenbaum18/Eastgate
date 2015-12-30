@@ -7,20 +7,49 @@ app.directive('attacks', function ($state, $rootScope) {
         templateUrl: 'js/common/directives/character-sheet/attacks.html',
         link: function (scope) {
 
+            $(function () {
+                $('input[type="checkbox"]').bootstrapSwitch();
+            });
+
+            scope.isSelected = false
+
         	scope.addattack = function () {
-        		scope.attacks.push({
-        			name: '',
-        			damage: '',
-        			critical: '',
+
+                var attack = {
+                    name: '',
+                    damage: '',
+                    critical: '',
                     attackbonus: 0,
                     weapontype: 0,
-        			specialqualities: [{
-        				name: '',
-        				modifier: 0,
-        				description: ''
-        			}]
-        		})
+                    masterwork: false,
+                    modifier: 0,
+                    specialqualities: []
+                }
+
+                var specialquality = {
+                    name: '',
+                    description: ''
+                }
+
+                scope.addquality = function () {
+                    attack.specialqualities.push(specialquality)
+                }
+
+        		scope.attacks.push(attack)
+
+                var createClosure = function (j) {
+                    return function(){return j;}
+                }
+
+                
+                
         	}
+
+            scope.deleteattack = function (i) {
+                console.log(scope.attacks)
+                scope.attacks.splice(i, 1)
+                console.log(scope.attacks)
+            }   
 
             scope.weapontypes = {
                 'One Hand': 0,

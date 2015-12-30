@@ -38,7 +38,7 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
         }
 
         $scope.log = function () {
-            console.log(character)
+            console.log($scope.attacks)
         }
 
         function calculateSheet () {
@@ -60,15 +60,42 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
             }
 
             $scope.attacks.forEach(function(attack) {
-                var bonus = 0
-                bonus += $scope.combatstats.baseattackbonus
-                bonus += sizemodifier
-                if (attack.weapontype === 3) {
-                    bonus += $scope.abilitymodifiers.dexterity
-                } else {
-                    bonus += $scope.abilitymodifiers.strength
+                // Attack Bonus
+                var atkbonus = 0
+                atkbonus += $scope.combatstats.baseattackbonus
+                if (!!sizemodifier !== false) {
+                    atkbonus += sizemodifier
                 }
-                attack.attackbonus = bonus
+                if (attack.weapontype === 3) {
+                    atkbonus += $scope.abilitymodifiers.dexterity
+                } else {
+                    atkbonus += $scope.abilitymodifiers.strength
+                }
+                if (attack.modifier > 0) {
+                    atkbonus += attack.modifier
+                } else if (attack.masterwork) {
+                    atkbonus += 1
+                }
+                attack.attackbonus = atkbonus
+
+                // Damage Bonus
+                var dmgbonus = 0
+
+                var wpntype = Number(attack.weapontype)
+
+                if (wpntype === 1) {
+                    dmgbonus += Math.floor($scope.abilitymodifiers.strength * 1.5)
+                } else if (wpntype === 2) {
+                    dmgbonus += Math.floor($scope.abilitymodifiers.strength * 0.5)
+                } else if (wpntype === 3) {
+
+                } else {
+                    dmgbonus += $scope.abilitymodifiers.strength
+                }
+
+                dmgbonus += attack.modifier
+
+                attack.damagebonus = dmgbonus
                 return
             })
 
