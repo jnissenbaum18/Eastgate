@@ -33,10 +33,19 @@
 	<span class="input-group-addon" id="alignment">Alignment</span>
  	 <input type="text" class="form-control" placeholder="alignment" aria-describedby="character-alignment" ng-model="characterstats.alignment" ng-change="recalculate()">
  	</div>
+<!-- 
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	 <span class="input-group-addon" id="size">Size</span>
+ 	 <select class="form-control btn btn-primary dropdown-toggle" ng-model="characterstats.size" ng-change="recalculate()">
+      <option ng-repeat="(key, value) in sizes" value='{{value}}'><a href="#">{{key}}</a></option>
+     </select>
+ 	</div> -->
 
  	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
-	<span class="input-group-addon" id="size">Size</span>
- 	 <input type="text" class="form-control" placeholder="size" aria-describedby="character-size" ng-model="characterstats.size" ng-change="recalculate()">
+	 <span class="input-group-addon" id="weapontype">Size</span>
+ 	 <select class="form-control btn btn-primary dropdown-toggle" ng-model="characterstats.charactersize" ng-change="recalculate()">
+      <option ng-repeat="(key, value) in sizes" value='{{value}}'><a href="#">{{key}}</a></option>
+     </select>
  	</div>
 
  	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">

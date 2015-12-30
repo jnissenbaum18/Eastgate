@@ -27,7 +27,7 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
             subtype: '',
             deity: '',
             alignment: '',
-            size: '',
+            charactersize: '',
             age: 0,
             gender: '',
             height: 0,

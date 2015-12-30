@@ -51,7 +51,7 @@ var schema = new mongoose.Schema({
         alignment: {
             type: String
         },
-        size: {
+        charactersize: {
             type: String
         },
         age: {

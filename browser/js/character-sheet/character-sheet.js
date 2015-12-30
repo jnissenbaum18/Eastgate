@@ -38,10 +38,12 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
         }
 
         $scope.log = function () {
-            console.log($scope.abilityscores)
+            console.log(character)
         }
 
         function calculateSheet () {
+
+            var sizemodifier = Number($scope.characterstats.charactersize)
             
             $scope.abilitymodifiers = {}
             for (var key in $scope.abilityscores) {
@@ -56,6 +58,19 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                 will: $scope.combatstats.saves.will.willbase + $scope.combatstats.saves.will.willmagic + 
                     $scope.combatstats.saves.will.willmisc + $scope.combatstats.saves.will.willtemp + $scope.abilitymodifiers.wisdom
             }
+
+            $scope.attacks.forEach(function(attack) {
+                var bonus = 0
+                bonus += $scope.combatstats.baseattackbonus
+                bonus += sizemodifier
+                if (attack.weapontype === 3) {
+                    bonus += $scope.abilitymodifiers.dexterity
+                } else {
+                    bonus += $scope.abilitymodifiers.strength
+                }
+                attack.attackbonus = bonus
+                return
+            })
 
             // console.log($scope.calculatedcombatstats)
 

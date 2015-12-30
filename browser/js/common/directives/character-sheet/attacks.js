@@ -12,6 +12,8 @@ app.directive('attacks', function ($state, $rootScope) {
         			name: '',
         			damage: '',
         			critical: '',
+                    attackbonus: 0,
+                    weapontype: 0,
         			specialqualities: [{
         				name: '',
         				modifier: 0,
@@ -19,6 +21,13 @@ app.directive('attacks', function ($state, $rootScope) {
         			}]
         		})
         	}
+
+            scope.weapontypes = {
+                'One Hand': 0,
+                'Two Hand': 1,
+                'Off Hand': 2,
+                'Ranged': 3
+            }
 
             scope.recalculate = function () {
                 scope.$emit('recalculate') 

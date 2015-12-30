@@ -22,6 +22,18 @@
  	 <input type="text" class="form-control" placeholder="attack-critical" aria-describedby="character-{{attack.name}}-{{attack.critical}}" ng-model="attack.critical" ng-change="recalculate()">
  	</div>
 
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Attack Bonus</span>
+ 	 <p>{{attack.attackbonus}}</p>
+ 	</div>
+
+    <div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon" id="weapontype">Weapon Type</span>
+ 	 <select class="form-control btn btn-primary dropdown-toggle" ng-model="attack.weapontype" ng-change="recalculate()">
+      <option ng-repeat="(key, value) in weapontypes" value='{{value}}'><a href="#">{{key}}</a></option>
+     </select>
+ 	</div>
+
  	 <div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="quality in attack.specialqualities">
 	 <span class="input-group-addon" id="attack-quality-{{quality.name}}">Special Quality</span>
 
