@@ -8,19 +8,42 @@ app.directive('protectiveitems', function ($state, $rootScope) {
         link: function (scope) {
 
         	scope.addprotectiveitem = function () {
-        		scope.protectiveitems.push({
-        			name: '',
-        			armorclassbonus: 0,
-        			maximumdexterity: 0,
-        			armorcheckpenalty: 0,
-        			weight: 0,
-        			specialqualities: [{
-        				name: '',
-        				modifier: 0,
-        				description: ''
-        			}]
-        		})
+        		
+                var protectiveitem = {
+                    name: '',
+                    totalbonus: 0,
+                    armorclassbonus: 0,
+                    modifier: 0,
+                    masterwork: false,
+                    maximumdexterity: 0,
+                    armorcheckpenalty: 0,
+                    totalarmorcheckpenalty: 0,
+                    weight: 0,
+                    specialqualities: []
+                }
+
+                var specialquality = {
+                    name: '', 
+                    description: ''
+                }
+
+                scope.protectiveitems.push(protectiveitem)
+
+                scope.addquality = function () {
+                    protectiveitem.specialqualities.push(specialquality)
+                }
+
         	}
+
+            scope.deleteitem = function (i) {
+                setTimeout(function(){
+                    var items = angular.copy(scope.protectiveitems);
+                    var indexToRemove = scope.protectiveitems.indexOf(i);
+                    items.splice(indexToRemove, 1)
+                    scope.protectiveitems = items; 
+                    scope.$digest();
+                }, 0);
+            }   
 
             scope.recalculate = function () {
                 scope.$emit('recalculate') 

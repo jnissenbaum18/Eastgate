@@ -7,6 +7,8 @@
 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="item in protectiveitems">
 	<span class="input-group-addon" id="item-{{item.name}}">Item</span>
 
+	<button type="button" class="btn btn-default" ng-click="deleteitem(item)">Delete Protective Item</button>
+
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>
  	 <input type="text" class="form-control" placeholder="item-name" aria-describedby="character-{{item.name}}" ng-model="item.name" ng-change="recalculate()">
@@ -14,7 +16,18 @@
 
  	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">AC Bonus</span>
+	 <p>Total Bonus: {{item.totalbonus}}</p>
  	 <input type="number" class="form-control" placeholder="item-armorclassbonus" aria-describedby="character-{{item.name}}-{{item.armorclassbonus}}" ng-model="item.armorclassbonus" ng-change="recalculate()">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Modifier</span>
+ 	 <input type="number" class="form-control" placeholder="item-modifier" aria-describedby="character-{{item.name}}-{{item.modifier}}" ng-model="item.modifier" ng-change="recalculate()">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Masterwork</span>
+	 <input type="checkbox" placeholder="item-mwk" aria-describedby="character-{{item.name}}-{{item.masterwork}}" ng-model="item.masterwork" ng-change="recalculate()" bs-switch/>
  	</div>
 
  	<div class="character-input input-group input-group-sm">
@@ -24,6 +37,7 @@
 
  	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Armor Check Penalty</span>
+	 <p>Total Armor Check Penalty: {{item.totalarmorcheckpenalty}}</p>
  	 <input type="number" class="form-control" placeholder="item-armorcheckpenalty" aria-describedby="character-{{item.name}}-{{item.armorcheckpenalty}}" ng-model="item.armorcheckpenalty" ng-change="recalculate()">
  	</div>
 
@@ -32,18 +46,15 @@
  	 <input type="number" class="form-control" placeholder="item-weight" aria-describedby="character-{{item.name}}-{{item.weight}}" ng-model="item.weight" ng-change="recalculate()">
  	</div>
 
- 	 <div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="quality in item.specialqualities">
+	 <button type="button" class="btn btn-default" ng-click="addquality()">Add Quality</button>
+
+ 	 <div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="quality in item.specialqualities track by $index">
 
 	 <span class="input-group-addon" id="item-quality-{{quality.name}}">Special Quality</span>
 
 	 <div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>
  	  <input type="text" class="form-control" placeholder="item-quality-name" aria-describedby="item-quality-{{quality.name}}" ng-model="quality.name" ng-change="recalculate()">
- 	 </div>
-
- 	 <div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Modifier</span>
- 	  <input type="number" class="form-control" placeholder="item-quality-modifier" aria-describedby="item-quality-{{quality.name}}-{{quality.modifier}}" ng-model="quality.modifier" ng-change="recalculate()">
  	 </div>
 
  	 <div class="character-input input-group input-group-sm">

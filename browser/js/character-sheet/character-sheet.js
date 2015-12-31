@@ -50,15 +50,6 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                 $scope.abilitymodifiers[key] = Math.floor(($scope.abilityscores[key] - 10)/2)
             }
 
-            $scope.calculatedcombatstats = {
-                fortitude: $scope.combatstats.saves.fortitude.fortitudebase + $scope.combatstats.saves.fortitude.fortitudemagic + 
-                    $scope.combatstats.saves.fortitude.fortitudemisc + $scope.combatstats.saves.fortitude.fortitudetemp + $scope.abilitymodifiers.constitution,
-                reflex: $scope.combatstats.saves.reflex.reflexbase + $scope.combatstats.saves.reflex.reflexmagic + 
-                    $scope.combatstats.saves.reflex.reflexmisc + $scope.combatstats.saves.reflex.reflextemp + $scope.abilitymodifiers.dexterity,
-                will: $scope.combatstats.saves.will.willbase + $scope.combatstats.saves.will.willmagic + 
-                    $scope.combatstats.saves.will.willmisc + $scope.combatstats.saves.will.willtemp + $scope.abilitymodifiers.wisdom
-            }
-
             $scope.attacks.forEach(function(attack) {
                 // Attack Bonus
                 var atkbonus = 0
@@ -99,7 +90,37 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                 return
             })
 
-            // console.log($scope.calculatedcombatstats)
+            var totalarmorbonus = 0
+
+            $scope.protectiveitems.forEach(function(item) {
+
+                item.totalbonus = item.armorclassbonus
+                item.totalarmorcheckpenalty = item.armorcheckpenalty
+
+                if (item.masterwork) {
+                    item.totalarmorcheckpenalty = item.armorcheckpenalty - 1
+                } else if (item.modifier > 0) {
+                    item.totalarmorcheckpenalty = item.armorcheckpenalty - 1
+                    item.totalbonus = item.armorclassbonus + item.modifier
+                }
+
+                totalarmorbonus += item.totalbonus
+
+            })
+
+            var ac = 10 + totalarmorbonus + $scope.abilitymodifiers.dexterity + sizemodifier
+
+            $scope.calculatedcombatstats = {
+                fortitude: $scope.combatstats.saves.fortitude.fortitudebase + $scope.combatstats.saves.fortitude.fortitudemagic + 
+                    $scope.combatstats.saves.fortitude.fortitudemisc + $scope.combatstats.saves.fortitude.fortitudetemp + $scope.abilitymodifiers.constitution,
+                reflex: $scope.combatstats.saves.reflex.reflexbase + $scope.combatstats.saves.reflex.reflexmagic + 
+                    $scope.combatstats.saves.reflex.reflexmisc + $scope.combatstats.saves.reflex.reflextemp + $scope.abilitymodifiers.dexterity,
+                will: $scope.combatstats.saves.will.willbase + $scope.combatstats.saves.will.willmagic + 
+                    $scope.combatstats.saves.will.willmisc + $scope.combatstats.saves.will.willtemp + $scope.abilitymodifiers.wisdom,
+                armorclass: ac,
+                flatfooted: ac - $scope.abilitymodifiers.dexterity,
+                toucharmor: ac - totalarmorbonus
+            }
 
 
         }

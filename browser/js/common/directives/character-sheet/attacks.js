@@ -7,11 +7,20 @@ app.directive('attacks', function ($state, $rootScope) {
         templateUrl: 'js/common/directives/character-sheet/attacks.html',
         link: function (scope) {
 
-            $(function () {
-                $('input[type="checkbox"]').bootstrapSwitch();
-            });
-
-            scope.isSelected = false
+            scope.deleteattack = function (i) {
+                setTimeout(function(){
+                    var attacks = angular.copy(scope.attacks);
+                    var indexToRemove = scope.attacks.indexOf(i);
+                    attacks.splice(indexToRemove, 1)
+                    scope.attacks = attacks; 
+                    scope.$digest();
+                    /* Note known issue: scope.attacks will log an empty array
+                    while a manual log from $scope.attacks on the main controller
+                    will yield an array with the old object still inside. I don't
+                    think this will be a problem since this phantom object will
+                    be overwritten anyway and the user won't notice the difference.*/
+                }, 0);
+            }   
 
         	scope.addattack = function () {
 
@@ -36,20 +45,8 @@ app.directive('attacks', function ($state, $rootScope) {
                 }
 
         		scope.attacks.push(attack)
-
-                var createClosure = function (j) {
-                    return function(){return j;}
-                }
-
-                
                 
         	}
-
-            scope.deleteattack = function (i) {
-                console.log(scope.attacks)
-                scope.attacks.splice(i, 1)
-                console.log(scope.attacks)
-            }   
 
             scope.weapontypes = {
                 'One Hand': 0,
