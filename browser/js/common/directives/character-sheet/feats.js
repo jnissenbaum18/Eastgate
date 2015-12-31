@@ -13,6 +13,16 @@ app.directive('feats', function ($state, $rootScope) {
         		})
         	}
 
+            scope.deletefeat = function (i) {
+                setTimeout(function(){
+                    var feats = angular.copy(scope.feats);
+                    var indexToRemove = scope.feats.indexOf(i);
+                    feats.splice(indexToRemove, 1)
+                    scope.feats = feats; 
+                    scope.$digest();
+                }, 0);
+            } 
+
             scope.recalculate = function () {
                 scope.$emit('recalculate') 
             }

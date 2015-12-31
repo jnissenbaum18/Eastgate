@@ -6,6 +6,8 @@
 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="ability in specialabilities">
 	<span class="input-group-addon" id="ability-{{ability.name}}">Ability</span>
 
+	<button type="button" class="btn btn-default" ng-click="deleteability(ability)">Delete Ability</button>
+
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>
  	 <input type="text" class="form-control" placeholder="ability-name" aria-describedby="character-{{ability.name}}" ng-model="ability.name" ng-change="recalculate()">

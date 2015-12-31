@@ -12,6 +12,8 @@
 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="trait in miscstats.racialtraits">
 		<span class="input-group-addon" id="trait-{{trait.name}}">Trait</span>
 
+		<button type="button" class="btn btn-default" ng-click="deletetrait(trait)">Delete Trait</button>
+
 		<div class="character-input input-group input-group-sm">
 	 		<span class="input-group-addon">Name</span>
  	 		<input type="text" class="form-control" placeholder="trait-name" aria-describedby="character-{{trait.name}}" ng-model="trait.name" ng-change="recalculate()">
@@ -29,6 +31,8 @@
  	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="language in miscstats.languages">
 		<span class="input-group-addon" id="language-{{language.name}}">Language</span>
 
+		<button type="button" class="btn btn-default" ng-click="deletelanguage(language)">Delete Language</button>
+
 		<div class="character-input input-group input-group-sm">
 	 		<span class="input-group-addon">Name</span>
  	 		<input type="text" class="form-control" placeholder="language-name" aria-describedby="character-{{language.name}}" ng-model="language.name" ng-change="recalculate()">
@@ -40,6 +44,8 @@
 
 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="affiliation in miscstats.affiliationsandenemies">
 		<span class="input-group-addon" id="affiliation-{{affiliation.name}}">Affiliation</span>
+
+		<button type="button" class="btn btn-default" ng-click="deleteaffiliation(affiliation)">Delete Affiliation</button>
 
 		<div class="character-input input-group input-group-sm">
 	 		<span class="input-group-addon">Name</span>

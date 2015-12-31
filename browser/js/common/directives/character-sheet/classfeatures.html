@@ -7,6 +7,8 @@
 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="feature in classfeatures">
 	<span class="input-group-addon" id="feature-{{feature.name}}">Feature</span>
 
+	<button type="button" class="btn btn-default" ng-click="deletefeature(feature)">Delete Feature</button>
+
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>
  	 <input type="text" class="form-control" placeholder="feature-name" aria-describedby="character-{{feature.name}}" ng-model="feature.name" ng-change="recalculate()">
