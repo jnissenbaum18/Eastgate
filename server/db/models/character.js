@@ -276,95 +276,48 @@ var schema = new mongoose.Schema({
         arcanespellfailure: {
             type: Number
         },
+        relevantability: {
+            type: String
+        },
+        spellsperday: {
+            0: {
+                type: Number
+            },
+            1: {
+                type: Number
+            },
+            2: {
+                type: Number
+            },
+            3: {
+                type: Number
+            },
+            4: {
+                type: Number
+            },
+            5: {
+                type: Number
+            },
+            6: {
+                type: Number
+            },
+            7: {
+                type: Number
+            },
+            8: {
+                type: Number
+            },
+            9: {
+                type: Number
+            }
+        },
         schools: {
-            abjuration: {
-                speciality: {
-                    type: Boolean,
-                    default: false
-                },
-                prohibited: {
-                    type: Boolean,
-                    default: false
-                }
-            },
-            conjuration: {
-                speciality: {
-                    type: Boolean,
-                    default: false
-                },
-                prohibited: {
-                    type: Boolean,
-                    default: false
-                }
-            },
-            divination: {
-                speciality: {
-                    type: Boolean,
-                    default: false
-                },
-                prohibited: {
-                    type: Boolean,
-                    default: false
-                }
-            },
-            enchantment: {
-                speciality: {
-                    type: Boolean,
-                    default: false
-                },
-                prohibited: {
-                    type: Boolean,
-                    default: false
-                }
-            },
-            evocation: {
-                speciality: {
-                    type: Boolean,
-                    default: false
-                },
-                prohibited: {
-                    type: Boolean,
-                    default: false
-                }
-            },
-            illusion: {
-                speciality: {
-                    type: Boolean,
-                    default: false
-                },
-                prohibited: {
-                    type: Boolean,
-                    default: false
-                }
-            },
-            necromancy: {
-                speciality: {
-                    type: Boolean,
-                    default: false
-                },
-                prohibited: {
-                    type: Boolean,
-                    default: false
-                }
-            },
-            transmutation: {
-                speciality: {
-                    type: Boolean,
-                    default: false
-                },
-                prohibited: {
-                    type: Boolean,
-                    default: false
-                }
-            },
-            universal: {
-                type: String,
-                default: ''
-            },
-            other: {
-                type: String,
-                default: ''
-            },
+            specialty: {
+                type: String
+            }, 
+            prohibited: {
+                type: String
+            }
         }
     },
     miscstats: {

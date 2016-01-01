@@ -38,7 +38,7 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
         }
 
         $scope.log = function () {
-            console.log($scope.attacks)
+            console.log($scope.spells)
         }
 
         function calculateSheet () {
@@ -107,6 +107,13 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                 totalarmorbonus += item.totalbonus
 
             })
+
+            $scope.spells.savedcs = {}
+            var relevantabilitymod = $scope.abilitymodifiers[$scope.spells.relevantability]
+
+            for (var i = 9; i >= 0; i--) {
+                $scope.spells.savedcs[i] = 10 + i + relevantabilitymod
+            };
 
             var ac = 10 + totalarmorbonus + $scope.abilitymodifiers.dexterity + sizemodifier
 

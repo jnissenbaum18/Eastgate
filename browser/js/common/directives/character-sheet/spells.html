@@ -12,12 +12,63 @@
  	 	<input type="number" class="form-control" placeholder="spellsave" aria-describedby="character-spellsave" ng-model="spells.spellsave" ng-change="recalculate()">
  	</div>
 
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
+	 <span class="input-group-addon" id="relevantability">Relevant Ability</span>
+ 	 <select class="form-control btn btn-primary dropdown-toggle" ng-model="spells.relevantability" ng-change="recalculate()">
+      <option ng-repeat="(key, value) in relevantabilities" value='{{value}}'><a href="#">{{key}}</a></option>
+     </select>
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(key, value) in spells.schools">
+
+		<span class="input-group-addon" id="school-{{key}}">{{key}}</span>
+
+		<input type="text" class="form-control" placeholder="school-{{value}}" aria-describedby="character-spell-{{value}}" ng-model="spells.schools[key]" ng-change="recalculate()">
+
+	</div>
+
+	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
+
+		<span class="input-group-addon" id="savedcs">Spells</span>
+
+		<div class="input-group-sm col-lg-6 col-md-6 col-sm-6">
+
+			<h3>Spell Save DC's</h3>
+
+			<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6" ng-repeat="(key, value) in spells.savedcs">
+
+				<span class="input-group-addon" id="savedcs-{{key}}">{{key}}</span>
+
+				<p>{{value}}</p>
+
+			</div>
+
+		</div>
+		<div class="input-group-sm col-lg-6 col-md-6 col-sm-6">
+
+			<h3>Spells Per Day</h3>
+
+			<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6" ng-repeat="(key, value) in spells.spellsperday">
+
+				<span class="input-group-addon" id="spellsperday-{{key}}">{{key}}</span>
+
+				<input type="number" class="form-control" placeholder="spell-spellsperday-{{key}}" aria-describedby="character-spellsperday-{{key}}" ng-model="spells.spellsperday[key]" ng-change="recalculate()">
+
+			</div>
+
+		</div>
+
+	</div>
+
 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(spellLevel, spellList) in spells.level">
 
 		<button type="button" class="btn btn-default" ng-click="addspell(spellLevel)">Add Spell {{spellLevel}}</button>
+
 		<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="spell in spellList">
 
 			<span class="input-group-addon" id="spell-{{spell.name}}">Spell</span>
+
+			<button type="button" class="btn btn-default" ng-click="deletespell(spell, spellLevel)">Delete Spell</button>
 
 			<div class="character-input input-group input-group-sm">
 		 		<span class="input-group-addon">Name</span>
@@ -32,21 +83,5 @@
 		</div>
 
  	</div>
-
- 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(school, data) in spells.schools">
-
-		<span class="input-group-addon" id="school-{{school}}">{{school}}</span>
-
-		<div class="character-input input-group input-group-sm">
-	 		<span class="input-group-addon">Prohibited</span>
- 	 		<input type="text" class="form-control" placeholder="school-prohibited" aria-describedby="character-{{school.prohibited}}" ng-model="data.prohibited" ng-change="recalculate()">
-		</div>
-
-		<div class="character-input input-group input-group-sm">
-		 	<span class="input-group-addon">Speciality</span>
-	 	 	<input type="text" class="form-control" placeholder="school-specialty" aria-describedby="character-{{school.specialty}}-specialty" ng-model="data.speciality" ng-change="recalculate()">
-	 	</div>
-
-	</div>
 
 </div>
