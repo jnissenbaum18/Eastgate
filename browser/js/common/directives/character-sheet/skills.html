@@ -2,19 +2,39 @@
 	<h2>Skills</h2>
 	<hr>
 
- 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(skillName, skill) in skills">
+ 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(skillName, skill) in skills | orderObjectBy:'skill.idx':true ">
 
- 		<span class="input-group-addon" id="skill-{{skillName}}">{{skillName}}</span>
+ 		<span class="input-group-addon" id="skill-{{skillName}}">{{skill.name}}</span>
 
- 		<input type="text" class="form-control" placeholder="skill-ranks" aria-describedby="character-{{skill.ranks}}" ng-model="skill.ranks" ng-change="recalculate()">
- 		
- 		<input type="text" class="form-control" placeholder="skill-inclass" aria-describedby="character-{{skill.inclass}}" ng-model="skill.inclass" ng-change="recalculate()">
+ 		<div class="character-input input-group input-group-sm">
+		 <span class="input-group-addon">Skill Modifier</span>
+ 		 <p>{{skill.skillmodifier}}</p>
+ 		</div>
 
- 		<input type="text" class="form-control" placeholder="skill-crossclass" aria-describedby="character-{{skill.crossclass}}" ng-model="skill.crossclass" ng-change="recalculate()">
+ 		<div class="character-input input-group input-group-sm">
+		 <span class="input-group-addon">Ranks</span>
+ 		 <input type="number" class="form-control" placeholder="skill-ranks" aria-describedby="character-{{skill.ranks}}" ng-model="skill.ranks" ng-change="recalculate()">
+ 		</div>
 
- 		<input type="text" class="form-control" placeholder="skill-armorcheckpenalty" aria-describedby="character-{{skill.armorcheckpenalty}}" ng-model="skill.armorcheckpenalty" ng-change="recalculate()">
+ 		<div class="character-input input-group input-group-sm">
+		 <span class="input-group-addon">In Class</span>
+		 <input type="checkbox" placeholder="skill-inclass" aria-describedby="character-{{skillName}}-inclass" ng-model="skill.inclass" ng-change="recalculate()" bs-switch/>
+	 	</div>
 
- 		<input type="text" class="form-control" placeholder="skill-trainedonly" aria-describedby="character-{{skill.trainedonly}}" ng-model="skill.trainedonly" ng-change="recalculate()">
+	 	<div class="character-input input-group input-group-sm">
+		 <span class="input-group-addon">Cross Class</span>
+		 <input type="checkbox" placeholder="skill-crossclass" aria-describedby="character-{{skillName}}-crossclass" ng-model="skill.crossclass" ng-change="recalculate()" bs-switch/>
+	 	</div>
+
+	 	<div class="character-input input-group input-group-sm">
+		 <span class="input-group-addon">Armor Check Penalty</span>
+		 <p>{{skill.armorcheckpenalty}}</p>
+ 		</div>
+
+ 		<div class="character-input input-group input-group-sm">
+		 <span class="input-group-addon">Trained Only</span>
+		 <p>{{skill.trainedonly}}</p>
+ 		</div>
 
  	</div>
 

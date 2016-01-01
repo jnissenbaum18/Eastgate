@@ -9,16 +9,8 @@ app.directive('attacks', function ($state, $rootScope) {
 
             scope.deleteattack = function (i) {
                 setTimeout(function(){
-                    var attacks = angular.copy(scope.attacks);
-                    var indexToRemove = scope.attacks.indexOf(i);
-                    attacks.splice(indexToRemove, 1)
-                    scope.attacks = attacks; 
+                    scope.attacks.splice(scope.attacks.indexOf(i), 1)
                     scope.$digest();
-                    /* Note known issue: scope.attacks will log an empty array
-                    while a manual log from $scope.attacks on the main controller
-                    will yield an array with the old object still inside. I don't
-                    think this will be a problem since this phantom object will
-                    be overwritten anyway and the user won't notice the difference.*/
                 }, 0);
             }   
 

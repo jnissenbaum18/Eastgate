@@ -15,10 +15,7 @@ app.directive('feats', function ($state, $rootScope) {
 
             scope.deletefeat = function (i) {
                 setTimeout(function(){
-                    var feats = angular.copy(scope.feats);
-                    var indexToRemove = scope.feats.indexOf(i);
-                    feats.splice(indexToRemove, 1)
-                    scope.feats = feats; 
+                    scope.feats.splice(scope.feats.indexOf(i), 1)
                     scope.$digest();
                 }, 0);
             } 

@@ -16,10 +16,7 @@ app.directive('classfeatures', function ($state, $rootScope) {
 
             scope.deletefeature = function (i) {
                 setTimeout(function(){
-                    var classfeatures = angular.copy(scope.classfeatures);
-                    var indexToRemove = scope.classfeatures.indexOf(i);
-                    classfeatures.splice(indexToRemove, 1)
-                    scope.classfeatures = classfeatures; 
+                    scope.classfeatures.splice(scope.classfeatures.indexOf(i), 1)
                     scope.$digest();
                 }, 0);
             } 

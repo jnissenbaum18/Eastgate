@@ -16,10 +16,7 @@ app.directive('miscstats', function ($state, $rootScope) {
 
             scope.deletetrait = function (i) {
                 setTimeout(function(){
-                    var racialtraits = angular.copy(scope.miscstats.racialtraits);
-                    var indexToRemove = scope.miscstats.racialtraits.indexOf(i);
-                    racialtraits.splice(indexToRemove, 1)
-                    scope.miscstats.racialtraits = racialtraits; 
+                    scope.miscstats.racialtraits.splice(scope.miscstats.racialtraits.indexOf(i), 1)
                     scope.$digest();
                 }, 0);
             }
@@ -32,10 +29,7 @@ app.directive('miscstats', function ($state, $rootScope) {
 
             scope.deletelanguage = function (i) {
                 setTimeout(function(){
-                    var languages = angular.copy(scope.miscstats.languages);
-                    var indexToRemove = scope.miscstats.languages.indexOf(i);
-                    languages.splice(indexToRemove, 1)
-                    scope.miscstats.languages = languages; 
+                    scope.miscstats.languages.splice(scope.miscstats.languages.indexOf(i), 1)
                     scope.$digest();
                 }, 0);
             }
@@ -49,10 +43,7 @@ app.directive('miscstats', function ($state, $rootScope) {
 
             scope.deleteaffiliation = function (i) {
                 setTimeout(function(){
-                    var affiliationsandenemies = angular.copy(scope.miscstats.affiliationsandenemies);
-                    var indexToRemove = scope.miscstats.affiliationsandenemies.indexOf(i);
-                    affiliationsandenemies.splice(indexToRemove, 1)
-                    scope.miscstats.affiliationsandenemies = affiliationsandenemies; 
+                    scope.miscstats.affiliationsandenemies.splice(scope.miscstats.affiliationsandenemies.indexOf(i), 1)
                     scope.$digest();
                 }, 0);
             }

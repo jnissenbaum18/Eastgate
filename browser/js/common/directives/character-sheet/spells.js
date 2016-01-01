@@ -14,12 +14,8 @@ app.directive('spells', function ($state, $rootScope) {
         	}
 
             scope.deletespell = function (i, l) {
-                console.log(i, l)
                 setTimeout(function(){
-                    var spells = angular.copy(scope.spells.level[l]);
-                    var indexToRemove = scope.spells.level[l].indexOf(i);
-                    spells.splice(indexToRemove, 1)
-                    scope.spells.level[l] = spells; 
+                    scope.spells.level[l].splice(scope.spells.level[l].indexOf(i), 1)
                     scope.$digest();
                 }, 0);
             }

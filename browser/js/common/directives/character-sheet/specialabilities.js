@@ -16,10 +16,7 @@ app.directive('specialabilities', function ($state, $rootScope) {
 
             scope.deleteability = function (i) {
                 setTimeout(function(){
-                    var specialabilities = angular.copy(scope.specialabilities);
-                    var indexToRemove = scope.specialabilities.indexOf(i);
-                    specialabilities.splice(indexToRemove, 1)
-                    scope.specialabilities = specialabilities; 
+                    scope.specialabilities.splice(scope.specialabilities.indexOf(i), 1)
                     scope.$digest();
                 }, 0);
             }

@@ -19,10 +19,7 @@ app.directive('inventory', function ($state, $rootScope) {
 
             scope.deleteitem = function (i) {
                 setTimeout(function(){
-                    var inventory = angular.copy(scope.inventory);
-                    var indexToRemove = scope.inventory.indexOf(i);
-                    inventory.splice(indexToRemove, 1)
-                    scope.inventory = inventory; 
+                    scope.inventory.splice(scope.inventory.indexOf(i), 1)
                     scope.$digest();
                 }, 0);
             }

@@ -37,10 +37,7 @@ app.directive('protectiveitems', function ($state, $rootScope) {
 
             scope.deleteitem = function (i) {
                 setTimeout(function(){
-                    var items = angular.copy(scope.protectiveitems);
-                    var indexToRemove = scope.protectiveitems.indexOf(i);
-                    items.splice(indexToRemove, 1)
-                    scope.protectiveitems = items; 
+                    scope.protectiveitems.splice(scope.protectiveitems.indexOf(i), 1)
                     scope.$digest();
                 }, 0);
             }   
