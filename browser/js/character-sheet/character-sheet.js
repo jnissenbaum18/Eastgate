@@ -113,22 +113,23 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
 
             for (var i = 9; i >= 0; i--) {
                 $scope.spells.savedcs[i] = 10 + i + relevantabilitymod
-            };
+            }
 
-            for (var key in $scope.skills) {
+            for (var skill in $scope.skills) {
 
                 var skillmod = 0
 
-                skillmod += $scope.abilitymodifiers[$scope.skills[key].modifier] 
-                if ($scope.skills[key].inclass) {
-                    skillmod += $scope.skills[key].ranks
-                } else if ($scope.skills[key].crossclass) {
+                skillmod += $scope.abilitymodifiers[$scope.skills[skill].modifier]
+                console.log($scope.skills[skill].modifier) 
+                if ($scope.skills[skill].inclass) {
+                    skillmod += $scope.skills[skill].ranks
+                } else if ($scope.skills[skill].crossclass) {
 
                 } else {
-                    skillmod += Math.floor($scope.skills[key].ranks/2)
+                    skillmod += Math.floor($scope.skills[skill].ranks/2)
                 }
 
-                $scope.skills[key].skillmodifier = skillmod
+                $scope.skills[skill].skillmodifier = skillmod
             }
 
             var ac = 10 + totalarmorbonus + $scope.abilitymodifiers.dexterity + sizemodifier

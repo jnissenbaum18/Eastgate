@@ -310,11 +310,11 @@ app.directive('skills', function ($state, $rootScope) {
 
             for (var i = acp.length - 1; i >= 0; i--) {
                 scope.skills[acp[i]].armorcheckpenalty = true
-            };
+            }
 
             for (var i = trained.length - 1; i >= 0; i--) {
                 scope.skills[trained[i]].trainedonly = true
-            };
+            }
 
             for (var key in scope.skills) {
                 scope.skills[key].name = toTitleCase(key.split('_').join(' '))
@@ -324,7 +324,7 @@ app.directive('skills', function ($state, $rootScope) {
 
             for (var i = knowledges.length - 1; i >= 0; i--) {
                 scope.skills[knowledges[i]].name = scope.skills[knowledges[i]].name
-            };
+            }
 
         }
    };
