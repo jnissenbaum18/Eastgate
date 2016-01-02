@@ -18,7 +18,17 @@
 
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Damage</span>
- 	 <input type="text" class="form-control" placeholder="attack-damage" aria-describedby="character-{{attack.name}}-{{attack.damage}}" ng-model="attack.damage" ng-change="recalculate()">
+
+	 <div class="input-group-addon">
+ 	  <input type="number" class="form-control" placeholder="attack-damage-number" aria-describedby="character-{{attack.name}}-{{attack.damagenumber}}" ng-model="attack.damagenumber" ng-change="recalculate()">
+	 </div>
+
+	 <div class="input-group-addon">
+	  <select class="form-control btn btn-primary dropdown-toggle" ng-model="attack.damagedie" ng-change="recalculate()">
+       <option ng-repeat="(key, value) in damagedie" value='{{value}}'><a href="#">{{key}}</a></option>
+      </select>
+	 </div>
+
  	 <div class="input-group-addon">{{attack.damagebonus}}</div>
  	</div>
 

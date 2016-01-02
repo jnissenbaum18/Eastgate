@@ -2,57 +2,81 @@
 	<h4>Ability Scores</h4>
 	<hr>
 
-	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
+	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
 	<span class="input-group-addon" id="strength">Strength</span>
 	<div class="input-group-addon">{{abilitymodifiers.strength}}</div>
 	 <div class="character-input input-group input-group-sm">
 	  <span class="input-group-addon" id="strength">Ability Score</span>
- 	  <input type="number" class="form-control" placeholder="strength" aria-describedby="character-strength" ng-model="abilityscores.strength" ng-change="recalculate()">
+ 	  <input type="number" class="form-control" placeholder="strength" aria-describedby="character-strength" ng-model="abilityscores.strength.score" ng-change="recalculate()">
+ 	  <span class="input-group-addon" id="strength">Miscellaneous Score</span>
+ 	  <input type="number" class="form-control" placeholder="strength-misc" aria-describedby="character-strength-misc" ng-model="abilityscores.strength.misc" ng-change="recalculate()">
+ 	  <span class="input-group-addon" id="strength">Temporary Score</span>
+ 	  <input type="number" class="form-control" placeholder="strength-temp" aria-describedby="character-strength-temp" ng-model="abilityscores.strength.temp" ng-change="recalculate()">
  	 </div>
  	</div>
 
-	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
+	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
 	<span class="input-group-addon" id="dexterity">Dexterity</span>
 	<div class="input-group-addon">{{abilitymodifiers.dexterity}}</div>
  	 <div class="character-input input-group input-group-sm">
 	  <span class="input-group-addon" id="dexterity">Ability Score</span>
- 	  <input type="number" class="form-control" placeholder="dexterity" aria-describedby="character-dexterity" ng-model="abilityscores.dexterity" ng-change="recalculate()">
+ 	  <input type="number" class="form-control" placeholder="dexterity" aria-describedby="character-dexterity" ng-model="abilityscores.dexterity.score" ng-change="recalculate()">
+ 	  <span class="input-group-addon" id="dexterity">Miscellaneous Score</span>
+ 	  <input type="number" class="form-control" placeholder="dexterity-misc" aria-describedby="character-dexterity-misc" ng-model="abilityscores.dexterity.misc" ng-change="recalculate()">
+ 	  <span class="input-group-addon" id="dexterity">Temporary Score</span>
+ 	  <input type="number" class="form-control" placeholder="dexterity-temp" aria-describedby="character-dexterity-temp" ng-model="abilityscores.dexterity.temp" ng-change="recalculate()">
  	 </div>
  	</div>
 
-	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
+	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
 	<span class="input-group-addon" id="constitution">Constitution</span>
 	<div class="input-group-addon">{{abilitymodifiers.constitution}}</div>
  	 <div class="character-input input-group input-group-sm">
 	  <span class="input-group-addon" id="constitution">Ability Score</span>
- 	  <input type="number" class="form-control" placeholder="constitution" aria-describedby="character-constitution" ng-model="abilityscores.constitution" ng-change="recalculate()">
+ 	  <input type="number" class="form-control" placeholder="constitution" aria-describedby="character-constitution" ng-model="abilityscores.constitution.score" ng-change="recalculate()">
+ 	  <span class="input-group-addon" id="constitution">Miscellaneous Score</span>
+ 	  <input type="number" class="form-control" placeholder="constitution-misc" aria-describedby="character-constitution-misc" ng-model="abilityscores.constitution.misc" ng-change="recalculate()">
+ 	  <span class="input-group-addon" id="constitution">Temporary Score</span>
+ 	  <input type="number" class="form-control" placeholder="constitution-temp" aria-describedby="character-constitution-temp" ng-model="abilityscores.constitution.temp" ng-change="recalculate()">
  	 </div>
  	</div>
 
-	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
+	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
 	<span class="input-group-addon" id="intelligence">Intelligence</span>
 	<div class="input-group-addon">{{abilitymodifiers.intelligence}}</div>
  	 <div class="character-input input-group input-group-sm">
 	  <span class="input-group-addon" id="intelligence">Ability Score</span>
- 	  <input type="number" class="form-control" placeholder="intelligence" aria-describedby="character-intelligence" ng-model="abilityscores.intelligence" ng-change="recalculate()">
+ 	  <input type="number" class="form-control" placeholder="intelligence" aria-describedby="character-intelligence" ng-model="abilityscores.intelligence.score" ng-change="recalculate()">
+ 	  <span class="input-group-addon" id="intelligence">Miscellaneous Score</span>
+ 	  <input type="number" class="form-control" placeholder="intelligence-misc" aria-describedby="character-intelligence-misc" ng-model="abilityscores.intelligence.misc" ng-change="recalculate()">
+ 	  <span class="input-group-addon" id="intelligence">Temporary Score</span>
+ 	  <input type="number" class="form-control" placeholder="intelligence-temp" aria-describedby="character-intelligence-temp" ng-model="abilityscores.intelligence.temp" ng-change="recalculate()">
  	 </div>
  	</div>
 
-	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
+	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
 	<span class="input-group-addon" id="wisdom">Wisdom</span>
 	<div class="input-group-addon">{{abilitymodifiers.wisdom}}</div>
  	 <div class="character-input input-group input-group-sm">
 	  <span class="input-group-addon" id="wisdom">Ability Score</span>
- 	  <input type="number" class="form-control" placeholder="wisdom" aria-describedby="character-wisdom" ng-model="abilityscores.wisdom" ng-change="recalculate()">
+ 	  <input type="number" class="form-control" placeholder="wisdom" aria-describedby="character-wisdom" ng-model="abilityscores.wisdom.score" ng-change="recalculate()">
+ 	  <span class="input-group-addon" id="wisdom">Miscellaneous Score</span>
+ 	  <input type="number" class="form-control" placeholder="wisdom-misc" aria-describedby="character-wisdom-misc" ng-model="abilityscores.wisdom.misc" ng-change="recalculate()">
+ 	  <span class="input-group-addon" id="wisdom">Temporary Score</span>
+ 	  <input type="number" class="form-control" placeholder="wisdom-temp" aria-describedby="character-wisdom-temp" ng-model="abilityscores.wisdom.temp" ng-change="recalculate()">
  	 </div>
  	</div>
 
-	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
+	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
 	<span class="input-group-addon" id="charisma">Charisma</span>
 	<div class="input-group-addon">{{abilitymodifiers.charisma}}</div>
  	 <div class="character-input input-group input-group-sm">
 	  <span class="input-group-addon" id="charisma">Ability Score</span>
- 	  <input type="number" class="form-control" placeholder="charisma" aria-describedby="character-charisma" ng-model="abilityscores.charisma" ng-change="recalculate()">
+ 	  <input type="number" class="form-control" placeholder="charisma" aria-describedby="character-charisma" ng-model="abilityscores.charisma.score" ng-change="recalculate()">
+ 	  <span class="input-group-addon" id="charisma">Miscellaneous Score</span>
+ 	  <input type="number" class="form-control" placeholder="charisma-misc" aria-describedby="character-charisma-misc" ng-model="abilityscores.charisma.misc" ng-change="recalculate()">
+ 	  <span class="input-group-addon" id="charisma">Temporary Score</span>
+ 	  <input type="number" class="form-control" placeholder="charisma-temp" aria-describedby="character-charisma-temp" ng-model="abilityscores.charisma.temp" ng-change="recalculate()">
  	 </div>
  	</div>
 

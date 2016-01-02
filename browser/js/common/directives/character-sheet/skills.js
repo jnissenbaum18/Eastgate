@@ -2,7 +2,8 @@ app.directive('skills', function ($state, $rootScope) {
 	return {
         restrict: 'E',
         scope: {
-            skills: "="
+            skills: "=",
+            calculatedskills: "="
         },
         templateUrl: 'js/common/directives/character-sheet/skills.html',
         link: function (scope) {
@@ -262,7 +263,7 @@ app.directive('skills', function ($state, $rootScope) {
                 },
                 speak_language: {
                     idx: 61,
-                    modifier: 'none'
+                    modifier: false
                 },
                 spellcraft: {
                     idx: 62,

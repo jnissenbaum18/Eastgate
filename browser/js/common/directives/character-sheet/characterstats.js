@@ -9,6 +9,7 @@ app.directive('characterstats', function ($state, $rootScope) {
         	scope.recalculate = function () {
                 scope.$emit('recalculate') 
             }
+
             scope.sizes = {
                 'Colossal': -8, 
                 'Gargantuan': -4, 
@@ -20,6 +21,23 @@ app.directive('characterstats', function ($state, $rootScope) {
                 'Diminutive': +4, 
                 'Fine': +8
             }
+
+            scope.addclass = function () {
+                var cls = {
+                    name: '',
+                    level: 0
+                }
+
+                scope.characterstats.classarray.push(cls)
+                console.log('here', scope.characterstats.classarray)
+            }
+
+            scope.deleteclass = function (i) {
+                setTimeout(function(){
+                    scope.characterstats.classarray.splice(scope.characterstats.classarray.indexOf(i), 1)
+                    scope.$digest();
+                }, 0);
+            }  
         }
    };
 });

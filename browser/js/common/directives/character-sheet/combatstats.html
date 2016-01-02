@@ -2,8 +2,10 @@
 	<h4>Combat Stats</h4>
 	<hr>
 	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
-	<span class="input-group-addon" id="hitpoints">Hit Points</span>
- 	 <input type="number" class="form-control" placeholder="hitpoints" aria-describedby="character-hitpoints" ng-model="combatstats.maxhitpoints" ng-change="recalculate()">
+	 <span class="input-group-addon" id="hitpoints">Max Hit Points</span>
+ 	 <input type="number" class="form-control" placeholder="maxhitpoints" aria-describedby="character-maxhitpoints" ng-model="combatstats.maxhitpoints" ng-change="recalculate()">
+ 	 <span class="input-group-addon" id="hitpoints">Current Hit Points</span>
+ 	 <input type="number" class="form-control" placeholder="currenthitpoints" aria-describedby="character-currenthitpoints" ng-model="combatstats.currenthitpoints" ng-change="recalculate()">
  	</div>
 
  	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
@@ -17,6 +19,10 @@
 	  <span class="input-group-addon" id="toucharmor">Touch:</span>
 	  <div class="input-group-addon">{{calculatedcombatstats.toucharmor}}</div>
 	 </div>
+	 <div class="character-input input-group input-group-sm">
+	  <span class="input-group-addon" id="acmisc">Misc AC Bonus:</span>
+	  <input type="number" class="form-control" placeholder="miscac" aria-describedby="character-miscac" ng-model="combatstats.miscarmorclassbonus" ng-change="recalculate()">
+	 </div>
  	</div>
 
  	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
@@ -27,6 +33,20 @@
  	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	<span class="input-group-addon" id="baseattackbonus">Base Attack Bonus</span>
  	 <input type="number" class="form-control" placeholder="baseattackbonus" aria-describedby="character-baseattackbonus" ng-model="combatstats.baseattackbonus" ng-change="recalculate()">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
+	 <span class="input-group-addon" id="initiative">Initiative</span>
+	 <div class="input-group-addon">{{calculatedcombatstats.initiative}}</div>
+	 <span class="input-group-addon" id="initiative">Initiative Misc Modifier:</span>
+ 	 <input type="number" class="form-control" placeholder="initiative" aria-describedby="character-initiative" ng-model="combatstats.initiative" ng-change="recalculate()">
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
+	 <span class="input-group-addon" id="grapple">Grapple</span>
+	 <div class="input-group-addon">{{calculatedcombatstats.grapple}}</div>
+	 <span class="input-group-addon" id="grapple">Grapple Misc Modifier:</span>
+ 	 <input type="number" class="form-control" placeholder="grapple" aria-describedby="character-grapple" ng-model="combatstats.miscgrapplebonus" ng-change="recalculate()">
  	</div>
 
  	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">

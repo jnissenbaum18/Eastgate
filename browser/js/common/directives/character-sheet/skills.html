@@ -2,6 +2,21 @@
 	<h2>Skills</h2>
 	<hr>
 
+	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Total Skill Points</span>
+	 <div class="input-group-addon">{{calculatedskills.totalskillpoints}}</div>
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Current Skill Points</span>
+	 <div class="input-group-addon">{{calculatedskills.currentskillpoints}}</div>
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Max Ranks</span>
+	 <div class="input-group-addon">{{calculatedskills.maxranks}}</div>
+ 	</div>
+
  	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(skillName, skill) in skills | orderObjectBy:'skill.idx':true ">
 
  		<span class="input-group-addon" id="skill-{{skillName}}">{{skill.name}}</span>
@@ -10,6 +25,11 @@
  		<div class="character-input input-group input-group-sm">
 		 <span class="input-group-addon">Ranks</span>
  		 <input type="number" class="form-control" placeholder="skill-ranks" aria-describedby="character-{{skill.ranks}}" ng-model="skill.ranks" ng-change="recalculate()">
+ 		</div>
+
+ 		<div class="character-input input-group input-group-sm">
+		 <span class="input-group-addon">Misc Modifier</span>
+ 		 <input type="number" class="form-control" placeholder="skill-miscmodifier" aria-describedby="character-{{skill.misc}}" ng-model="skill.misc" ng-change="recalculate()">
  		</div>
 
  		<div class="character-input input-group input-group-sm">

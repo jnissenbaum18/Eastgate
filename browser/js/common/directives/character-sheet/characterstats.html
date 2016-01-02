@@ -7,11 +7,18 @@
  	 <input type="text" class="form-control" placeholder="name" aria-describedby="character-name" ng-model="characterstats.name" ng-change="recalculate()">
  	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4" ng-repeat="class in characterstats.class">
-	<span class="input-group-addon" id="class-{{class.name}}">Class</span>
-	 <input type="text" class="form-control" placeholder="class-{{class.name}}" aria-describedby="character-class-{{class.name}}" ng-model="class.name" ng-change="recalculate()">
+ 	<button type="button" class="btn btn-default" ng-click="addclass()">Add Class</button>
 
- 	 <input type="number" class="form-control" placeholder="class-{{class.name}}-{{class.level}}" aria-describedby="character-class-{{class.name}}-{{class.level}}" ng-model="class.level" ng-change="recalculate()">
+ 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4" ng-repeat="class in characterstats.classarray">
+	 <span class="input-group-addon" id="class-{{class.name}}">Class</span>
+
+ 	 <button type="button" class="btn btn-default" ng-click="deleteclass(class)">Delete Class</button>
+ 	 <div class="character-input input-group input-group-sm">
+	  <input type="text" class="form-control" placeholder="class-{{class.name}}" aria-describedby="character-class-{{class.name}}" ng-model="class.name" ng-change="recalculate()">
+	 </div>
+	 <div class="character-input input-group input-group-sm">
+ 	  <input type="number" class="form-control" placeholder="class-{{class.name}}-{{class.level}}" aria-describedby="character-class-{{class.name}}-{{class.level}}" ng-model="class.level" ng-change="recalculate()">
+ 	 </div>
  	</div>
 
  	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">

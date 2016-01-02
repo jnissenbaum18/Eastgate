@@ -28,6 +28,10 @@ var setSkill = function () {
         ranks: {
             type: Number,
             default: 0
+        },
+        misc: {
+            type: Number,
+            default: 0
         }
     }
     return obj
@@ -39,7 +43,7 @@ var schema = new mongoose.Schema({
         name: {
             type: String
         },
-        class: [{
+        classarray: [{
             name: String,
             level: Number
         }],
@@ -82,26 +86,77 @@ var schema = new mongoose.Schema({
     },
     abilityscores: {
         strength: {
-            type: Number
+            score: {
+                type: Number
+            },
+            misc: {
+                type: Number
+            }, 
+            temp: {
+                type: Number
+            }
         },
         dexterity: {
-            type: Number
+            score: {
+                type: Number
+            },
+            misc: {
+                type: Number
+            }, 
+            temp: {
+                type: Number
+            }
         },
         constitution: {
-            type: Number
+            score: {
+                type: Number
+            },
+            misc: {
+                type: Number
+            }, 
+            temp: {
+                type: Number
+            }
         },
         intelligence: {
-            type: Number
+            score: {
+                type: Number
+            },
+            misc: {
+                type: Number
+            }, 
+            temp: {
+                type: Number
+            }
         },
         wisdom: {
-            type: Number
+            score: {
+                type: Number
+            },
+            misc: {
+                type: Number
+            }, 
+            temp: {
+                type: Number
+            }
         },
         charisma: {
-            type: Number
+            score: {
+                type: Number
+            },
+            misc: {
+                type: Number
+            }, 
+            temp: {
+                type: Number
+            }
         }
     },
     combatstats: {
         maxhitpoints: {
+            type: Number
+        },
+        currenthitpoints: {
             type: Number
         },
         experience: {
@@ -110,6 +165,9 @@ var schema = new mongoose.Schema({
         baseattackbonus: {
             type: Number
         }, 
+        initiative: {
+            type: Number
+        },
         saves: {
             fortitude: {
                 fortitudebase: {
@@ -161,6 +219,12 @@ var schema = new mongoose.Schema({
             type: Number
         },
         skillpointsperlevel: {
+            type: Number
+        },
+        miscarmorclassbonus: {
+            type: Number
+        },
+        miscgrapplebonus: {
             type: Number
         }
     },

@@ -38,7 +38,7 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
         }
 
         $scope.log = function () {
-            console.log($scope.attacks)
+            console.log($scope.abilityscores)
         }
 
         function calculateSheet () {
@@ -47,7 +47,17 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
             
             $scope.abilitymodifiers = {}
             for (var key in $scope.abilityscores) {
-                $scope.abilitymodifiers[key] = Math.floor(($scope.abilityscores[key] - 10)/2)
+                var totalmod = 0
+
+                if ($scope.abilityscores[key].temp > 0) {
+                    totalmod += Math.floor(($scope.abilityscores[key].temp - 10)/2)
+                } else {
+                    totalmod += Math.floor(($scope.abilityscores[key].score - 10)/2)
+                }
+
+                totalmod += Math.floor(($scope.abilityscores[key].misc)/2)
+
+                $scope.abilitymodifiers[key] = totalmod
             }
 
             $scope.attacks.forEach(function(attack) {
@@ -121,11 +131,18 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                 $scope.spells.savedcs[i] = 10 + i + relevantabilitymod
             }
 
+            var currentskillpoints = 0
+
             for (var skill in $scope.skills) {
 
                 var skillmod = 0
 
-                skillmod += $scope.abilitymodifiers[$scope.skills[skill].modifier]
+                if (!$scope.skills[skill].modifier) {
+
+                } else {
+                    skillmod += $scope.abilitymodifiers[$scope.skills[skill].modifier]
+                }
+
                 if ($scope.skills[skill].inclass) {
                     skillmod += $scope.skills[skill].ranks
                 } else if ($scope.skills[skill].crossclass) {
@@ -135,11 +152,26 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                 }
 
                 if ($scope.skills[skill].armorcheckpenalty) {
-                    skillmod -= totalacp
+                    skillmod -= Math.abs(totalacp)
                 }
 
+                skillmod += $scope.skills[skill].misc
 
                 $scope.skills[skill].skillmodifier = skillmod
+
+                currentskillpoints += $scope.skills[skill].ranks
+            }
+
+            var totallevel = 0
+
+            for (var i = $scope.characterstats.classarray.length - 1; i >= 0; i--) {
+                totallevel += $scope.characterstats.classarray[i].level
+            };
+
+            $scope.calculatedskills = {
+                totalskillpoints: (totallevel + 3) * $scope.combatstats.skillpointsperlevel,
+                maxranks: totallevel + 3,
+                currentskillpoints: currentskillpoints
             }
 
             var ac = 10 + totalarmorbonus + $scope.abilitymodifiers.dexterity + sizemodifier
@@ -151,9 +183,11 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                     $scope.combatstats.saves.reflex.reflexmisc + $scope.combatstats.saves.reflex.reflextemp + $scope.abilitymodifiers.dexterity,
                 will: $scope.combatstats.saves.will.willbase + $scope.combatstats.saves.will.willmagic + 
                     $scope.combatstats.saves.will.willmisc + $scope.combatstats.saves.will.willtemp + $scope.abilitymodifiers.wisdom,
-                armorclass: 10 + totalarmorbonus + $scope.abilitymodifiers.dexterity + sizemodifier,
-                flatfooted: 10 + totalarmorbonus + sizemodifier,
-                toucharmor: 10 + $scope.abilitymodifiers.dexterity + sizemodifier
+                armorclass: 10 + totalarmorbonus + $scope.abilitymodifiers.dexterity + sizemodifier + $scope.combatstats.miscarmorclassbonus,
+                flatfooted: 10 + totalarmorbonus + sizemodifier + $scope.combatstats.miscarmorclassbonus,
+                toucharmor: 10 + $scope.abilitymodifiers.dexterity + sizemodifier + $scope.combatstats.miscarmorclassbonus,
+                initiative: $scope.combatstats.initiative + $scope.abilitymodifiers.dexterity,
+                grapple: $scope.combatstats.miscgrapplebonus + $scope.combatstats.baseattackbonus + $scope.abilitymodifiers.strength + sizemodifier
             }
 
         }

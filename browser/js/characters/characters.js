@@ -36,20 +36,41 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
             hair: '',
             skin: ''
         },
-        skills: {
-            totalpoints: 0,
-            pointsperlevel: 0
-        },
         abilityscores: {
-            strength: 0,
-            dexterity: 0,
-            constitution: 0,
-            intelligence: 0,
-            wisdom: 0,
-            charisma: 0
+            strength: {
+                score: 8,
+                misc: 0,
+                temp: 0
+            },
+            dexterity: {
+                score: 8,
+                misc: 0,
+                temp: 0
+            },
+            constitution: {
+                score: 8,
+                misc: 0,
+                temp: 0
+            },
+            intelligence: {
+                score: 8,
+                misc: 0,
+                temp: 0
+            },
+            wisdom: {
+                score: 8,
+                misc: 0,
+                temp: 0
+            },
+            charisma: {
+                score: 8,
+                misc: 0,
+                temp: 0
+            },
         },
         combatstats: {
             maxhitpoints: 0,
+            currenthitpoints: 0,
             experience: 0,
             baseattackbonus: 0,
             saves: {
@@ -74,7 +95,10 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
             },
             damagereduction: 0,
             spellresistance: 0,
-            skillpointsperlevel: 0
+            skillpointsperlevel: 0,
+            initiative: 0,
+            miscarmorclassbonus: 0,
+            miscgrapplebonus: 0
         },
         spells: {
             spellsave: 0,
