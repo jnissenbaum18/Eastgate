@@ -5,11 +5,7 @@
  	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(skillName, skill) in skills | orderObjectBy:'skill.idx':true ">
 
  		<span class="input-group-addon" id="skill-{{skillName}}">{{skill.name}}</span>
-
- 		<div class="character-input input-group input-group-sm">
-		 <span class="input-group-addon">Skill Modifier</span>
-		 <div class="input-group-addon">{{skill.skillmodifier}}</div>
- 		</div>
+ 		<div class="input-group-addon">{{skill.skillmodifier}}</div>
 
  		<div class="character-input input-group input-group-sm">
 		 <span class="input-group-addon">Ranks</span>

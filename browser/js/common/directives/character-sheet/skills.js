@@ -326,6 +326,8 @@ app.directive('skills', function ($state, $rootScope) {
                 scope.skills[knowledges[i]].name = scope.skills[knowledges[i]].name
             }
 
+            scope.recalculate()
+
         }
    };
 });

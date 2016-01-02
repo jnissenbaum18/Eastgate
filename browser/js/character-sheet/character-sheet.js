@@ -138,6 +138,7 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                     skillmod -= totalacp
                 }
 
+
                 $scope.skills[skill].skillmodifier = skillmod
             }
 
@@ -154,11 +155,6 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                 flatfooted: 10 + totalarmorbonus + sizemodifier,
                 toucharmor: 10 + $scope.abilitymodifiers.dexterity + sizemodifier
             }
-
-            console.log(ac)
-            console.log($scope.abilitymodifiers.dexterity)
-            console.log(ac - $scope.abilitymodifiers.dexterity)
-
 
         }
 
