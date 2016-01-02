@@ -120,7 +120,6 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                 var skillmod = 0
 
                 skillmod += $scope.abilitymodifiers[$scope.skills[skill].modifier]
-                console.log($scope.skills[skill].modifier) 
                 if ($scope.skills[skill].inclass) {
                     skillmod += $scope.skills[skill].ranks
                 } else if ($scope.skills[skill].crossclass) {
