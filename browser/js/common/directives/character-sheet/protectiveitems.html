@@ -15,8 +15,12 @@
  	</div>
 
  	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Total AC Bonus</span>
+	 <div class="input-group-addon">{{item.totalbonus}}</div>
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">AC Bonus</span>
-	 <p>Total Bonus: {{item.totalbonus}}</p>
  	 <input type="number" class="form-control" placeholder="item-armorclassbonus" aria-describedby="character-{{item.name}}-{{item.armorclassbonus}}" ng-model="item.armorclassbonus" ng-change="recalculate()">
  	</div>
 
@@ -36,8 +40,12 @@
  	</div>
 
  	<div class="character-input input-group input-group-sm">
+	 <span class="input-group-addon">Total Armor Check Penalty</span>
+	 <div class="input-group-addon">{{item.totalarmorcheckpenalty}}</div>
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Armor Check Penalty</span>
-	 <p>Total Armor Check Penalty: {{item.totalarmorcheckpenalty}}</p>
  	 <input type="number" class="form-control" placeholder="item-armorcheckpenalty" aria-describedby="character-{{item.name}}-{{item.armorcheckpenalty}}" ng-model="item.armorcheckpenalty" ng-change="recalculate()">
  	</div>
 

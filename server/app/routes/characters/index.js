@@ -28,10 +28,11 @@ router.post('/:id', function (req, res, next){
 	return Promise.all([Character.create(req.body), User.findById(req.params.id).exec()])
 	.spread(function (character, user){
 		user.characters.push(character._id);
-		return user.save();
+		user.save();
+		return character
 	})
-	.then(function (savedUser) {
-		res.status(200).json(savedUser);
+	.then(function (savedCharacter) {
+		res.status(200).json(savedCharacter);
 	})
 	.then(null, next);
 });

@@ -102,13 +102,6 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         }
     }
 
-    $scope.submitCharacter = function (newCharacter) {
-        CharacterSheetFactory.submitNewCharacter(newCharacter, user._id).then(function (result) {
-            $state.reload();
-        })
-        .catch(function(e) {console.log(e);});
-    }
-
     $scope.deleteCharacter = function (characterId) {
         CharacterSheetFactory.deleteCharacter(characterId).then(function (result) {
             $state.reload();
@@ -125,6 +118,15 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         $state.go('characters.characterSheet', {charactername: character.characterstats.name, characterid: character._id});
     };
     
+    $scope.submitCharacter = function (newCharacter) {
+        CharacterSheetFactory.submitNewCharacter(newCharacter, user._id).then(function (savedCharacter) {
+            $state.reload();
+            return savedCharacter
+        }).then(function (savedCharacter) {
+            $scope.goToCharacter(savedCharacter)
+        })
+        .catch(function(e) {console.log(e);});
+    }
 
 
 });

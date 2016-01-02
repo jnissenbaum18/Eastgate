@@ -86,25 +86,31 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
 
                 dmgbonus += attack.modifier
 
+                if (dmgbonus > 0) {
+                    dmgbonus = '+' + String(dmgbonus)
+                }
+
                 attack.damagebonus = dmgbonus
                 return
             })
 
             var totalarmorbonus = 0
+            var totalacp = 0
 
             $scope.protectiveitems.forEach(function(item) {
 
                 item.totalbonus = item.armorclassbonus
                 item.totalarmorcheckpenalty = item.armorcheckpenalty
 
-                if (item.masterwork) {
-                    item.totalarmorcheckpenalty = item.armorcheckpenalty - 1
-                } else if (item.modifier > 0) {
+                if (item.modifier > 0) {
                     item.totalarmorcheckpenalty = item.armorcheckpenalty - 1
                     item.totalbonus = item.armorclassbonus + item.modifier
+                } else if (item.masterwork) {
+                    item.totalarmorcheckpenalty = item.armorcheckpenalty - 1
                 }
 
                 totalarmorbonus += item.totalbonus
+                totalacp += item.totalarmorcheckpenalty
 
             })
 
@@ -126,6 +132,10 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
 
                 } else {
                     skillmod += Math.floor($scope.skills[skill].ranks/2)
+                }
+
+                if ($scope.skills[skill].armorcheckpenalty) {
+                    skillmod -= totalacp
                 }
 
                 $scope.skills[skill].skillmodifier = skillmod

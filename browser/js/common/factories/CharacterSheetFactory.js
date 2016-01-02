@@ -15,8 +15,8 @@ app.factory('CharacterSheetFactory', function ($http) {
             })
         },
         submitNewCharacter: function (newCharacter, id) {
-            return $http.post('/api/characters/'+id, newCharacter).then(function (result) {
-                return result.data;
+            return $http.post('/api/characters/'+id, newCharacter).then(function (characterData) {
+                return characterData.data;
             });
         },
         saveCharacter: function (character) {

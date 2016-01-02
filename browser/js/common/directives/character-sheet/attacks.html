@@ -19,7 +19,7 @@
 	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Damage</span>
  	 <input type="text" class="form-control" placeholder="attack-damage" aria-describedby="character-{{attack.name}}-{{attack.damage}}" ng-model="attack.damage" ng-change="recalculate()">
- 	 <p>{{attack.damagebonus}}</p>
+ 	 <div class="input-group-addon">{{attack.damagebonus}}</div>
  	</div>
 
  	<div class="character-input input-group input-group-sm">
@@ -29,7 +29,7 @@
 
  	<div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Attack Bonus</span>
- 	 <p>{{attack.attackbonus}}</p>
+ 	 <div class="input-group-addon">{{attack.attackbonus}}</div>
  	</div>
 
     <div class="character-input input-group input-group-sm">

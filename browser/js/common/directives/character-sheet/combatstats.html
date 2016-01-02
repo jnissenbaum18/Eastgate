@@ -8,12 +8,14 @@
 
  	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	 <span class="input-group-addon" id="armorclass">Armor Class</span>
- 	 <p>{{calculatedcombatstats.armorclass}}</p>
+	 <div class="input-group-addon">{{calculatedcombatstats.armorclass}}</div>
  	 <div class="character-input input-group input-group-sm">
 	  <span class="input-group-addon" id="flatfooted">Flat Footed:</span>
-	  <p>{{calculatedcombatstats.flatfooted}}</p>
+	  <div class="input-group-addon">{{calculatedcombatstats.flatfooted}}</div>
+	 </div>
+	 <div class="character-input input-group input-group-sm">
 	  <span class="input-group-addon" id="toucharmor">Touch:</span>
-	  <p>{{calculatedcombatstats.toucharmor}}</p>
+	  <div class="input-group-addon">{{calculatedcombatstats.toucharmor}}</div>
 	 </div>
  	</div>
 
@@ -29,7 +31,7 @@
 
  	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	<span class="input-group-addon" id="fortitude">Fortitude</span>
-	 <p>Total: {{calculatedcombatstats.fortitude}}</p>
+	 <div class="input-group-addon">{{calculatedcombatstats.fortitude}}</div>
 	 <div class="character-input input-group input-group-sm">
 	  <span class="input-group-addon" id="fortitude">Base Save:</span>
  	  <input type="number" class="form-control" placeholder="fortitudebase" aria-describedby="character-fortitudebase" ng-model="combatstats.saves.fortitude.fortitudebase" ng-change="recalculate()">
@@ -50,7 +52,7 @@
 
  	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	<span class="input-group-addon" id="reflex">Reflex</span>
-	 <p>Total: {{calculatedcombatstats.reflex}}</p>
+	 <div class="input-group-addon">{{calculatedcombatstats.reflex}}</div>
 	 <div class="character-input input-group input-group-sm">
 	  <span class="input-group-addon" id="reflex">Base Save:</span>
  	  <input type="number" class="form-control" placeholder="reflexbase" aria-describedby="character-reflexbase" ng-model="combatstats.saves.reflex.reflexbase" ng-change="recalculate()">
@@ -71,7 +73,7 @@
 
  	<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6">
 	<span class="input-group-addon" id="will">Will</span>
-     <p>Total: {{calculatedcombatstats.will}}</p>
+	 <div class="input-group-addon">{{calculatedcombatstats.will}}</div>
 	 <div class="character-input input-group input-group-sm">
 	  <span class="input-group-addon" id="will">Base Save:</span>
  	  <input type="number" class="form-control" placeholder="willbase" aria-describedby="character-willbase" ng-model="combatstats.saves.will.willbase" ng-change="recalculate()">
