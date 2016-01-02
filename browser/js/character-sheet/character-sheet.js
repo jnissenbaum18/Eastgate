@@ -150,10 +150,14 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                     $scope.combatstats.saves.reflex.reflexmisc + $scope.combatstats.saves.reflex.reflextemp + $scope.abilitymodifiers.dexterity,
                 will: $scope.combatstats.saves.will.willbase + $scope.combatstats.saves.will.willmagic + 
                     $scope.combatstats.saves.will.willmisc + $scope.combatstats.saves.will.willtemp + $scope.abilitymodifiers.wisdom,
-                armorclass: ac,
-                flatfooted: ac - $scope.abilitymodifiers.dexterity,
-                toucharmor: ac - totalarmorbonus
+                armorclass: 10 + totalarmorbonus + $scope.abilitymodifiers.dexterity + sizemodifier,
+                flatfooted: 10 + totalarmorbonus + sizemodifier,
+                toucharmor: 10 + $scope.abilitymodifiers.dexterity + sizemodifier
             }
+
+            console.log(ac)
+            console.log($scope.abilitymodifiers.dexterity)
+            console.log(ac - $scope.abilitymodifiers.dexterity)
 
 
         }
