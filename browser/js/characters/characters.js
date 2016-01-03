@@ -123,7 +123,8 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         },
         miscstats: {
             reigonoforigin: ''
-        }
+        },
+        notes: ''
     }
 
     $scope.deleteCharacter = function (characterId) {

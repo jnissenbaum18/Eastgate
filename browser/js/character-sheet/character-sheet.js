@@ -28,17 +28,22 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
         $scope.miscstats = $scope.character.miscstats
         $scope.skills = $scope.character.skills
         $scope.spells = $scope.character.spells
+        $scope.notes = $scope.character.notes
 
         $scope.saveCharacter = function () {
             CharacterSheetFactory.saveCharacter($scope.character);
         }
 
         $scope.deleteCharacter = function () {
-            CharacterSheetFactory.deleteCharacter($scope.character._id)
+            CharacterSheetFactory.deleteCharacter($scope.character._id).then(function () {
+                $state.go('characters')
+            }).then(function () {
+                $scope.$digest()
+            })
         }
 
         $scope.log = function () {
-            console.log($scope.abilityscores)
+            console.log($scope.character.notes)
         }
 
         function calculateSheet () {
@@ -171,6 +176,7 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
             $scope.calculatedskills = {
                 totalskillpoints: (totallevel + 3) * $scope.combatstats.skillpointsperlevel,
                 maxranks: totallevel + 3,
+                crossclass: Math.floor((totallevel + 3)/2),
                 currentskillpoints: currentskillpoints
             }
 
@@ -183,12 +189,14 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                     $scope.combatstats.saves.reflex.reflexmisc + $scope.combatstats.saves.reflex.reflextemp + $scope.abilitymodifiers.dexterity,
                 will: $scope.combatstats.saves.will.willbase + $scope.combatstats.saves.will.willmagic + 
                     $scope.combatstats.saves.will.willmisc + $scope.combatstats.saves.will.willtemp + $scope.abilitymodifiers.wisdom,
-                armorclass: 10 + totalarmorbonus + $scope.abilitymodifiers.dexterity + sizemodifier + $scope.combatstats.miscarmorclassbonus,
-                flatfooted: 10 + totalarmorbonus + sizemodifier + $scope.combatstats.miscarmorclassbonus,
-                toucharmor: 10 + $scope.abilitymodifiers.dexterity + sizemodifier + $scope.combatstats.miscarmorclassbonus,
+                armorclass: 10 + totalarmorbonus + $scope.abilitymodifiers.dexterity + sizemodifier + $scope.combatstats.miscarmorclassbonus + $scope.combatstats.deflectionmodifier + $scope.combatstats.naturalarmor,
+                flatfooted: 10 + totalarmorbonus + sizemodifier + $scope.combatstats.miscarmorclassbonus + $scope.combatstats.deflectionmodifier + $scope.combatstats.naturalarmor,
+                toucharmor: 10 + $scope.abilitymodifiers.dexterity + sizemodifier + $scope.combatstats.miscarmorclassbonus + $scope.combatstats.deflectionmodifier + $scope.combatstats.naturalarmor,
                 initiative: $scope.combatstats.initiative + $scope.abilitymodifiers.dexterity,
                 grapple: $scope.combatstats.miscgrapplebonus + $scope.combatstats.baseattackbonus + $scope.abilitymodifiers.strength + sizemodifier
             }
+
+            $scope.character.notes = $scope.notes
 
         }
 

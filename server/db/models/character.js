@@ -159,6 +159,14 @@ var schema = new mongoose.Schema({
         currenthitpoints: {
             type: Number
         },
+        nonlethal: {
+            type: Number,
+            default: 0
+        },
+        speed: {
+            type: Number,
+            default: 0
+        },
         experience: {
             type: Number
         },
@@ -223,6 +231,14 @@ var schema = new mongoose.Schema({
         },
         miscarmorclassbonus: {
             type: Number
+        },
+        deflectionmodifier: {
+            type: Number,
+            default: 0
+        },
+        naturalarmor: {
+            type: Number,
+            default: 0
         },
         miscgrapplebonus: {
             type: Number
@@ -417,6 +433,10 @@ var schema = new mongoose.Schema({
                 type: String
             }
         }]
+    },
+    notes: {
+        type: String,
+        default: ''
     }
 });
 

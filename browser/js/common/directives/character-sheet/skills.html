@@ -13,8 +13,8 @@
  	</div>
 
  	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Max Ranks</span>
-	 <div class="input-group-addon">{{calculatedskills.maxranks}}</div>
+	 <span class="input-group-addon">Max Ranks/Crossclass</span>
+	 <div class="input-group-addon">{{calculatedskills.maxranks}}/{{calculatedskills.crossclass}}</div>
  	</div>
 
  	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(skillName, skill) in skills | orderObjectBy:'skill.idx':true ">
