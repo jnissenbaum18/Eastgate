@@ -72,7 +72,8 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                 if (!!sizemodifier !== false) {
                     atkbonus += sizemodifier
                 }
-                if (attack.weapontype === 3) {
+                console.log(attack.weapontype)
+                if (Number(attack.weapontype) === 3) {
                     atkbonus += $scope.abilitymodifiers.dexterity
                 } else {
                     atkbonus += $scope.abilitymodifiers.strength
