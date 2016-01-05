@@ -59,10 +59,12 @@
  	 <input type="number" class="form-control" placeholder="attack-modifier" aria-describedby="character-{{attack.name}}-{{attack.modifier}}" ng-model="attack.modifier" ng-change="recalculate()">
  	</div>
 
- 	<button type="button" class="btn btn-default" ng-click="addquality()">Add Quality</button>
+ 	<button type="button" class="btn btn-default" ng-click="addquality(attack)">Add Quality</button>
 
  	 <div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="quality in attack.specialqualities track by $index">
 	 <span class="input-group-addon" id="attack-quality-{{quality.name}}">Special Quality</span>
+
+	 <button type="button" class="btn btn-default" ng-click="deletequality(attack, quality)">Delete Quality</button>
 
 	 <div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>

@@ -54,11 +54,13 @@
  	 <input type="number" class="form-control" placeholder="item-weight" aria-describedby="character-{{item.name}}-{{item.weight}}" ng-model="item.weight" ng-change="recalculate()">
  	</div>
 
-	 <button type="button" class="btn btn-default" ng-click="addquality()">Add Quality</button>
+	 <button type="button" class="btn btn-default" ng-click="addquality(item)">Add Quality</button>
 
  	 <div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="quality in item.specialqualities track by $index">
 
 	 <span class="input-group-addon" id="item-quality-{{quality.name}}">Special Quality</span>
+
+	 <button type="button" class="btn btn-default" ng-click="deletequality(item, quality)">Delete Quality</button>
 
 	 <div class="character-input input-group input-group-sm">
 	 <span class="input-group-addon">Name</span>

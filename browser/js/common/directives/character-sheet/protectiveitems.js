@@ -22,22 +22,29 @@ app.directive('protectiveitems', function ($state, $rootScope) {
                     specialqualities: []
                 }
 
+                scope.protectiveitems.push(protectiveitem)
+
+        	}
+
+            scope.addquality = function (itm) {
                 var specialquality = {
                     name: '', 
                     description: ''
                 }
-
-                scope.protectiveitems.push(protectiveitem)
-
-                scope.addquality = function () {
-                    protectiveitem.specialqualities.push(specialquality)
-                }
-
-        	}
+                itm.specialqualities.push(specialquality)
+            }
 
             scope.deleteitem = function (i) {
                 setTimeout(function(){
                     scope.protectiveitems.splice(scope.protectiveitems.indexOf(i), 1)
+                    scope.$digest();
+                }, 0);
+            }   
+
+            scope.deletequality = function (i, j) {
+                setTimeout(function(){
+                    var itmidx = scope.protectiveitems.indexOf(i)
+                    scope.protectiveitems[itmidx].specialqualities.splice(scope.protectiveitems[itmidx].specialqualities.indexOf(j), 1)
                     scope.$digest();
                 }, 0);
             }   

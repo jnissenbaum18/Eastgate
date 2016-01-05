@@ -14,6 +14,14 @@ app.directive('attacks', function ($state, $rootScope) {
                 }, 0);
             }   
 
+            scope.deletequality = function (i, j) {
+                setTimeout(function(){
+                    var atkidx = scope.attacks.indexOf(i)
+                    scope.attacks[atkidx].specialqualities.splice(scope.attacks[atkidx].specialqualities.indexOf(j), 1)
+                    scope.$digest();
+                }, 0);
+            }   
+
         	scope.addattack = function () {
 
                 var attack = {
@@ -28,18 +36,17 @@ app.directive('attacks', function ($state, $rootScope) {
                     specialqualities: []
                 }
 
+        		scope.attacks.push(attack)
+                
+        	}
+
+            scope.addquality = function (atk) {
                 var specialquality = {
                     name: '',
                     description: ''
                 }
-
-                scope.addquality = function () {
-                    attack.specialqualities.push(specialquality)
-                }
-
-        		scope.attacks.push(attack)
-                
-        	}
+                atk.specialqualities.push(specialquality)
+            }
 
             scope.weapontypes = {
                 'One Hand': 0,
