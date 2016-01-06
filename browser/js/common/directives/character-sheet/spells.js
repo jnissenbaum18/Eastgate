@@ -24,6 +24,12 @@ app.directive('spells', function ($state, $rootScope) {
                 scope.$emit('recalculate') 
             }
 
+            scope.resetcurrentspells = function () {
+                for (var level in scope.spells.totalspellsperday) {
+                    scope.spells.currentspellsperday[level] = scope.spells.totalspellsperday[level]
+                }
+            }
+
             scope.relevantabilities = {
                 'Intelligence': 'intelligence',
                 "Wisdom": 'wisdom',

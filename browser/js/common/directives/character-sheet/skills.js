@@ -36,21 +36,23 @@ app.directive('skills', function ($state, $rootScope) {
                 "Charisma": "charisma"
             }
 
-            scope.rmskill = {}
+            scope.rmskill = -1
 
             scope.addskill = function () {
                 scope.newskill.name = toTitleCase(scope.newskill.name)
-                
-                scope.skills.push(JSON.parse(JSON.stringify(scope.newskill)))
+
+                scope.skills.push(angular.copy(scope.newskill))
                 scope.recalculate()
             }
 
-            scope.removeskill = function (i) {
-                console.log(i)
-                setTimeout(function(){
-                    scope.skills.splice(scope.skills.indexOf(i), 1)
-                    scope.$digest();
-                }, 0);
+            scope.removeskill = function (idx) {
+
+                if (scope.rmskill > -1) {
+                    setTimeout(function(){
+                        scope.skills.splice(scope.rmskill, 1)
+                        scope.$digest();
+                    }, 0);
+                }
             }
 
         }

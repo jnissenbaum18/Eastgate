@@ -31,7 +31,7 @@
 
 		<span class="input-group-addon" id="savedcs">Spells</span>
 
-		<div class="input-group-sm col-lg-6 col-md-6 col-sm-6">
+		<div class="input-group-sm col-lg-4 col-md-4 col-sm-4">
 
 			<h3>Spell Save DC's</h3>
 
@@ -44,15 +44,45 @@
 			</div>
 
 		</div>
-		<div class="input-group-sm col-lg-6 col-md-6 col-sm-6">
+		<div class="input-group-sm col-lg-4 col-md-4 col-sm-4">
 
-			<h3>Spells Per Day</h3>
+			<h3>Base Spells Per Day</h3>
 
 			<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6" ng-repeat="(key, value) in spells.spellsperday">
 
 				<span class="input-group-addon" id="spellsperday-{{key}}">{{key}}</span>
 
 				<input type="number" class="form-control" placeholder="spell-spellsperday-{{key}}" aria-describedby="character-spellsperday-{{key}}" ng-model="spells.spellsperday[key]" ng-change="recalculate()">
+
+			</div>
+
+		</div>
+
+		<div class="input-group-sm col-lg-4 col-md-4 col-sm-4">
+
+			<h3>Total Spells Per Day</h3>
+
+			<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6" ng-repeat="(key, value) in spells.totalspellsperday">
+
+				<span class="input-group-addon" id="spellsperday-{{key}}">{{key}}</span>
+
+				<div class="input-group-addon">{{value}}</div>
+
+			</div>
+
+		</div>
+
+		<div class="input-group-sm col-lg-4 col-md-4 col-sm-4">
+
+			<h3>Current Spells Per Day</h3>
+
+			<button type="button" class="btn btn-default" ng-click="resetcurrentspells()">Reset Current Spells</button>
+
+			<div class="character-input input-group input-group-sm col-lg-6 col-md-6 col-sm-6" ng-repeat="(key, value) in spells.currentspellsperday">
+
+				<span class="input-group-addon" id="spellsperday-{{key}}">{{key}}</span>
+
+				<input type="number" class="form-control" placeholder="spell-spellsperday-{{key}}" aria-describedby="character-spellsperday-{{key}}" ng-model="spells.currentspellsperday[key]" ng-change="recalculate()">
 
 			</div>
 

@@ -86,7 +86,7 @@
  	 <button type="button" class="btn btn-default" ng-click="removeskill(rmskill)">Remove Skill</button>
  	 <span class="input-group-addon">Skill</span>
 	  <select class="form-control btn btn-primary dropdown-toggle" ng-model="rmskill" ng-change="recalculate()">
-       <option ng-repeat="skill in skills" value='{{skill}}'><a href="#">{{skill.name}}</a></option>
+       <option ng-repeat="skill in skills" value='{{$index}}'><a href="#">{{skill.name}}</a></option>
       </select>
  	</div>
 

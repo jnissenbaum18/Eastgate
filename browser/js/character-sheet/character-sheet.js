@@ -43,7 +43,7 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
         }
 
         $scope.log = function () {
-            console.log($scope.character.notes)
+            console.log($scope.character)
         }
 
         function calculateSheet () {
@@ -130,12 +130,30 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
 
             })
 
+            var totallevel = 0
+
+            for (var i = $scope.characterstats.classarray.length - 1; i >= 0; i--) {
+                totallevel += $scope.characterstats.classarray[i].level
+            };
+
             $scope.spells.savedcs = {}
             var relevantabilitymod = $scope.abilitymodifiers[$scope.spells.relevantability]
 
             for (var i = 9; i >= 0; i--) {
                 $scope.spells.savedcs[i] = 10 + i + relevantabilitymod
             }
+
+            //bonus spells
+
+            $scope.spells.totalspellsperday = {}
+            for (var level in $scope.spells.spellsperday) {
+                if (level > 0 && level <= (totallevel/2 + 1)){ 
+                    $scope.spells.totalspellsperday[level] = Math.ceil((1 + relevantabilitymod - level)/4) + $scope.spells.spellsperday[level]
+                } else {
+                    $scope.spells.totalspellsperday[level] = $scope.spells.spellsperday[level]
+                }
+            }
+
 
             $scope.skills.sort(function (a,b) {
                 if(a.name < b.name) return -1;
@@ -173,12 +191,6 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
 
                 currentskillpoints += $scope.skills[i].ranks
 
-            };
-
-            var totallevel = 0
-
-            for (var i = $scope.characterstats.classarray.length - 1; i >= 0; i--) {
-                totallevel += $scope.characterstats.classarray[i].level
             };
 
             $scope.calculatedskills = {
