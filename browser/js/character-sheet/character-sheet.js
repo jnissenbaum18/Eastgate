@@ -137,36 +137,43 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                 $scope.spells.savedcs[i] = 10 + i + relevantabilitymod
             }
 
+            $scope.skills.sort(function (a,b) {
+                if(a.name < b.name) return -1;
+                if(a.name > b.name) return 1;
+                return 0;
+            })
+
             var currentskillpoints = 0
 
-            for (var skill in $scope.skills) {
-
+            for (var i = $scope.skills.length - 1; i >= 0; i--) {
+                
                 var skillmod = 0
 
-                if (!$scope.skills[skill].modifier) {
+                if (!$scope.skills[i].modifier) {
 
                 } else {
-                    skillmod += $scope.abilitymodifiers[$scope.skills[skill].modifier]
+                    skillmod += $scope.abilitymodifiers[$scope.skills[i].modifier]
                 }
 
-                if ($scope.skills[skill].inclass) {
-                    skillmod += $scope.skills[skill].ranks
-                } else if ($scope.skills[skill].crossclass) {
+                if ($scope.skills[i].inclass) {
+                    skillmod += $scope.skills[i].ranks
+                } else if ($scope.skills[i].crossclass) {
 
                 } else {
-                    skillmod += Math.floor($scope.skills[skill].ranks/2)
+                    skillmod += Math.floor($scope.skills[i].ranks/2)
                 }
 
-                if ($scope.skills[skill].armorcheckpenalty) {
+                if ($scope.skills[i].armorcheckpenalty) {
                     skillmod -= Math.abs(totalacp)
                 }
 
-                skillmod += $scope.skills[skill].misc
+                skillmod += $scope.skills[i].misc
 
-                $scope.skills[skill].skillmodifier = skillmod
+                $scope.skills[i].skillmodifier = skillmod
 
-                currentskillpoints += $scope.skills[skill].ranks
-            }
+                currentskillpoints += $scope.skills[i].ranks
+
+            };
 
             var totallevel = 0
 

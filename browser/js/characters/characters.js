@@ -19,6 +19,8 @@ app.config(function ($stateProvider) {
 
 app.controller('CharactersCtrl', function ($scope, AuthService, characters, user, $state, CharacterSheetFactory, $rootScope) {
     
+    var initialskills = 
+
     $scope.characters = characters
     $scope.newCharacter = {
         characterstats: {
@@ -124,7 +126,717 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         miscstats: {
             reigonoforigin: ''
         },
-        notes: ''
+        notes: '',
+        skills: [{
+            name: 'Alchemy',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Animal Empathy',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'charisma'
+        },
+        {
+            name: 'Appraise',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Auto Hypnosis',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'wisdom'
+        },
+        {
+            name: 'Balance',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: true,
+            ranks: 0,
+            misc: 0,
+            modifier: 'dexterity'
+        },
+        {
+            name: 'Bluff',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'charisma'
+        },
+        {
+            name: 'Climb',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: true,
+            ranks: 0,
+            misc: 0,
+            modifier: 'strength'
+        },
+        {
+            name: 'Concentration',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'constitution'
+        },
+        {
+            name: 'Control Shape',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'wisdom'
+        },
+        {
+            name: 'Craft',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Decipher Script',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Diplomacy',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'charisma'
+        },
+        {
+            name: 'Disable Device',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Disguise',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'charisma'
+        },
+        {
+            name: 'Escape Artist',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: true,
+            ranks: 0,
+            misc: 0,
+            modifier: 'dexterity'
+        },
+        {
+            name: 'Forgery',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Gather Information',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'charisma'
+        },
+        {
+            name: 'Handle Animal',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'charisma'
+        },
+        {
+            name: 'Heal',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'wisdom'
+        },
+        {
+            name: 'Hide',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: true,
+            ranks: 0,
+            misc: 0,
+            modifier: 'dexterity'
+        },
+        {
+            name: 'Iaijutsu Focus',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'charisma'
+        },
+        {
+            name: 'Innuendo',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'wisdom'
+        },
+        {
+            name: 'Intimidate',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'charisma'
+        },
+        {
+            name: 'Intuit Direction',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'wisdom'
+        },
+        {
+            name: 'Jump',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: true,
+            ranks: 0,
+            misc: 0,
+            modifier: 'strength'
+        },
+        {
+            name: 'Knowledge: Arcana',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge Architecture and Engineering',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Barbarian Lore',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Code of Martial Honor',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Dungeoneering',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Geography',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: History',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Law',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Local',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Nature',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Nobility and Royalty',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Psionics',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Religion',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Shadow Lands',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Spirits',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Tactics',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: The Planes',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: War',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Knowledge: Weaponry',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Listen',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'wisdom'
+        },
+        {
+            name: 'Lucid Dreaming',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'wisdom'
+        },
+        {
+            name: 'Martial Lore',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Move Silently',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: true,
+            ranks: 0,
+            misc: 0,
+            modifier: 'dexterity'
+        },
+        {
+            name: 'Open Lock',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'dexterity'
+        },
+        {
+            name: 'Perform',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'charisma'
+        },
+        {
+            name: 'Pick Pocket',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: true,
+            ranks: 0,
+            misc: 0,
+            modifier: 'dexterity'
+        },
+        {
+            name: 'Profession',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'wisdom'
+        },
+        {
+            name: 'Psicraft',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Read Lips',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Remote View',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Ride',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'dexterity'
+        },
+        {
+            name: 'Scry',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Search',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Sense Motive',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'wisdom'
+        },
+        {
+            name: 'Sleight of Hand',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: true,
+            ranks: 0,
+            misc: 0,
+            modifier: 'dexterity'
+        },
+        {
+            name: 'Speak Language',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: false
+        },
+        {
+            name: 'Spellcraft',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Spot',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'wisdom'
+        },
+        {
+            name: 'Survival',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'wisdom'
+        },
+        {
+            name: 'Swim',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: true,
+            ranks: 0,
+            misc: 0,
+            modifier: 'strength'
+        },
+        {
+            name: 'Truespeak',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'intelligence'
+        },
+        {
+            name: 'Tumble',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: true,
+            ranks: 0,
+            misc: 0,
+            modifier: 'dexterity'
+        },
+        {
+            name: 'Use Magic Device',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'charisma'
+        },
+        {
+            name: 'Use Psionic Device',
+            inclass: false,
+            crossclass: false,
+            trainedonly: true,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'charisma'
+        },
+        {
+            name: 'Use Rope',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'dexterity'
+        },
+        {
+            name: 'Wilderness Lore',
+            inclass: false,
+            crossclass: false,
+            trainedonly: false,
+            armorcheckpenalty: false,
+            ranks: 0,
+            misc: 0,
+            modifier: 'wisdom'
+        }]
     }
 
     $scope.deleteCharacter = function (characterId) {

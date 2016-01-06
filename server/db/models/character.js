@@ -3,40 +3,6 @@ var mongoose = require('mongoose');
 var Promise = require('bluebird')
 var User = mongoose.model('User')
 
-var setSkill = function () {
-    var obj = {
-        name: {
-            type: String,
-            default: ''
-        },
-        inclass: {
-            type: Boolean,
-            default: false
-        },
-        crossclass: {
-            type: Boolean,
-            default: false
-        },
-        trainedonly: {
-            type: Boolean,
-            default: false
-        },
-        armorcheckpenalty: {
-            type: Boolean,
-            default: false
-        },
-        ranks: {
-            type: Number,
-            default: 0
-        },
-        misc: {
-            type: Number,
-            default: 0
-        }
-    }
-    return obj
-}
-
 var schema = new mongoose.Schema({
 
     characterstats: {
@@ -244,79 +210,8 @@ var schema = new mongoose.Schema({
             type: Number
         }
     },
-    skills: {
-        alchemy: setSkill(),
-        animal_empathy: setSkill(),
-        appraise: setSkill(),
-        auto_hypnosis: setSkill(),
-        balance: setSkill(),
-        bluff: setSkill(),
-        climb: setSkill(),
-        concentration: setSkill(),
-        control_shape: setSkill(),
-        craft: setSkill(),
-        decipher_script: setSkill(),
-        diplomacy: setSkill(),
-        disable_device: setSkill(),
-        disguise: setSkill(),
-        escape_artist: setSkill(),
-        forgery: setSkill(),
-        gather_information: setSkill(),
-        handle_animal: setSkill(),
-        heal: setSkill(),
-        hide: setSkill(),
-        iaijutsu_focus: setSkill(),
-        innuendo: setSkill(),
-        intimidate: setSkill(),
-        intuit_direction: setSkill(),
-        jump: setSkill(),
-        arcana: setSkill(),
-        architecture_and_engineering: setSkill(),
-        barbarian_lore: setSkill(),
-        code_of_martial_honor: setSkill(),
-        dungeoneering: setSkill(),
-        geography: setSkill(),
-        history: setSkill(),
-        law: setSkill(),
-        local: setSkill(),
-        nature: setSkill(),
-        nobility_and_royalty: setSkill(),
-        psionics: setSkill(),
-        religion: setSkill(),
-        shadow_lands: setSkill(),
-        spirits: setSkill(),
-        tactics: setSkill(),
-        the_planes: setSkill(),
-        war: setSkill(),
-        weaponry: setSkill(),
-        listen: setSkill(),
-        lucid_dreaming: setSkill(),
-        martial_lore: setSkill(),
-        move_silently: setSkill(),
-        open_lock: setSkill(),
-        perform: setSkill(),
-        pick_pocket: setSkill(),
-        profession: setSkill(),
-        psicraft: setSkill(),
-        read_lips: setSkill(),
-        remote_view: setSkill(),
-        ride: setSkill(),
-        scry: setSkill(),
-        search: setSkill(),
-        sense_motive: setSkill(),
-        sleight_of_hand: setSkill(),
-        speak_language: setSkill(),
-        spellcraft: setSkill(),
-        spot: setSkill(),
-        survival: setSkill(),
-        swim: setSkill(),
-        truespeak: setSkill(),
-        tumble: setSkill(),
-        use_magic_device: setSkill(),
-        use_psionic_device: setSkill(),
-        use_rope: setSkill(),
-        wilderness_lore: setSkill()
-    },
+    skills: [{
+    }],
     attacks: [{
     }],
     protectiveitems: [{

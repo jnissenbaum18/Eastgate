@@ -17,7 +17,7 @@
 	 <div class="input-group-addon">{{calculatedskills.maxranks}}/{{calculatedskills.crossclass}}</div>
  	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(skillName, skill) in skills | orderObjectBy:'skill.idx':true ">
+ 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(skillName, skill) in skills track by $index">
 
  		<span class="input-group-addon" id="skill-{{skillName}}">{{skill.name}}</span>
  		<div class="input-group-addon">{{skill.skillmodifier}}</div>
@@ -25,6 +25,11 @@
  		<div class="character-input input-group input-group-sm">
 		 <span class="input-group-addon">Ranks</span>
  		 <input type="number" class="form-control" placeholder="skill-ranks" aria-describedby="character-{{skill.ranks}}" ng-model="skill.ranks" ng-change="recalculate()">
+ 		</div>
+
+ 		<div class="character-input input-group input-group-sm">
+		 <span class="input-group-addon">Ability</span>
+		 <div class="input-group-addon" ng-model="skill.modifier">{{skill.modifier}}</div>
  		</div>
 
  		<div class="character-input input-group input-group-sm">
@@ -52,6 +57,37 @@
 		 <div class="input-group-addon">{{skill.trainedonly}}</div>
  		</div>
 
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
+ 	 <span class="input-group-addon">New Skill</span>
+ 	 <button type="button" class="btn btn-default" ng-click="addskill()">Add Skill</button>
+ 	 <div class="character-input input-group input-group-sm">
+ 	  <span class="input-group-addon">Name</span>
+ 	  <input type="text" class="form-control" placeholder="newskill-name" aria-describedby="character-newskill-name" ng-model="newskill.name" ng-change="recalculate()">
+ 	 </div>
+ 	 <div class="character-input input-group input-group-sm">
+ 	  <span class="input-group-addon">Trained Only</span>
+ 	  <input type="checkbox" placeholder="newskill-trainedonly" aria-describedby="newskill-trainedonly" ng-model="newskill.trainedonly" ng-change="recalculate()" bs-switch/>
+ 	 </div>
+ 	 <div class="character-input input-group input-group-sm">
+ 	  <span class="input-group-addon">Armor Check Penalty</span>
+ 	  <input type="checkbox" placeholder="newskill-armorcheckpenalty" aria-describedby="newskill-armorcheckpenalty" ng-model="newskill.armorcheckpenalty" ng-change="recalculate()" bs-switch/>
+ 	 </div>
+ 	 <div class="character-input input-group input-group-sm">
+ 	  <span class="input-group-addon">Modifier</span>
+	  <select class="form-control btn btn-primary dropdown-toggle" ng-model="newskill.modifier" ng-change="recalculate()">
+       <option ng-repeat="(key, value) in modifiers" value='{{value}}'><a href="#">{{key}}</a></option>
+      </select>
+	 </div>
+ 	</div>
+
+ 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
+ 	 <button type="button" class="btn btn-default" ng-click="removeskill(rmskill)">Remove Skill</button>
+ 	 <span class="input-group-addon">Skill</span>
+	  <select class="form-control btn btn-primary dropdown-toggle" ng-model="rmskill" ng-change="recalculate()">
+       <option ng-repeat="skill in skills" value='{{skill}}'><a href="#">{{skill.name}}</a></option>
+      </select>
  	</div>
 
 </div>
