@@ -1,38 +1,45 @@
 <div id="Inventory" class="bg-primary section">
-	<h2>Inventory</h2>
-	<hr>
 
-	<button type="button" class="btn btn-default" ng-click="additem()">Add Item</button>
+	<button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="additem()">Add Item</button>
 
-	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="item in inventory">
-	<span class="input-group-addon" id="item-{{item.name}}">Item</span>
+	<div class="row character-input" ng-repeat="item in inventory">
 
-	<button type="button" class="btn btn-default" ng-click="deleteitem(item)">Delete Item</button>
+		<div class="row character-input">
 
-	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Name</span>
- 	 <input type="text" class="form-control" placeholder="item-name" aria-describedby="character-{{item.name}}" ng-model="item.name" ng-change="recalculate()">
-	</div>
+		 <div class="input-field col s3">
+		  <label class="active">Name</label>
+	 	  <input type="text" class="form-control" aria-describedby="character-{{item.name}}" ng-model="item.name" ng-change="recalculate()">
+		 </div>
 
-	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Description</span>
- 	 <textarea type="text" class="form-control" placeholder="item-description" aria-describedby="character-{{item.name}}-description" ng-model="item.description" ng-change="recalculate()">
- 	</div>
+	 	 <div class="input-field col s2">
+		  <label class="active">Quantity</label>
+	 	  <input type="number" class="form-control" aria-describedby="character-{{item.name}}-quantity" ng-model="item.quantity" ng-change="recalculate()">
+	 	 </div>
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Quantity</span>
- 	 <input type="number" class="form-control" placeholder="item-quantity" aria-describedby="character-{{item.name}}-quantity" ng-model="item.quantity" ng-change="recalculate()">
- 	</div>
+	 	 <div class="input-field col s2">
+		  <label class="active">Page Ref</label>
+	 	  <input type="text" class="form-control" aria-describedby="character-{{item.name}}-page-reference" ng-model="item.pagereference" ng-change="recalculate()">
+	 	 </div>
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Page Ref</span>
- 	 <input type="text" class="form-control" placeholder="item-pagereference" aria-describedby="character-{{item.name}}-page-reference" ng-model="item.pagereference" ng-change="recalculate()">
- 	</div>
+	 	 <div class="input-field col s2">
+		  <label class="active">Weight</label>
+	 	  <input type="number" class="form-control" aria-describedby="character-{{item.name}}-weight" ng-model="item.weight" ng-change="recalculate()">
+	 	 </div>
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Weight</span>
- 	 <input type="number" class="form-control" placeholder="item-weight" aria-describedby="character-{{item.name}}-weight" ng-model="item.weight" ng-change="recalculate()">
- 	</div>
+		</div>
+
+		<div class="row character-input">
+
+		 <div class="input-field col s3">
+		  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deleteitem(item)">Delete Item</button>
+		 </div>
+
+		 <div class="input-field col s6">
+		  <label class="active">Description</label>
+	 	  <textarea type="text" class="form-control" aria-describedby="character-{{item.name}}-description" ng-model="item.description" ng-change="recalculate()">
+	 	 </div>
+
+		</div>
 
  	</div>
 </div>

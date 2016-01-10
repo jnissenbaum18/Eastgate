@@ -1,31 +1,40 @@
-<section id="characterSheet">
-  <div class="bg-primary row">
+<section id="characters" class="section">
+  <div class="bg-primary row section">
+
+    <div class="row"> 
       <h1 class="header col-lg-6 col-md-6 col-sm-6">Character Sheet</h1>
       <h1 style="text-align: right" class="header col-lg-6 col-md-6 col-sm-6">{{currentCharacter}}</h1>
-  </div>
-  <div>
-    <form name="newCharacterForm" ng-submit="newCharacterForm.$valid && submitCharacter(newCharacter)">
-      <label>New Character</label>
-      <input type="text" ng-model="newCharacter.characterstats.name" required>
-      <button class="btn" type="submit">
-        Submit
+    </div>
+
+    <div class="row">
+
+      <form name="newCharacterForm" ng-submit="newCharacterForm.$valid && submitCharacter(newCharacter)" class="input-field col s3">
+        <label class="active">New Character</label>
+        <input type="text" ng-model="newCharacter.characterstats.name" required>
+        <button class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" type="submit">
+          Submit
+        </button>
+      </form>
+
+
+    </div>
+
+    <div class="dropdown">
+      <button class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" type="button" id="characterselect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Characters
+        <span class="caret"></span>
       </button>
-    </form>
+      <ul ng-model="character" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li ng-repeat="character in characters" >{{character.characterstats.name}}
+          <button class="waves-effect waves-light btn blue-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="goToCharacter(character)">Select</button>
+          <button class="waves-effect waves-light btn red-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deleteCharacter(character._id)">Delete</button>
+        </li>
+
+      </ul>
+    </div> 
   </div>
+  
 
-  <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="characterselect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      Characters
-      <span class="caret"></span>
-    </button>
-    <ul ng-model="character" class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li ng-repeat="character in characters" ><a href="#">{{character.characterstats.name}}
-        <button class="btn btn-primary" ng-click="goToCharacter(character)">Select</button>
-        <button class="btn btn-danger" ng-click="deleteCharacter(character._id)">Delete</button>
-      </li>
-
-    </ul>
-  </div> 
   <div ui-view class="row">
 
   </div>

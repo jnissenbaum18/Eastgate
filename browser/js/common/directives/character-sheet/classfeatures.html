@@ -1,23 +1,22 @@
 <div id="classfeatures" class="bg-primary section">
-	<h2>Class Features</h2>
-	<hr>
 
-	<button type="button" class="btn btn-default" ng-click="addfeature()">Add Class Feature</button>
+	<button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="addfeature()">Add Class Feature</button>
 
-	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="feature in classfeatures">
-	<span class="input-group-addon" id="feature-{{feature.name}}">Feature</span>
+	<div class="row character-input" ng-repeat="feature in classfeatures">
+		
+	 <div class="input-field col s3">
+	  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deletefeature(feature)">Delete Feature</button>
+	 </div>
 
-	<button type="button" class="btn btn-default" ng-click="deletefeature(feature)">Delete Feature</button>
+	 <div class="input-field col s3">
+	  <label class="active">Name</label>
+ 	  <input type="text" class="form-control" aria-describedby="character-{{feature.name}}" ng-model="feature.name" ng-change="recalculate()">
+	 </div>
 
-	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Name</span>
- 	 <input type="text" class="form-control" placeholder="feature-name" aria-describedby="character-{{feature.name}}" ng-model="feature.name" ng-change="recalculate()">
-	</div>
-
-	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Description</span>
- 	 <textarea type="text" class="form-control" placeholder="feature-description" aria-describedby="character-{{feature.name}}-description" ng-model="feature.description" ng-change="recalculate()">
- 	</div>
+	 <div class="input-field col s5">
+	  <label class="active">Description</label>
+ 	  <textarea type="text" class="form-control" aria-describedby="character-{{feature.name}}-description" ng-model="feature.description" ng-change="recalculate()">
+ 	 </div>
 
  	</div>
 

@@ -1,22 +1,21 @@
 <div id="feats" class="bg-primary section">
-	<h2>Feats</h2>
-	<hr>
-	<button type="button" class="btn btn-default" ng-click="addfeat()">Add Feat</button>
 
-	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="feat in feats">
-	<span class="input-group-addon" id="feat-{{feat.name}}">Feat</span>
+	<button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="addfeat()">Add Feat</button>
 
-	<button type="button" class="btn btn-default" ng-click="deletefeat(feat)">Delete Feat</button>
+	<div class="row character-input" ng-repeat="feat in feats">
+	 <div class="input-field col s3">
+	  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deletefeat(feat)">Delete Feat</button>
+	 </div>
 
-	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Name</span>
- 	 <input type="text" class="form-control" placeholder="feat-name" aria-describedby="character-{{feat.name}}" ng-model="feat.name" ng-change="recalculate()">
-	</div>
+	 <div class="input-field col s3">
+	  <label class="active">Name</label>
+ 	  <input type="text" class="form-control" aria-describedby="character-{{feat.name}}" ng-model="feat.name" ng-change="recalculate()">
+	 </div>
 
-	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Description</span>
- 	 <textarea type="text" class="form-control" placeholder="feat-description" aria-describedby="character-{{feat.name}}-description" ng-model="feat.description" ng-change="recalculate()">
- 	</div>
+	 <div class="input-field col s5">
+	  <label class="active">Description</label>
+ 	  <textarea type="text" class="form-control" aria-describedby="character-{{feat.name}}-description" ng-model="feat.description" ng-change="recalculate()">
+ 	 </div>
 
  	</div>
 </div>

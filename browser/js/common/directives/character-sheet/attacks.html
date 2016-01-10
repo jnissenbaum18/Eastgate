@@ -1,80 +1,91 @@
 <div id="attacks" class="bg-primary section">
-	<h2>Attacks</h2>
-	<hr>
 
-	<button type="button" class="btn btn-default" ng-click="addattack()">Add Attack</button>
+	<button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="addattack()">Add Attack</button>
 
-	
+	<div class="row character-input" ng-repeat="attack in attacks">
 
-	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="attack in attacks">
-	<span class="input-group-addon" id="attack-{{attack.name}}">Attack</span>
+	 <div class="row character-input">
+	  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deleteattack(attack)">Delete Attack</button>
 
-	<button type="button" class="btn btn-default" ng-click="deleteattack(attack)">Delete Attack</button>
-
-	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Name</span>
- 	 <input type="text" class="form-control" placeholder="attack-name" aria-describedby="character-{{attack.name}}" ng-model="attack.name" ng-change="recalculate()">
-	</div>
-
-	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Damage</span>
-
-	 <div class="input-group-addon">
- 	  <input type="number" class="form-control" placeholder="attack-damage-number" aria-describedby="character-{{attack.name}}-{{attack.damagenumber}}" ng-model="attack.damagenumber" ng-change="recalculate()">
 	 </div>
 
-	 <div class="input-group-addon">
-	  <select class="form-control btn btn-primary dropdown-toggle" ng-model="attack.damagedie" ng-change="recalculate()">
-       <option ng-repeat="(key, value) in damagedie" value='{{value}}'><a href="#">{{key}}</a></option>
-      </select>
+	 <div class="row character-input">
+
+	  <div class="input-field col s3">
+	   <label class="active">Name</label>
+ 	   <input type="text" class="form-control" aria-describedby="character-{{attack.name}}" ng-model="attack.name" ng-change="recalculate()">
+	  </div>
+
+	  <div class="input-field col s1">
+ 	   <label class="active calculated-value">Attack Bonus</label>
+ 	   <input disabled type="text" class="form-control blue-grey darken-3" ng-model="attackbonus" ng-change="recalculate()">
+ 	  </div>
+
+ 	  <div class="input-field col s1">
+	   <label class="active">Damage Die</label>
+ 	   <input type="number" class="form-control" aria-describedby="character-{{attack.name}}-{{attack.damagenumber}}" ng-model="attack.damagenumber" ng-change="recalculate()">
+	  </div>
+
+	  <div class="input-field col s2">
+	   <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="attack.damagedie" ng-change="recalculate()">
+        <option ng-repeat="(key, value) in damagedie" value='{{value}}'><a href="#">{{key}}</a></option>
+       </select>
+	  </div>
+
+	  <div class="input-field col s2">
+	   <label class="active calculated-value">Damage Bonus</label>
+ 	   <input disabled type="number" class="form-control blue-grey darken-3" ng-model="attack.damagebonus" ng-change="recalculate()">
+	  </div>
+
+	  <div class="input-field col s2">
+ 	   <label class="active">Critical</label>
+ 	   <input type="text" class="form-control" aria-describedby="character-{{attack.name}}-{{attack.critical}}" ng-model="attack.critical" ng-change="recalculate()">
+ 	  </div>
+
+
+
 	 </div>
 
- 	 <div class="input-group-addon">{{attack.damagebonus}}</div>
- 	</div>
+	 <div class="row character-input">
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Critical</span>
- 	 <input type="text" class="form-control" placeholder="attack-critical" aria-describedby="character-{{attack.name}}-{{attack.critical}}" ng-model="attack.critical" ng-change="recalculate()">
- 	</div>
+	 	<div class="input-field col s3">
+	 	 <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="addquality(attack)">Add Quality</button>
+	 	</div>
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Attack Bonus</span>
- 	 <div class="input-group-addon">{{attack.attackbonus}}</div>
- 	</div>
+	     <div class="input-field col s2">
+		  <label class="active calculated-value">Weapon Type</label>
+	 	  <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="attack.weapontype" ng-change="recalculate()">
+	       <option ng-repeat="(key, value) in weapontypes" value='{{value}}'><a href="#">{{key}}</a></option>
+	      </select>
+	 	 </div>
 
-    <div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon" id="weapontype">Weapon Type</span>
- 	 <select class="form-control btn btn-primary dropdown-toggle" ng-model="attack.weapontype" ng-change="recalculate()">
-      <option ng-repeat="(key, value) in weapontypes" value='{{value}}'><a href="#">{{key}}</a></option>
-     </select>
- 	</div>
+	 	 <div class="input-field col s2">
+		  <label class="active calculated-value">Masterwork</label>
+		  <input type="checkbox" placeholder="attack-mwk" aria-describedby="character-{{attack.name}}-{{attack.masterwork}}" ng-model="attack.masterwork" ng-change="recalculate()" bs-switch/>
+	 	 </div>
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Masterwork</span>
-	 <input type="checkbox" placeholder="attack-mwk" aria-describedby="character-{{attack.name}}-{{attack.masterwork}}" ng-model="attack.masterwork" ng-change="recalculate()" bs-switch/>
- 	</div>
+	 	 <div class="input-field col s2">
+	 	  <label class="active calculated-value">Modifier</label>
+	 	  <input type="number" class="form-control" aria-describedby="character-{{attack.name}}-{{attack.modifier}}" ng-model="attack.modifier" ng-change="recalculate()">
+	 	 </div>
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Modifier</span>
- 	 <input type="number" class="form-control" placeholder="attack-modifier" aria-describedby="character-{{attack.name}}-{{attack.modifier}}" ng-model="attack.modifier" ng-change="recalculate()">
- 	</div>
-
- 	<button type="button" class="btn btn-default" ng-click="addquality(attack)">Add Quality</button>
-
- 	 <div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="quality in attack.specialqualities track by $index">
-	 <span class="input-group-addon" id="attack-quality-{{quality.name}}">Special Quality</span>
-
-	 <button type="button" class="btn btn-default" ng-click="deletequality(attack, quality)">Delete Quality</button>
-
-	 <div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Name</span>
- 	  <input type="text" class="form-control" placeholder="attack-quality-name" aria-describedby="attack-quality-{{quality.name}}" ng-model="quality.name" ng-change="recalculate()">
  	 </div>
 
- 	 <div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Description</span>
- 	  <textarea type="text" class="form-control" placeholder="attack-quality-description" aria-describedby="attack-quality-{{quality.name}}-description" ng-model="quality.description" ng-change="recalculate()">
- 	 </div>
+ 	 <div class="row character-input" ng-repeat="quality in attack.specialqualities track by $index">
+
+ 	  <div class="input-field col s3">	
+	   <button type="button" class="btn btn-default yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deletequality(attack, quality)">Delete Quality</button>
+	  </div>
+
+	  <div class="input-field col s2">
+	   <label class="active">Special Quality Name</label>
+ 	   <input type="text" class="form-control" aria-describedby="attack-quality-{{quality.name}}" ng-model="quality.name" ng-change="recalculate()">
+ 	  </div>
+
+ 	  <div class="input-field col s6">
+ 	   <label class="active">Description</label>
+ 	   <textarea type="text" class="form-control" aria-describedby="attack-quality-{{quality.name}}-description" ng-model="quality.description" ng-change="recalculate()">
+ 	  </div>
 
  	 </div>
 

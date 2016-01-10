@@ -18,14 +18,15 @@ navbar {
 
   .nav > li > a {
     cursor: pointer;
+    font-size: 14px;
     &.active {
-      color: #f30046;
+      color: yellow;
     }
     &:hover {
       transition: color 0.2s;
     }
     &:focus {
-      color: #f30046;
+      color: yellow;
       background: transparent;
     }
   }

@@ -1,53 +1,137 @@
 <section id="characterSheet">
-
-	<button class="btn btn-default" ng-click="log()">Log</button>
-
-	<button class="btn btn-default" ng-click="saveCharacter()">Save</button>
-
-	<button class="btn btn-default" ng-click="deleteCharacter()">Delete</button>
    
-	<div style="margin: 10px" id="master-row" class="row">
+	<div id="master-row" class="row">
 
-		<div id="left-side" class="col-lg-8 col-md-8 col-sm-8">
+	    <div class="row" id="page-1">
 
-		    <div class="row">
-			    <abilityscores abilityscores="abilityscores" abilitymodifiers="abilitymodifiers"></abilityscores>		    
-			    <combatstats combatstats="combatstats" calculatedcombatstats="calculatedcombatstats"></combatstats>		    
-			    <characterstats characterstats="characterstats"></characterstats>	
-			</div>
+	    	<div class="col-lg-8 col-md-8 col-sm-8">
 
-			<div class="row">
-				<attacks attacks="attacks"></attacks>
-				<protectiveitems protectiveitems="protectiveitems"></protectiveitems>
-			</div>
+	    		<div class="row">
+	    			<div class="col-lg-12 col-md-12 col-sm-12">
+	    				<characterstats characterstats="characterstats"></characterstats>
+	    			</div>
+	    		</div>
 
-			<div class="row">
-				<classfeatures classfeatures="classfeatures"></classfeatures>
-				<feats feats="feats"></feats>
-				<specialabilities specialabilities="specialabilities"></specialabilities>	
-			</div>
+	    		<div class="row">
+	    			<div class="col-lg-12 col-md-12 col-sm-12">
+	    				<abilityscores abilityscores="abilityscores" abilitymodifiers="abilitymodifiers"></abilityscores>	
+	    			</div>
+	    			
+	    		</div>  
 
-			<div class="row">
-				<inventory inventory="inventory"></inventory>
-			    <miscstats miscstats="miscstats"></miscstats>
-			    <spells spells="spells"></spells>
-			</div>
+	    		<div class="row">
+	    			<div class="col-lg-12 col-md-12 col-sm-12">
+	    				<combatstats combatstats="combatstats" calculatedcombatstats="calculatedcombatstats"></combatstats>	
+	    			</div>
+	    		</div>
 
-			<div class="row">
-				<notes notes="notes"></notes>
-			</div>
+	    		<div class="row">
+	    			<div class="col-lg-12 col-md-12 col-sm-12">
+						<attacks attacks="attacks"></attacks>
+					</div>
+	    		</div>
 
+	    	</div>
+
+	    	<div class="col-lg-4 col-md-4 col-sm-4">
+
+	    		<div class="row bg-primary section">
+
+	    			<div class="col-lg-4 col-md-4 col-sm-4">
+	    				<button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="log()">Log</button>
+	    			</div>
+
+	    			<div class="col-lg-4 col-md-4 col-sm-4">
+	    				<button class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="saveCharacter()">Save</button>
+	    			</div>
+
+	    			<div class="col-lg-4 col-md-4 col-sm-4">
+	    				<button class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deleteCharacter()">Delete</button>
+	    			</div>
+					
+	    		</div>
+
+	    		<div class="row">
+
+	    			<div class="col-lg-12 col-md-12 col-sm-12">
+	    				<dieroller abilitymodifiers="abilitymodifiers" attacks="attacks" combatstats="combatstats" calculatedcombatstats="calculatedcombatstats" skills="skills"></dieroller>
+	    			</div>
+
+	    		</div>
+
+	    		<div class="row">
+
+	    			<div id="skills" class="col-lg-12 col-md-12 col-sm-12">
+	    				<skills calculatedskills="calculatedskills" skills="skills"></skills>
+	    			</div>
+	    			
+	    		</div>
+
+	    	</div>
 		</div>
 
-		<div id="right-side" class="col-lg-4 col-md-4 col-sm-4">
+		<div class="row" id="page-2">
 
-			<div class="row">
-				<dieroller abilitymodifiers="abilitymodifiers" attacks="attacks" combatstats="combatstats" calculatedcombatstats="calculatedcombatstats" skills="skills"></dieroller>
-				<skills calculatedskills="calculatedskills" skills="skills"></skills>
+			<div class="col-lg-6 col-md-6 col-sm-6">
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">	
+						<protectiveitems protectiveitems="protectiveitems"></protectiveitems>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">	
+						<inventory inventory="inventory"></inventory>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<notes notes="notes"></notes>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-lg-6 col-md-6 col-sm-6">
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">	
+						<feats feats="feats"></feats>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">	
+						<specialabilities specialabilities="specialabilities"></specialabilities>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">	
+						<classfeatures classfeatures="classfeatures"></classfeatures>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">	
+						<miscstats miscstats="miscstats"></miscstats>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">	
+						<spells spells="spells"></spells>
+					</div>
+				</div>
+
 			</div>
 
 		</div>
 
 	</div>
+
 </div>
+
 </section>

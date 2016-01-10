@@ -1,78 +1,93 @@
 <div id="armorandprotectiveitems" class="bg-primary section">
-	<h2>Armor & Protective Items</h2>
-	<hr>
 
-	<button type="button" class="btn btn-default" ng-click="addprotectiveitem()">Add Protective Item</button>
+	<button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="addprotectiveitem()">Add Protective Item</button>
 
-	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="item in protectiveitems">
-	<span class="input-group-addon" id="item-{{item.name}}">Item</span>
+	<div class="row character-input" ng-repeat="item in protectiveitems">
 
-	<button type="button" class="btn btn-default" ng-click="deleteitem(item)">Delete Protective Item</button>
+		
 
-	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Name</span>
- 	 <input type="text" class="form-control" placeholder="item-name" aria-describedby="character-{{item.name}}" ng-model="item.name" ng-change="recalculate()">
- 	</div>
+		<div class="row character-input">
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Total AC Bonus</span>
-	 <div class="input-group-addon">{{item.totalbonus}}</div>
- 	</div>
+		 <div class="input-field col s3">
+		  <label class="active">Name</label>
+	 	  <input type="text" class="form-control" aria-describedby="character-{{item.name}}" ng-model="item.name" ng-change="recalculate()">
+	 	 </div>
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">AC Bonus</span>
- 	 <input type="number" class="form-control" placeholder="item-armorclassbonus" aria-describedby="character-{{item.name}}-{{item.armorclassbonus}}" ng-model="item.armorclassbonus" ng-change="recalculate()">
- 	</div>
+	 	 <div class="input-field col s3">
+		  <label class="active calculated-value">Total AC Bonus</label>
+		  <input disabled type="number" class="form-control blue-grey darken-3" ng-model="item.totalbonus" ng-change="recalculate()">
+	 	 </div>
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Modifier</span>
- 	 <input type="number" class="form-control" placeholder="item-modifier" aria-describedby="character-{{item.name}}-{{item.modifier}}" ng-model="item.modifier" ng-change="recalculate()">
- 	</div>
+	 	 <div class="input-field col s2">
+		  <label class="active">AC Bonus</label>
+	 	  <input type="number" class="form-control" aria-describedby="character-{{item.name}}-{{item.armorclassbonus}}" ng-model="item.armorclassbonus" ng-change="recalculate()">
+	 	 </div>
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Masterwork</span>
-	 <input type="checkbox" placeholder="item-mwk" aria-describedby="character-{{item.name}}-{{item.masterwork}}" ng-model="item.masterwork" ng-change="recalculate()" bs-switch/>
- 	</div>
+	 	 <div class="input-field col s1">
+		  <label class="active">Max Dex</label>
+	 	  <input type="number" class="form-control" aria-describedby="character-{{item.name}}-{{item.maximumdexterity}}" ng-model="item.maximumdexterity" ng-change="recalculate()">
+	 	 </div>
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Max Dex</span>
- 	 <input type="number" class="form-control" placeholder="item-maximumdexterity" aria-describedby="character-{{item.name}}-{{item.maximumdexterity}}" ng-model="item.maximumdexterity" ng-change="recalculate()">
- 	</div>
+	 	 <div class="input-field col s1">
+		  <label class="active">Modifier</label>
+	 	  <input type="number" class="form-control" aria-describedby="character-{{item.name}}-{{item.modifier}}" ng-model="item.modifier" ng-change="recalculate()">
+	 	 </div>
+	 	 
+		</div>
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Total Armor Check Penalty</span>
-	 <div class="input-group-addon">{{item.totalarmorcheckpenalty}}</div>
- 	</div>
+		<div class="row character-input">
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Armor Check Penalty</span>
- 	 <input type="number" class="form-control" placeholder="item-armorcheckpenalty" aria-describedby="character-{{item.name}}-{{item.armorcheckpenalty}}" ng-model="item.armorcheckpenalty" ng-change="recalculate()">
- 	</div>
+	 	 <div class="input-field col s2">
+		  <label class="active calculated-value">Total ACP</label>
+		  <input disabled type="number" class="form-control blue-grey darken-3" ng-model="item.totalarmorcheckpenalty" ng-change="recalculate()">
+	 	 </div>
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Weight</span>
- 	 <input type="number" class="form-control" placeholder="item-weight" aria-describedby="character-{{item.name}}-{{item.weight}}" ng-model="item.weight" ng-change="recalculate()">
- 	</div>
+	 	 <div class="input-field col s2">
+		  <label class="active">Armor Check Penalty</label>
+	 	  <input type="number" class="form-control" aria-describedby="character-{{item.name}}-{{item.armorcheckpenalty}}" ng-model="item.armorcheckpenalty" ng-change="recalculate()">
+	 	 </div>
 
-	 <button type="button" class="btn btn-default" ng-click="addquality(item)">Add Quality</button>
+	 	 <div class="input-field col s2">
+		  <label class="active">Weight</label>
+	 	  <input type="number" class="form-control" aria-describedby="character-{{item.name}}-{{item.weight}}" ng-model="item.weight" ng-change="recalculate()">
+	 	 </div>
 
- 	 <div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="quality in item.specialqualities track by $index">
+	 	 <div class="input-field col s2">
+		  <label class="active">Masterwork</label>
+		  <input type="checkbox" aria-describedby="character-{{item.name}}-{{item.masterwork}}" ng-model="item.masterwork" ng-change="recalculate()" bs-switch/>
+	 	 </div>
 
-	 <span class="input-group-addon" id="item-quality-{{quality.name}}">Special Quality</span>
+		</div>
 
-	 <button type="button" class="btn btn-default" ng-click="deletequality(item, quality)">Delete Quality</button>
+		<div class="row character-input">
 
-	 <div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Name</span>
- 	  <input type="text" class="form-control" placeholder="item-quality-name" aria-describedby="item-quality-{{quality.name}}" ng-model="quality.name" ng-change="recalculate()">
- 	 </div>
+		 <div class="input-field col s4">
+		  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deleteitem(item)">Delete Protective Item</button>
+		 </div>
 
- 	 <div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Description</span>
- 	  <textarea type="text" class="form-control" placeholder="item-quality-description" aria-describedby="item-quality-{{quality.name}}-description" ng-model="quality.description" ng-change="recalculate()">
- 	 </div>
+		 <div class="input-field col s3">
+		  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="addquality(item)">Add Quality</button>
+		 </div>
+		 
+		</div>
 
- 	 </div>
+	 	 <div class="row character-input" ng-repeat="quality in item.specialqualities track by $index">
+
+	 	  <div class="input-field col s3">
+   		   <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deletequality(item, quality)">Delete Quality</button>
+	 	  </div>
+
+		  <div class="input-field col s3">
+		   <label class="active">Name</label>
+	 	   <input type="text" class="form-control" aria-describedby="item-quality-{{quality.name}}" ng-model="quality.name" ng-change="recalculate()">
+	 	  </div>
+
+	 	  <div class="input-field col s5">
+		   <label class="active">Description</label>
+	 	   <textarea type="text" class="form-control" aria-describedby="item-quality-{{quality.name}}-description" ng-model="quality.description" ng-change="recalculate()">
+	 	  </div>
+
+	 	 </div>
 
  	</div>
 </div>

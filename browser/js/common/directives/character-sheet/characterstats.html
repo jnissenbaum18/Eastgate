@@ -1,81 +1,97 @@
-<div id="characterstats" class="bg-primary section">
-	<h2>Character Stats</h2>
-	<hr>
+<div id="characterstats" class="bg-primary section row">
 
-	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
-	<span class="input-group-addon" id="name">Name</span>
- 	 <input type="text" class="form-control" placeholder="name" aria-describedby="character-name" ng-model="characterstats.name" ng-change="recalculate()">
- 	</div>
+	<div class="col s6">
 
- 	<button type="button" class="btn btn-default" ng-click="addclass()">Add Class</button>
+		<div class="row character-input">
+			<div class="input-field col s6">
+			 <label class="active">Character Name</label>
+		 	 <input type="text" class="form-control" aria-describedby="character-name" ng-model="characterstats.name" ng-change="recalculate()">
+		 	</div>
+		 	<div class="input-field col s4">
+		 	 <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="addclass()">Add Class</button>
+		 	</div>
+		</div>
+		<div class="row character-input" ng-repeat="class in characterstats.classarray">
+		 	 <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deleteclass(class)">Delete Class</button>
+		 	 <div class="input-field col s4">
+		 	  <label class="active">Name</label>
+			  <input type="text" class="form-control" aria-describedby="character-class-{{class.name}}" ng-model="class.name" ng-change="recalculate()">
+			 </div>
+			 <div class="input-field col s2">
+			  <label class="active">Level</label>
+		 	  <input type="number" class="form-control" placeholder="class-{{class.name}}-{{class.level}}" aria-describedby="character-class-{{class.name}}-{{class.level}}" ng-model="class.level" ng-change="recalculate()">
+		 	 </div>
+		</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4" ng-repeat="class in characterstats.classarray">
-	 <span class="input-group-addon" id="class-{{class.name}}">Class</span>
+		<div class="row character-input">
 
- 	 <button type="button" class="btn btn-default" ng-click="deleteclass(class)">Delete Class</button>
- 	 <div class="character-input input-group input-group-sm">
-	  <input type="text" class="form-control" placeholder="class-{{class.name}}" aria-describedby="character-class-{{class.name}}" ng-model="class.name" ng-change="recalculate()">
-	 </div>
-	 <div class="character-input input-group input-group-sm">
- 	  <input type="number" class="form-control" placeholder="class-{{class.name}}-{{class.level}}" aria-describedby="character-class-{{class.name}}-{{class.level}}" ng-model="class.level" ng-change="recalculate()">
- 	 </div>
- 	</div>
+		 	<div class="input-field col s5">
+			 <label class="active">Size</label>
+		 	 <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="characterstats.charactersize" ng-change="recalculate()">
+		      <option ng-repeat="(key, value) in sizes" value='{{value}}'><a href="#">{{key}}</a></option>
+		     </select>
+		 	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
-	<span class="input-group-addon" id="race">Race</span>
- 	 <input type="text" class="form-control" placeholder="race" aria-describedby="character-race" ng-model="characterstats.race" ng-change="recalculate()">
- 	</div>
+		 	<div class="input-field col s2">
+			 <label class="active">Age</label>
+		 	 <input type="number" class="form-control" aria-describedby="character-age" ng-model="characterstats.age" ng-change="recalculate()">
+		 	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
-	<span class="input-group-addon" id="subtype">Subtype</span>
- 	 <input type="text" class="form-control" placeholder="subtype" aria-describedby="character-subtype" ng-model="characterstats.subtype" ng-change="recalculate()">
- 	</div>
+		 	<div class="input-field col s2">
+			 <label class="active">Gender</label>
+		 	 <input type="text" class="form-control" aria-describedby="character-gender" ng-model="characterstats.gender" ng-change="recalculate()">
+		 	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
-	<span class="input-group-addon" id="deity">Deity</span>
- 	 <input type="text" class="form-control" placeholder="deity" aria-describedby="character-deity" ng-model="characterstats.deity" ng-change="recalculate()">
- 	</div>
+		 	<div class="input-field col s2">
+			 <label class="active">Height</label>
+		 	 <input type="text" class="form-control" aria-describedby="character-height" ng-model="characterstats.height" ng-change="recalculate()">
+		 	</div>
+		</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
-	<span class="input-group-addon" id="alignment">Alignment</span>
- 	 <input type="text" class="form-control" placeholder="alignment" aria-describedby="character-alignment" ng-model="characterstats.alignment" ng-change="recalculate()">
- 	</div>
+	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
-	 <span class="input-group-addon" id="size">Size</span>
- 	 <select class="form-control btn btn-primary dropdown-toggle" ng-model="characterstats.charactersize" ng-change="recalculate()">
-      <option ng-repeat="(key, value) in sizes" value='{{value}}'><a href="#">{{key}}</a></option>
-     </select>
- 	</div>
+	<div class="input-field col s6">
+		<div class="row character-input">
+		 	<div class="input-field col s6">
+		 	 <label class="active">Race</label>
+		 	 <input type="text" class="form-control" aria-describedby="character-race" ng-model="characterstats.race" ng-change="recalculate()">
+		 	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
-	<span class="input-group-addon" id="age">Age</span>
- 	 <input type="number" class="form-control" placeholder="age" aria-describedby="character-age" ng-model="characterstats.age" ng-change="recalculate()">
- 	</div>
+		 	<div class="input-field col s4">
+		 	 <label class="active">Subtype</label>
+		 	 <input type="text" class="form-control" aria-describedby="character-subtype" ng-model="characterstats.subtype" ng-change="recalculate()">
+		 	</div>
+		</div>	
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
-	<span class="input-group-addon" id="gender">Gender</span>
- 	 <input type="text" class="form-control" placeholder="gender" aria-describedby="character-gender" ng-model="characterstats.gender" ng-change="recalculate()">
- 	</div>
+		<div class="row character-input">
+		 	<div class="input-field col s6">
+			 <label class="active">Alignment</label>
+		 	 <input type="text" class="form-control" aria-describedby="character-alignment" ng-model="characterstats.alignment" ng-change="recalculate()">
+		 	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
-	<span class="input-group-addon" id="height">Height</span>
- 	 <input type="number" class="form-control" placeholder="height" aria-describedby="character-height" ng-model="characterstats.height" ng-change="recalculate()">
- 	</div>
+		 	<div class="input-field col s4">
+			 <label class="active">Deity</label>
+		 	 <input type="text" class="form-control" aria-describedby="character-deity" ng-model="characterstats.deity" ng-change="recalculate()">
+		 	</div>
+		</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
-	<span class="input-group-addon" id="weight">Weight</span>
- 	 <input type="number" class="form-control" placeholder="weight" aria-describedby="character-weight" ng-model="characterstats.weight" ng-change="recalculate()">
- 	</div>
+		<div class="row character-input">
+		 	<div class="input-field col s2">
+			 <label class="active">Weight</label>
+		 	 <input type="number" class="form-control" aria-describedby="character-weight" ng-model="characterstats.weight" ng-change="recalculate()">
+		 	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
-	<span class="input-group-addon" id="eyes">Eyes</span>
- 	 <input type="text" class="form-control" placeholder="eyes" aria-describedby="character-eyes" ng-model="characterstats.eyes" ng-change="recalculate()">
- 	</div>
+		 	<div class="input-field col s4">
+			 <label class="active">Eyes</label>
+		 	 <input type="text" class="form-control" aria-describedby="character-eyes" ng-model="characterstats.eyes" ng-change="recalculate()">
+		 	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-4 col-md-4 col-sm-4">
-	<span class="input-group-addon" id="skin">Skin</span>
- 	 <input type="text" class="form-control" placeholder="skin" aria-describedby="character-skin" ng-model="characterstats.skin" ng-change="recalculate()">
- 	</div>
+		 	<div class="input-field col s4">
+			 <label class="active">Skin</label>
+		 	 <input type="text" class="form-control" aria-describedby="character-skin" ng-model="characterstats.skin" ng-change="recalculate()">
+		 	</div>
+		</div>
+
+	</div>
 
 </div>

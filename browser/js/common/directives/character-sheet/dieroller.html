@@ -1,71 +1,68 @@
 <div id="dieroller" class="bg-primary section">
-	<h4>Die Roller</h4>
-	<hr>
 
-	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
-	 <div class="input-group-addon">
-	  <span class="input-group-addon">{{rolltype}}</span>
-	 </div>	
+	<div class="row character-input">
+
+		<div class="input-field col s4">
+		 <label class="active calculated-value">Roll Type</label>
+		 <input disabled type="text" class="form-control blue-grey darken-3" ng-model="rolltype" ng-change="recalculate()">
+		</div>
+
+		<div class="input-field col s4">
+		 <label class="active calculated-value">Results</label>
+		 <input disabled type="text" class="form-control blue-grey darken-3" ng-model="results" ng-change="recalculate()">
+		</div>
+
+		<div class="input-field col s4">
+		 <label class="active calculated-value">Total</label>
+		 <input disabled type="text" class="form-control blue-grey darken-3" ng-model="total" ng-change="recalculate()">
+		</div>
+
 	</div>
 
-	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
-	 <div class="input-group-addon">
-	  <span class="input-group-addon">Results</span>
-	 </div>	
-	 <div class="input-group-addon">
-	  <span class="input-group-addon" ng-model="results">{{results}}</span>
-	 </div>	
+	<div class="row character-input">
+
+		<div class="input-field col s6">
+		 <label class="active calculated-value">Number of Die</label>
+		 <input type="number" class="form-control blue-grey darken-3" ng-model="dienumber" ng-change="recalculate()">
+		</div>
+
+		<div class="input-field col s6">
+		 <label class="active calculated-value">Dietype</label>
+		 <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="dietype" ng-change="recalculate(); setRollType('Normal')">
+          <option ng-repeat="(key, value) in dietypes" value='{{value}}'><a href="#">{{key}}</a></option>
+         </select>
+		</div>
+
 	</div>
 
-	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
-	 <div class="input-group-addon">
-	  <span class="input-group-addon">Total</span>
-	 </div>	
-	 <div class="input-group-addon">
-	  <span class="input-group-addon" ng-model="total">{{total}}</span>
-	 </div>	
+	<div class="row character-input">
+
+		<div class="input-field col s6">
+		 <label class="active calculated-value">Action Roll</label>
+		 <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="rolltype" ng-change="recalculate(); setSubActions(rolltype)">
+      	  <option ng-repeat="(key, value) in actions" value='{{value}}'><a href="#">{{key}}</a></option>
+      	 </select>
+		</div>
+
+		<div class="input-field col s6">
+		 <label class="active calculated-value">Subactions</label>
+		 <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="rollsubtype" ng-change="recalculate()">
+       	  <option ng-repeat="(key, value) in subactions" value='{{key}}'><a href="#">{{value}}</a></option>
+      	 </select>
+		</div>
+
 	</div>
 
-	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
-	 <span class="input-group-addon">Normal Roll</span>
-	 <div class="input-group-addon">	
-	  <input type="number" class="form-control" placeholder="number of die" aria-describedby="die-number" ng-model="dienumber" ng-change="recalculate()">	
-	 </div>
-	 <div class="input-group-addon">
-	  <select class="form-control btn btn-primary dropdown-toggle" ng-model="dietype" ng-change="recalculate(); setRollType('Normal')">
-       <option ng-repeat="(key, value) in dietypes" value='{{value}}'><a href="#">{{key}}</a></option>
-      </select>
-     </div>
-     
-	</div>
+	<div class="row character-input">
 
-	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
-	 <span class="input-group-addon">Action Roll</span>
-	 <div class="input-group-addon">
-	  <select class="form-control btn btn-primary dropdown-toggle" ng-model="rolltype" ng-change="recalculate(); setSubActions(rolltype)">
-       <option ng-repeat="(key, value) in actions" value='{{value}}'><a href="#">{{key}}</a></option>
-      </select>
-     </div>
-     <div class="input-group-addon">
-	  <select class="form-control btn btn-primary dropdown-toggle" ng-model="rollsubtype" ng-change="recalculate()">
-       <option ng-repeat="(key, value) in subactions" value='{{key}}'><a href="#">{{value}}</a></option>
-      </select>
-     </div>
-	</div>
+		<div class="input-field col s6">
+		 <button class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="rollDie(dietype, dienumber, rolltype, rollsubtype)">Roll</button>
+		</div>
 
-	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
-	 <div class="input-group-addon">
-	  <button class="btn btn-default" ng-click="rollDie(dietype, dienumber, rolltype, rollsubtype)">Roll</button>
-	 </div>
-	 <div class="input-group-addon">
-	  <button class="btn btn-default" ng-click="clearResults()">Reset</button>
-	 </div>	
-	</div>
+		<div class="input-field col s6">
+		 <button class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="clearResults()">Reset</button>
+		</div>
 
-<!-- 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(key, value) in results">
-	 <span class="input-group-addon" id="{{key}}">{{key}}</span>
-	 
-	 <div class="input-group-addon">{{value}}</div>
-	</div> -->
+	</div>
 
 </div>

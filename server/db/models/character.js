@@ -35,7 +35,7 @@ var schema = new mongoose.Schema({
             type: String
         },
         height: {
-            type: Number
+            type: String
         },
         weight: {
             type: Number
@@ -509,4 +509,6 @@ maybe lodash can help doing an object deepEqual comparison to see what changed
 
 ​[2:50] 
 just remember the catch is, you have to do User.find and then user.save instead of User.findOneAndUpdate
+
+btw you can also do in your hook, a User.find({}) to get what is in the database. Apparently this is considered acceptable practice, even though performance wise maybe not? idk
 */

@@ -1,93 +1,128 @@
 <div id="skills" class="bg-primary section">
-	<h2>Skills</h2>
-	<hr>
 
-	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Total Skill Points</span>
-	 <div class="input-group-addon">{{calculatedskills.totalskillpoints}}</div>
- 	</div>
+	<div style="margin-top: 30px;" class="row character-input">
 
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Current Skill Points</span>
-	 <div class="input-group-addon">{{calculatedskills.currentskillpoints}}</div>
- 	</div>
-
- 	<div class="character-input input-group input-group-sm">
-	 <span class="input-group-addon">Max Ranks/Crossclass</span>
-	 <div class="input-group-addon">{{calculatedskills.maxranks}}/{{calculatedskills.crossclass}}</div>
- 	</div>
-
- 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10" ng-repeat="(skillName, skill) in skills track by $index">
-
- 		<span class="input-group-addon" id="skill-{{skillName}}">{{skill.name}}</span>
- 		<div class="input-group-addon">{{skill.skillmodifier}}</div>
-
- 		<div class="character-input input-group input-group-sm">
-		 <span class="input-group-addon">Ranks</span>
- 		 <input type="number" class="form-control" placeholder="skill-ranks" aria-describedby="character-{{skill.ranks}}" ng-model="skill.ranks" ng-change="recalculate()">
- 		</div>
-
- 		<div class="character-input input-group input-group-sm">
-		 <span class="input-group-addon">Ability</span>
-		 <div class="input-group-addon" ng-model="skill.modifier">{{skill.modifier}}</div>
- 		</div>
-
- 		<div class="character-input input-group input-group-sm">
-		 <span class="input-group-addon">Misc Modifier</span>
- 		 <input type="number" class="form-control" placeholder="skill-miscmodifier" aria-describedby="character-{{skill.misc}}" ng-model="skill.misc" ng-change="recalculate()">
- 		</div>
-
- 		<div class="character-input input-group input-group-sm">
-		 <span class="input-group-addon">In Class</span>
-		 <input type="checkbox" placeholder="skill-inclass" aria-describedby="character-{{skillName}}-inclass" ng-model="skill.inclass" ng-change="recalculate()" bs-switch/>
+		<div class="input-field col s3">
+		 <label class="active calculated-value">Total Skill Points</label>
+		 <input disabled type="number" class="form-control blue-grey darken-3" value='{{calculatedskills.totalskillpoints}}'>
 	 	</div>
 
-	 	<div class="character-input input-group input-group-sm">
-		 <span class="input-group-addon">Cross Class</span>
-		 <input type="checkbox" placeholder="skill-crossclass" aria-describedby="character-{{skillName}}-crossclass" ng-model="skill.crossclass" ng-change="recalculate()" bs-switch/>
+	 	<div class="input-field col s3">
+		 <label class="active calculated-value">Current Skill Points</label>
+		 <input disabled type="number" class="form-control blue-grey darken-3" value='{{calculatedskills.currentskillpoints}}'>
 	 	</div>
 
-	 	<div class="character-input input-group input-group-sm">
-		 <span class="input-group-addon">Armor Check Penalty</span>
-		 <div class="input-group-addon">{{skill.armorcheckpenalty}}</div>
+	 	<div class="input-field col s3">
+		 <label class="active calculated-value">Max Ranks</label>
+		 <input disabled type="number" class="form-control blue-grey darken-3" value='{{calculatedskills.maxranks}}'>
+	 	</div>
+
+	 	<div class="input-field col s3">
+		 <label class="active calculated-value">Crossclass Ranks</label>
+		 <input disabled type="number" class="form-control blue-grey darken-3" value='{{calculatedskills.crossclass}}'>
+	 	</div>
+
+	</div>
+
+ 	<div class="row character-input" ng-repeat="(skillName, skill) in skills track by $index">
+
+ 		<div class="row character-input">
+
+	 		<div class="input-field col s5">
+	 		 <label class="active calculated-value">{{skill.name}}</label>
+	 		 <input disabled type="number" class="form-control blue-grey darken-3" value='{{skill.skillmodifier}}'>
+	 		</div>
+
+	 		<div class="input-field col s2">
+	 		 <label class="active">Ranks</label>
+	 		 <input type="number" class="form-control" aria-describedby="character-{{skill.ranks}}" ng-model="skill.ranks" ng-change="recalculate()">
+	 		</div>
+
+	 		<div class="input-field col s3">
+			 <label class="active">Misc Modifier</label>
+	 		 <input type="number" class="form-control" aria-describedby="character-{{skill.misc}}" ng-model="skill.misc" ng-change="recalculate()">
+	 		</div>
+
  		</div>
 
- 		<div class="character-input input-group input-group-sm">
-		 <span class="input-group-addon">Trained Only</span>
-		 <div class="input-group-addon">{{skill.trainedonly}}</div>
+ 		<div class="row character-input">
+
+ 			<div class="input-field col s4">
+			 <label class="active">Ability</label>
+			 <input disabled type="text" class="form-control blue-grey darken-3" value='{{skill.modifier}}'>
+	 		</div>
+
+	 		<div class="input-field col s3">
+			 <label class="active">In Class</label>
+			 <input type="checkbox" aria-describedby="character-{{skillName}}-inclass" ng-model="skill.inclass" ng-change="recalculate()" bs-switch/>
+		 	</div>
+
+		 	<div class="input-field col s3">
+			 <label class="active">Cross Class</label>
+			 <input type="checkbox" aria-describedby="character-{{skillName}}-crossclass" ng-model="skill.crossclass" ng-change="recalculate()" bs-switch/>
+		 	</div>
+
+ 		</div>
+
+ 		<div class="row character-input">
+
+	 		<div class="input-field col s3">
+			 <label class="active">Trained Only</label>
+			 <input disabled type="text" class="form-control blue-grey darken-3" value='{{skill.trainedonly}}'>
+	 		</div>
+
+		 	<div class="input-field col s4">
+			 <label class="active">Armor Check Penalty</label>
+			 <input disabled type="text" class="form-control blue-grey darken-3" value='{{skill.armorcheckpenalty}}'>
+	 		</div>
+
  		</div>
 
  	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
- 	 <span class="input-group-addon">New Skill</span>
- 	 <button type="button" class="btn btn-default" ng-click="addskill()">Add Skill</button>
- 	 <div class="character-input input-group input-group-sm">
- 	  <span class="input-group-addon">Name</span>
- 	  <input type="text" class="form-control" placeholder="newskill-name" aria-describedby="character-newskill-name" ng-model="newskill.name" ng-change="recalculate()">
- 	 </div>
- 	 <div class="character-input input-group input-group-sm">
- 	  <span class="input-group-addon">Trained Only</span>
- 	  <input type="checkbox" placeholder="newskill-trainedonly" aria-describedby="newskill-trainedonly" ng-model="newskill.trainedonly" ng-change="recalculate()" bs-switch/>
- 	 </div>
- 	 <div class="character-input input-group input-group-sm">
- 	  <span class="input-group-addon">Armor Check Penalty</span>
- 	  <input type="checkbox" placeholder="newskill-armorcheckpenalty" aria-describedby="newskill-armorcheckpenalty" ng-model="newskill.armorcheckpenalty" ng-change="recalculate()" bs-switch/>
- 	 </div>
- 	 <div class="character-input input-group input-group-sm">
- 	  <span class="input-group-addon">Modifier</span>
-	  <select class="form-control btn btn-primary dropdown-toggle" ng-model="newskill.modifier" ng-change="recalculate()">
-       <option ng-repeat="(key, value) in modifiers" value='{{value}}'><a href="#">{{key}}</a></option>
-      </select>
-	 </div>
+ 	<div class="row character-input">
+
+	 	 <div class="input-field col s2">
+	 	  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="addskill()">Add Skill</button>
+	 	 </div>	
+ 	 
+	 	 <div class="input-field col s3">
+	 	  <label class="active">Name</label>
+	 	  <input type="text" class="form-control" aria-describedby="character-newskill-name" ng-model="newskill.name" ng-change="recalculate()">
+	 	 </div>
+
+	 	 <div class="input-field col s3">
+	 	  <label class="active">Modifier</label>
+		  <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="newskill.modifier" ng-change="recalculate()">
+	       <option ng-repeat="(key, value) in modifiers" value='{{value}}'><a href="#">{{key}}</a></option>
+	      </select>
+		 </div>
+
+	 	 <div class="input-field col s2">
+	 	  <label class="active">Trained Only</label>
+	 	  <input type="checkbox" aria-describedby="newskill-trainedonly" ng-model="newskill.trainedonly" ng-change="recalculate()" bs-switch/>
+	 	 </div>
+
+	 	 <div class="input-field col s2">
+	 	  <label class="active">Armor Check Penalty</label>
+	 	  <input type="checkbox" aria-describedby="newskill-armorcheckpenalty" ng-model="newskill.armorcheckpenalty" ng-change="recalculate()" bs-switch/>
+	 	 </div>
+
  	</div>
 
- 	<div class="character-input input-group input-group-sm col-lg-10 col-md-10 col-sm-10">
- 	 <button type="button" class="btn btn-default" ng-click="removeskill(rmskill)">Remove Skill</button>
- 	 <span class="input-group-addon">Skill</span>
-	  <select class="form-control btn btn-primary dropdown-toggle" ng-model="rmskill" ng-change="recalculate()">
-       <option ng-repeat="skill in skills" value='{{$index}}'><a href="#">{{skill.name}}</a></option>
-      </select>
+ 	<div class="row character-input">
+
+	 	<div class="input-field col s3">
+	 	 <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="removeskill(rmskill)">Remove Skill</button>
+	 	</div>	
+
+	 	<div class="input-field col s3">
+	 	 <label class="active">Skill</label>
+		  <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="rmskill" ng-change="recalculate()">
+	       <option ng-repeat="skill in skills" value='{{$index}}'><a href="#">{{skill.name}}</a></option>
+	      </select>
+	    </div>
+
  	</div>
 
 </div>
