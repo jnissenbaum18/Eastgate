@@ -8,7 +8,7 @@ app.directive('inventory', function ($state, $rootScope) {
         link: function (scope) {
 
         	scope.additem = function () {
-        		scope.inventory.push({
+        		scope.inventory.items.push({
         			name: '',
         			description: '',
         			pagereference: '',
@@ -19,7 +19,7 @@ app.directive('inventory', function ($state, $rootScope) {
 
             scope.deleteitem = function (i) {
                 setTimeout(function(){
-                    scope.inventory.splice(scope.inventory.indexOf(i), 1)
+                    scope.inventory.items.splice(scope.inventory.items.indexOf(i), 1)
                     scope.$digest();
                 }, 0);
             }

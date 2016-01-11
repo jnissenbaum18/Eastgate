@@ -216,8 +216,27 @@ var schema = new mongoose.Schema({
     }],
     protectiveitems: [{
     }],
-    inventory: [{
-    }],
+    inventory: {
+        items: [{}],
+        money: {
+            pp: {
+                type: Number,
+                default: 0
+            },
+            gp: {
+                type: Number,
+                default: 0
+            },
+            sp: {
+                type: Number,
+                default: 0
+            },
+            cp: {
+                type: Number,
+                default: 0
+            }
+        }
+    },
     feats: [{
     }],
     specialabilities: [{

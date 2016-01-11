@@ -48,15 +48,25 @@
 
 	 <div class="row character-input">
 
-	 	<div class="input-field col s3">
-	 	 <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="addquality(attack)">Add Quality</button>
-	 	</div>
+	 	 <div class="input-field col s2">
+	 	  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="addquality(attack)">Add Quality</button>
+	 	 </div>
+
+	 	 <div class="input-field col s1">
+		  <label class="active calculated-value">Range</label>
+	 	  <input type="number" class="form-control" aria-describedby="character-{{attack.name}}-{{attack.range}}" ng-model="attack.range" ng-change="recalculate()">
+	 	 </div>
 
 	     <div class="input-field col s2">
 		  <label class="active calculated-value">Weapon Type</label>
 	 	  <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="attack.weapontype" ng-change="recalculate()">
 	       <option ng-repeat="(key, value) in weapontypes" value='{{value}}'><a href="#">{{key}}</a></option>
 	      </select>
+	 	 </div>
+
+	 	 <div class="input-field col s2">
+		  <label class="active calculated-value">Damage Type</label>
+	 	  <input type="text" class="form-control" aria-describedby="character-{{attack.name}}-{{attack.damagetype}}" ng-model="attack.damagetype" ng-change="recalculate()">
 	 	 </div>
 
 	 	 <div class="input-field col s2">

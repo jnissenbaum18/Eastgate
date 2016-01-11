@@ -1,8 +1,37 @@
 <div id="Inventory" class="bg-primary section">
 
+	<div class="row character-input">
+
+		<div class="input-field col s3">
+		  <label class="active calculated-value">Money (GP)</label>
+	 	  <input disabled type="number" class="form-control blue-grey darken-3" aria-describedby="character-pp" ng-model="inventory.money.total" ng-change="recalculate()">
+		</div>
+
+ 		<div class="input-field col s2">
+		  <label class="active">PP</label>
+	 	  <input type="number" class="form-control" aria-describedby="character-pp" ng-model="inventory.money.pp" ng-change="recalculate()">
+		</div>
+
+		<div class="input-field col s2">
+		  <label class="active">GP</label>
+	 	  <input type="number" class="form-control" aria-describedby="character-pp" ng-model="inventory.money.gp" ng-change="recalculate()">
+		</div>
+
+		<div class="input-field col s2">
+		  <label class="active">SP</label>
+	 	  <input type="number" class="form-control" aria-describedby="character-pp" ng-model="inventory.money.sp" ng-change="recalculate()">
+		</div>
+
+		<div class="input-field col s2">
+		  <label class="active">CP</label>
+	 	  <input type="number" class="form-control" aria-describedby="character-pp" ng-model="inventory.money.cp" ng-change="recalculate()">
+		</div>
+
+ 	</div>
+
 	<button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="additem()">Add Item</button>
 
-	<div class="row character-input" ng-repeat="item in inventory">
+	<div class="row character-input" ng-repeat="item in inventory.items">
 
 		<div class="row character-input">
 
@@ -42,4 +71,5 @@
 		</div>
 
  	</div>
+ 	
 </div>

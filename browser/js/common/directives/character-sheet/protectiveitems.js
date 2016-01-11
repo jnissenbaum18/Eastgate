@@ -17,6 +17,8 @@ app.directive('protectiveitems', function ($state, $rootScope) {
                     masterwork: false,
                     maximumdexterity: 0,
                     armorcheckpenalty: 0,
+                    spellfailure: '',
+                    speed: 0,
                     totalarmorcheckpenalty: 0,
                     weight: 0,
                     specialqualities: []

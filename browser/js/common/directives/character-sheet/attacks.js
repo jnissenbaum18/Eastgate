@@ -31,6 +31,8 @@ app.directive('attacks', function ($state, $rootScope) {
                     critical: '',
                     attackbonus: 0,
                     weapontype: 0,
+                    damagetype: '',
+                    range: 0, 
                     masterwork: false,
                     modifier: 0,
                     specialqualities: []

@@ -53,6 +53,16 @@
 	 	 </div>
 
 	 	 <div class="input-field col s2">
+		  <label class="active">Spell Failure</label>
+		  <input type="text" class="form-control" aria-describedby="character-{{item.name}}-{{item.spellfailure}}" ng-model="item.spellfailure" ng-change="recalculate()">
+	 	 </div>
+
+	 	 <div class="input-field col s1">
+		  <label class="active">Speed</label>
+		  <input type="number" class="form-control" aria-describedby="character-{{item.name}}-{{item.speed}}" ng-model="item.speed" ng-change="recalculate()">
+	 	 </div>
+
+	 	 <div class="input-field col s2">
 		  <label class="active">Masterwork</label>
 		  <input type="checkbox" aria-describedby="character-{{item.name}}-{{item.masterwork}}" ng-model="item.masterwork" ng-change="recalculate()" bs-switch/>
 	 	 </div>
@@ -61,7 +71,7 @@
 
 		<div class="row character-input">
 
-		 <div class="input-field col s4">
+		 <div class="input-field col s5">
 		  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deleteitem(item)">Delete Protective Item</button>
 		 </div>
 

@@ -154,6 +154,21 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                 }
             }
 
+            var moneytotal = 0
+
+            for (var money in $scope.inventory.money) {
+                if (money === 'pp') {
+                    moneytotal += $scope.inventory.money['pp'] * 10
+                } else if (money === 'gp') {
+                    moneytotal += $scope.inventory.money['gp'] 
+                } else if (money === 'sp') {
+                    moneytotal += $scope.inventory.money['sp'] / 10
+                } else if (money === 'cp') {
+                    moneytotal += $scope.inventory.money['cp'] / 100
+                }
+            }
+
+            $scope.inventory.money.total = moneytotal
 
             $scope.skills.sort(function (a,b) {
                 if(a.name < b.name) return -1;
