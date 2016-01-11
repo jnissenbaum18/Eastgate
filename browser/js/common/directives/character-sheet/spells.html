@@ -106,12 +106,17 @@
 				<button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deletespell(spell, spellLevel)">Delete Spell</button>
 			</div>
 
-			<div class="input-field col s3">
+			<div class="input-field col s2">
 				<label class="active">Name</label>
-	 	 		<input type="text" class="form-control" aria-describedby="character-{{spell.name}}" ng-model="spell.name" ng-change="recalculate()">
+	 	 		<input type="text" class="form-control" style="font-size: 12px;" aria-describedby="character-{{spell.name}}" ng-model="spell.name" ng-change="recalculate()">
 			</div>
 
-			<div class="input-field col s5">
+			<div class="input-field col s2">
+				<label class="active">Prepared</label>
+	 	 		<input type="text" class="form-control" aria-describedby="character-{{spell.prepared}}" ng-model="spell.prepared" ng-change="recalculate()">
+			</div>
+
+			<div class="input-field col s4">
 				<label class="active">Description</label>
 		 	 	<textarea type="text" class="form-control" aria-describedby="character-{{spell.name}}-description" ng-model="spell.description" ng-change="recalculate()">
 		 	</div>

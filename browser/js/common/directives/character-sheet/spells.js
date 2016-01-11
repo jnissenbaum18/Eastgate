@@ -9,6 +9,7 @@ app.directive('spells', function ($state, $rootScope) {
         	scope.addspell = function (spellLevel) {
                 scope.spells.level[spellLevel].push({
         			name: '',
+                    prepared: 0,
         			description: ''
         		})
         	}
