@@ -14,6 +14,10 @@ app.config(function ($stateProvider) {
 
 app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, character, CharacterSheetFactory, $rootScope) {
 
+        if (!character) {
+            $state.go('characters')
+        }
+
         console.log(character)
         $scope.character = character
         $scope.abilityscores = $scope.character.abilityscores
@@ -36,9 +40,10 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
 
         $scope.deleteCharacter = function () {
             CharacterSheetFactory.deleteCharacter($scope.character._id).then(function () {
-                $state.go('characters')
+                $scope.$emit('updateCharacters') 
+                return
             }).then(function () {
-                $scope.$digest()
+                $state.go('characters')
             })
         }
 
@@ -72,7 +77,6 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                 if (!!sizemodifier !== false) {
                     atkbonus += sizemodifier
                 }
-                console.log(attack.weapontype)
                 if (Number(attack.weapontype) === 3) {
                     atkbonus += $scope.abilitymodifiers.dexterity
                 } else {
@@ -238,7 +242,6 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
         calculateSheet()
 
         $scope.$on('recalculate', function () {
-            console.log('Recalculate Sheet')
             calculateSheet()
         })
 

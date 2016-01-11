@@ -94,14 +94,18 @@ app.directive('dieroller', function ($state, $rootScope) {
                         scope.results.push(roll + scope.skills[subtype].skillmodifier)
                         console.log('Base Roll: ', roll)
                     }; 
+                } else if (type === "Initiative") {
+                    roll = Math.floor(Math.random()*(20)+1)
+                    scope.results.push(roll + scope.calculatedcombatstats.initiative)
+                    console.log('Base Roll: ', roll)
                 }
 
                 for (var i = scope.results.length - 1; i >= 0; i--) {
                     scope.total += scope.results[i]
-                    if (!scope.results[i]) {
-                        console.log('here')
-                        scope.results = 'You forgot something'
-                        scope.total = "The right action dropdown?"
+                    if (scope.results[i].length < 1) {
+                        console.log('roll error')
+                        scope.results = 'Did you forget'
+                        scope.total = "something?"
                         break
                     }
                 };
@@ -117,7 +121,8 @@ app.directive('dieroller', function ($state, $rootScope) {
                 "Saving Throw": "Saving Throw",
                 "Attack Roll": "Attack Roll",
                 "Damage Roll": "Damage Roll",
-                "Skill Check": "Skill Check"
+                "Skill Check": "Skill Check",
+                "Initiative": "Initiative"
             }
 
             scope.subactions = {}
@@ -143,9 +148,11 @@ app.directive('dieroller', function ($state, $rootScope) {
                         scope.subactions[i] = scope.attacks[i].name
                     };
                 } else if (menutype === "Skill Check") {
-                    for (var skill in scope.skills) {
-                        scope.subactions[skill] = skill
-                    }
+                    for (var i = scope.skills.length - 1; i >= 0; i--) {
+                        scope.subactions[i] = scope.skills[i].name
+                    };
+                } else if (menutype === "Initiative") {
+                    scope.subactions[0] = 'N/A'
                 }
 
                 for (var subaction in scope.subactions) {

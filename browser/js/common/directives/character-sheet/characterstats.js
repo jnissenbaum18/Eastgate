@@ -29,7 +29,6 @@ app.directive('characterstats', function ($state, $rootScope) {
                 }
 
                 scope.characterstats.classarray.push(cls)
-                console.log('here', scope.characterstats.classarray)
             }
 
             scope.deleteclass = function (i) {

@@ -854,16 +854,33 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         $scope.currentCharacter = character.characterstats.name
         $state.go('characters.characterSheet', {charactername: character.characterstats.name, characterid: character._id});
     };
+
+    $scope.updateCharacters = function () {
+        CharacterSheetFactory.getCharacters(user._id)
+        .then(function (characters) {
+            $scope.characters = characters
+        })
+
+    }
     
     $scope.submitCharacter = function (newCharacter) {
         CharacterSheetFactory.submitNewCharacter(newCharacter, user._id).then(function (savedCharacter) {
             $state.reload();
             return savedCharacter
         }).then(function (savedCharacter) {
+            $scope.updateCharacters();
+            return savedCharacter
+        }).then(function (savedCharacter) {
             $scope.goToCharacter(savedCharacter)
+            return
         })
         .catch(function(e) {console.log(e);});
     }
+
+    $scope.$on('updateCharacters', function () {
+        $scope.updateCharacters()
+        $scope.currentCharacter = ''
+    })
 
 
 });

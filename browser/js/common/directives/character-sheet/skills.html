@@ -82,7 +82,9 @@
 
  	<div class="row character-input">
 
-	 	 <div class="input-field col s2">
+ 		<div class="row character-input">
+
+	 	 <div class="input-field col s3">
 	 	  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="addskill()">Add Skill</button>
 	 	 </div>	
  	 
@@ -98,21 +100,25 @@
 	      </select>
 		 </div>
 
-	 	 <div class="input-field col s2">
+		</div>
+		<div class="row character-input">
+
+	 	 <div class="input-field col s3">
 	 	  <label class="active">Trained Only</label>
 	 	  <input type="checkbox" aria-describedby="newskill-trainedonly" ng-model="newskill.trainedonly" ng-change="recalculate()" bs-switch/>
 	 	 </div>
 
-	 	 <div class="input-field col s2">
+	 	 <div class="input-field col s3">
 	 	  <label class="active">Armor Check Penalty</label>
 	 	  <input type="checkbox" aria-describedby="newskill-armorcheckpenalty" ng-model="newskill.armorcheckpenalty" ng-change="recalculate()" bs-switch/>
 	 	 </div>
+	 	</div>
 
  	</div>
 
  	<div class="row character-input">
 
-	 	<div class="input-field col s3">
+	 	<div class="input-field col s4">
 	 	 <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="removeskill(rmskill)">Remove Skill</button>
 	 	</div>	
 
