@@ -18,8 +18,6 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('CharactersCtrl', function ($scope, AuthService, characters, user, $state, CharacterSheetFactory, $rootScope) {
-    
-    var initialskills = 
 
     $scope.characters = characters
     $scope.newCharacter = {
@@ -846,6 +844,17 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         .catch(function(e) {console.log(e);});
     }
 
+    $scope.deleteCurrentCharacter = function () {
+        if ($rootScope.character) {
+            CharacterSheetFactory.deleteCharacter($rootScope.character._id).then(function () {
+                $scope.$emit('updateCharacters') 
+                return
+            }).then(function () {
+                $state.go('characters')
+            })
+        }
+    }
+
     $scope.setCharacter = function (character) {
         $scope.currentCharacter = character
     }
@@ -861,6 +870,10 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
             $scope.characters = characters
         })
 
+    }
+
+    $scope.saveCharacter = function () {
+        CharacterSheetFactory.saveCharacter($rootScope.character);
     }
     
     $scope.submitCharacter = function (newCharacter) {

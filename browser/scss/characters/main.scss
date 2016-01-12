@@ -1,5 +1,7 @@
 #characters {
 
+  background-color: #263238;
+
 	/* label color */
    .input-field label {
      color: #FFFF00;
@@ -43,8 +45,9 @@
 
 	.section {
       background-color: #37474F;
-      border-radius: 25px;
-      padding: 3%;
+      border-radius: 5px;
+      padding-left: 5%;
+      padding-right: 5%;
 	}
 
 	ul {

@@ -1,11 +1,11 @@
 <div id="attacks" class="bg-primary section">
 
-	<button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="addattack()">Add Attack</button>
+	<button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="addattack()">Add Attack</button>
 
 	<div class="row character-input" ng-repeat="attack in attacks">
 
 	 <div class="row character-input">
-	  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deleteattack(attack)">Delete Attack</button>
+	  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="deleteattack(attack)">Delete Attack</button>
 
 	 </div>
 
@@ -49,7 +49,7 @@
 	 <div class="row character-input">
 
 	 	 <div class="input-field col s2">
-	 	  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="addquality(attack)">Add Quality</button>
+	 	  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="addquality(attack)">Add Quality</button>
 	 	 </div>
 
 	 	 <div class="input-field col s1">
@@ -84,7 +84,7 @@
  	 <div class="row character-input" ng-repeat="quality in attack.specialqualities track by $index">
 
  	  <div class="input-field col s3">	
-	   <button type="button" class="btn btn-default yellow-text accent-1-text blue-grey darken-2 z-depth-3" ng-click="deletequality(attack, quality)">Delete Quality</button>
+	   <button type="button" class="btn btn-default yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="deletequality(attack, quality)">Delete Quality</button>
 	  </div>
 
 	  <div class="input-field col s2">

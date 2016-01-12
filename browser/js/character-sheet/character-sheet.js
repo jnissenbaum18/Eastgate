@@ -34,23 +34,6 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
         $scope.spells = $scope.character.spells
         $scope.notes = $scope.character.notes
 
-        $scope.saveCharacter = function () {
-            CharacterSheetFactory.saveCharacter($scope.character);
-        }
-
-        $scope.deleteCharacter = function () {
-            CharacterSheetFactory.deleteCharacter($scope.character._id).then(function () {
-                $scope.$emit('updateCharacters') 
-                return
-            }).then(function () {
-                $state.go('characters')
-            })
-        }
-
-        $scope.log = function () {
-            console.log($scope.character)
-        }
-
         function calculateSheet () {
 
             var sizemodifier = Number($scope.characterstats.charactersize)
@@ -242,6 +225,7 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
         calculateSheet()
 
         $scope.$on('recalculate', function () {
+            $rootScope.character = $scope.character
             calculateSheet()
         })
 
