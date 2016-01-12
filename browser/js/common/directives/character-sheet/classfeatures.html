@@ -4,16 +4,16 @@
 
 	<div class="row character-input" ng-repeat="feature in classfeatures">
 		
-	 <div class="input-field col s3">
+	 <div class="input-field col s5 l3">
 	  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="deletefeature(feature)">Delete Feature</button>
 	 </div>
 
-	 <div class="input-field col s3">
+	 <div class="input-field col s5 l3">
 	  <label class="active">Name</label>
  	  <input type="text" class="form-control" aria-describedby="character-{{feature.name}}" ng-model="feature.name" ng-change="recalculate()">
 	 </div>
 
-	 <div class="input-field col s5">
+	 <div class="input-field col s8 l5">
 	  <label class="active">Description</label>
  	  <textarea type="text" class="form-control" aria-describedby="character-{{feature.name}}-description" ng-model="feature.description" ng-change="recalculate()">
  	 </div>

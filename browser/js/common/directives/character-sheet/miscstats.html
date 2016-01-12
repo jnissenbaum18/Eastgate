@@ -2,20 +2,20 @@
 
 	<div class="row character-input">
 
-		<div class="input-field col s2">
+		<div class="input-field col s5 l2">
 		 <label class="active">Reigon of Origin</label>
  	 	 <input type="text" class="form-control" aria-describedby="character-reigonoforigin" ng-model="miscstats.reigonoforigin" ng-change="recalculate()">
 		</div>
 
-		<div class="input-field col s3">
+		<div class="input-field col s5 l3">
 		 <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="addlanguage()">Add Language</button>
 		</div>
 
-		<div class="input-field col s3">
+		<div class="input-field col s5 l3">
 		 <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="addaffiliationorenemy()">Add Affiliation</button>
 		</div>
 
-		<div class="input-field col s3">	
+		<div class="input-field col s5 l3">	
 		 <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="addracialtrait()">Add Racial Trait</button>
 		</div>
 
@@ -23,12 +23,12 @@
 
  	<div class="row character-input" ng-repeat="language in miscstats.languages">
 
- 		<div class="input-field col s4">
+ 		<div class="input-field col s6 l4">
 			<button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="deletelanguage(language)">Delete Language</button>
  		</div>
 
 
-		<div class="input-field col s3">
+		<div class="input-field col s5 l3">
 	 		<label class="active">Name</label>
  	 		<input type="text" class="form-control" aria-describedby="character-{{language.name}}" ng-model="language.name" ng-change="recalculate()">
 		</div>
@@ -37,11 +37,11 @@
 
 	<div class="row character-input" ng-repeat="affiliation in miscstats.affiliationsandenemies">
 
-		<div class="input-field col s4">
+		<div class="input-field col s6 l4">
 			<button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="deleteaffiliation(affiliation)">Delete Affiliation</button>
 		</div>
 
-		<div class="input-field col s3">
+		<div class="input-field col s5 l3">
 	 		<label class="active">Name</label>
  	 		<input type="text" class="form-control" aria-describedby="character-{{affiliation.name}}" ng-model="affiliation.name" ng-change="recalculate()">
 		</div>
@@ -50,16 +50,16 @@
 
  	<div class="row character-input" ng-repeat="trait in miscstats.racialtraits">
 
-		<div class="input-field col s3">
+		<div class="input-field col s5 l3">
 			<button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="deletetrait(trait)">Delete Trait</button>
 		</div>
 
-		<div class="input-field col s3">
+		<div class="input-field col s5 l3">
 	 		<label class="active">Name</label>
  	 		<input type="text" class="form-control" aria-describedby="character-{{trait.name}}" ng-model="trait.name" ng-change="recalculate()">
 		</div>
 
-		<div class="input-field col s5">
+		<div class="input-field col s8 l5">
 	 		<label class="active">Description</label>
  	 		<textarea type="text" class="form-control" aria-describedby="character-{{trait.name}}-description" ng-model="trait.description" ng-change="recalculate()">
  		</div>

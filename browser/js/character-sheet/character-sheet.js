@@ -224,8 +224,11 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
 
         calculateSheet()
 
+        $rootScope.character = $scope.character
+
+        $scope.$emit('setCharacter') 
+
         $scope.$on('recalculate', function () {
-            $rootScope.character = $scope.character
             calculateSheet()
         })
 

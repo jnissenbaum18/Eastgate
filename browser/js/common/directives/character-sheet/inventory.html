@@ -2,27 +2,27 @@
 
 	<div class="row character-input">
 
-		<div class="input-field col s3">
+		<div class="input-field col s12 l3">
 		  <label class="active calculated-value">Money (GP)</label>
 	 	  <input disabled type="number" class="form-control blue-grey darken-3" aria-describedby="character-pp" ng-model="inventory.money.total" ng-change="recalculate()">
 		</div>
 
- 		<div class="input-field col s2">
+ 		<div class="input-field col s3 l2">
 		  <label class="active">PP</label>
 	 	  <input type="number" class="form-control" aria-describedby="character-pp" ng-model="inventory.money.pp" ng-change="recalculate()">
 		</div>
 
-		<div class="input-field col s2">
+		<div class="input-field col s3 l2">
 		  <label class="active">GP</label>
 	 	  <input type="number" class="form-control" aria-describedby="character-pp" ng-model="inventory.money.gp" ng-change="recalculate()">
 		</div>
 
-		<div class="input-field col s2">
+		<div class="input-field col s3 l2">
 		  <label class="active">SP</label>
 	 	  <input type="number" class="form-control" aria-describedby="character-pp" ng-model="inventory.money.sp" ng-change="recalculate()">
 		</div>
 
-		<div class="input-field col s2">
+		<div class="input-field col s3 l2">
 		  <label class="active">CP</label>
 	 	  <input type="number" class="form-control" aria-describedby="character-pp" ng-model="inventory.money.cp" ng-change="recalculate()">
 		</div>
@@ -35,22 +35,22 @@
 
 		<div class="row character-input">
 
-		 <div class="input-field col s3">
+		 <div class="input-field col s4 l3">
 		  <label class="active">Name</label>
 	 	  <input type="text" class="form-control" aria-describedby="character-{{item.name}}" ng-model="item.name" ng-change="recalculate()">
 		 </div>
 
-	 	 <div class="input-field col s2">
+	 	 <div class="input-field col s2 l2">
 		  <label class="active">Quantity</label>
 	 	  <input type="number" class="form-control" aria-describedby="character-{{item.name}}-quantity" ng-model="item.quantity" ng-change="recalculate()">
 	 	 </div>
 
-	 	 <div class="input-field col s2">
+	 	 <div class="input-field col s2 l2">
 		  <label class="active">Page Ref</label>
 	 	  <input type="text" class="form-control" aria-describedby="character-{{item.name}}-page-reference" ng-model="item.pagereference" ng-change="recalculate()">
 	 	 </div>
 
-	 	 <div class="input-field col s2">
+	 	 <div class="input-field col s2 l2">
 		  <label class="active">Weight</label>
 	 	  <input type="number" class="form-control" aria-describedby="character-{{item.name}}-weight" ng-model="item.weight" ng-change="recalculate()">
 	 	 </div>
@@ -59,11 +59,11 @@
 
 		<div class="row character-input">
 
-		 <div class="input-field col s3">
+		 <div class="input-field col s5 l3">
 		  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="deleteitem(item)">Delete Item</button>
 		 </div>
 
-		 <div class="input-field col s6">
+		 <div class="input-field col s6 l6">
 		  <label class="active">Description</label>
 	 	  <textarea type="text" class="form-control" aria-describedby="character-{{item.name}}-description" ng-model="item.description" ng-change="recalculate()">
 	 	 </div>

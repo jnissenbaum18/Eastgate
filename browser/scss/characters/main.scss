@@ -1,19 +1,17 @@
 #characters {
 
-  background-color: #263238;
-
-	/* label color */
+  /* label color */
    .input-field label {
-     color: #FFFF00;
+     color: #E17F00;
    }
    /* label focus color */
    .input-field input[type=text]:focus + label {
-     color: #00b0ff;
+     color: #FFFF00;
    }
    /* label underline focus color */
    .input-field input[type=text]:focus {
      border-bottom: 1px solid #FFFF00;
-     box-shadow: 0 1px 0 0 #fff176;
+     box-shadow: 0 1px 0 0 #FFFF00;
    }
    /* valid color */
    .input-field input[type=text].valid {
@@ -30,6 +28,8 @@
      color: #000;
    }
 
+  background-color: #263238;
+
     label {
         font-size: 12px;
     }
@@ -40,7 +40,7 @@
 
 	h1 {
 		background-color: #37474F;
-		color: #FFFF00;
+		color: #2196F3;
 	}
 
 	.section {
@@ -53,4 +53,8 @@
 	ul {
 		background-color: #37474F;
 	}
+
+  .modal-content {
+    background-color: #37474F;
+  }
 }

@@ -838,29 +838,29 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
     }
 
     $scope.deleteCharacter = function (characterId) {
-        CharacterSheetFactory.deleteCharacter(characterId).then(function (result) {
-            $state.reload();
-        })
-        .catch(function(e) {console.log(e);});
-    }
-
-    $scope.deleteCurrentCharacter = function () {
-        if ($rootScope.character) {
+        if ($rootScope.character && !characterId) {
+            // Delete current character loaded into character-sheet
             CharacterSheetFactory.deleteCharacter($rootScope.character._id).then(function () {
                 $scope.$emit('updateCharacters') 
                 return
             }).then(function () {
                 $state.go('characters')
             })
+        } else if (characterId) {
+            // Delete character selected from the characters dropdown. Unused at the moment. 
+            CharacterSheetFactory.deleteCharacter(characterId).then(function (result) {
+                $state.reload();
+            })
+            .catch(function(e) {console.log(e);});
         }
     }
 
     $scope.setCharacter = function (character) {
-        $scope.currentCharacter = character
+        $scope.currentCharacter = character.characterstats.name
     }
 
     $scope.goToCharacter = function (character) {
-        $scope.currentCharacter = character.characterstats.name
+        $scope.setCharacter(character)
         $state.go('characters.characterSheet', {charactername: character.characterstats.name, characterid: character._id});
     };
 
@@ -894,6 +894,15 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         $scope.updateCharacters()
         $scope.currentCharacter = ''
     })
+
+    $scope.$on('setCharacter', function () {
+        $scope.setCharacter($rootScope.character)
+    })
+
+    $(document).ready(function(){
+        // modal initialization
+        $('.modal-trigger').leanModal();
+    });
 
 
 });

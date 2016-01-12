@@ -84,16 +84,16 @@
 
  		<div class="row character-input">
 
-	 	 <div class="input-field col s3">
+	 	 <div class="input-field col s4 l3">
 	 	  <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="addskill()">Add Skill</button>
 	 	 </div>	
  	 
-	 	 <div class="input-field col s3">
+	 	 <div class="input-field col s3 l3">
 	 	  <label class="active">Name</label>
 	 	  <input type="text" class="form-control" aria-describedby="character-newskill-name" ng-model="newskill.name" ng-change="recalculate()">
 	 	 </div>
 
-	 	 <div class="input-field col s3">
+	 	 <div class="input-field col s3 l3">
 	 	  <label class="active">Modifier</label>
 		  <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="newskill.modifier" ng-change="recalculate()">
 	       <option ng-repeat="(key, value) in modifiers" value='{{value}}'><a href="#">{{key}}</a></option>
@@ -103,12 +103,12 @@
 		</div>
 		<div class="row character-input">
 
-	 	 <div class="input-field col s3">
+	 	 <div class="input-field col s4 l3">
 	 	  <label class="active">Trained Only</label>
 	 	  <input type="checkbox" aria-describedby="newskill-trainedonly" ng-model="newskill.trainedonly" ng-change="recalculate()" bs-switch/>
 	 	 </div>
 
-	 	 <div class="input-field col s3">
+	 	 <div class="input-field col s3 l3">
 	 	  <label class="active">Armor Check Penalty</label>
 	 	  <input type="checkbox" aria-describedby="newskill-armorcheckpenalty" ng-model="newskill.armorcheckpenalty" ng-change="recalculate()" bs-switch/>
 	 	 </div>
@@ -118,11 +118,11 @@
 
  	<div class="row character-input">
 
-	 	<div class="input-field col s4">
+	 	<div class="input-field col s5 l4">
 	 	 <button type="button" class="waves-effect waves-light btn yellow-text accent-1-text blue-grey darken-2 z-depth-1" ng-click="removeskill(rmskill)">Remove Skill</button>
 	 	</div>	
 
-	 	<div class="input-field col s3">
+	 	<div class="input-field col s4 l4">
 	 	 <label class="active">Skill</label>
 		  <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="rmskill" ng-change="recalculate()">
 	       <option ng-repeat="skill in skills" value='{{$index}}'><a href="#">{{skill.name}}</a></option>

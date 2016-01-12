@@ -1,33 +1,5 @@
 #characterSheet {
 
-  /* label color */
-   .input-field label {
-     color: #FFFF00;
-   }
-   /* label focus color */
-   .input-field input[type=text]:focus + label {
-     color: #00b0ff;
-   }
-   /* label underline focus color */
-   .input-field input[type=text]:focus {
-     border-bottom: 1px solid #FFFF00;
-     box-shadow: 0 1px 0 0 #fff176;
-   }
-   /* valid color */
-   .input-field input[type=text].valid {
-     border-bottom: 1px solid #000;
-     box-shadow: 0 1px 0 0 #000;
-   }
-   /* invalid color */
-   .input-field input[type=text].invalid {
-     border-bottom: 1px solid #000;
-     box-shadow: 0 1px 0 0 #000;
-   }
-   /* icon prefix focus color */
-   .input-field .prefix.active {
-     color: #000;
-   }
-
 	h1 {
     padding-left: 100px;
     padding-right: 100px;
@@ -53,8 +25,6 @@
       background-image: linear-gradient(to right, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.10));
     }  
 
-    
-
 		.section {
       background-color: #37474F;
       border-radius: 5px;
@@ -67,6 +37,11 @@
     #skills {
       height: 1400px;
       overflow-y: auto;
+      @media (max-width: 500px) {
+        height: 300px;
+        overflow-y: auto;
+      }
+
     }
 
     .character-input {
@@ -79,6 +54,7 @@
 
         .calculated-value {
             font-size: 16px;
+            color: #FFFF00;
           }
         
         input {
@@ -87,6 +63,11 @@
 
         h3 {
           color: #FFFF00;
+        }
+
+        @media (max-width: 500px) {
+          padding-left: 15px;
+          padding-right: 15px;
         }
 
       }
