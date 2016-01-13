@@ -6,7 +6,14 @@ app.config(function ($stateProvider) {
         controller: 'CharacterSheetCtrl',
         resolve: {
             character: function ($stateParams, CharacterSheetFactory) {
+                $('#load-icon').removeClass("inactive");
+                $('#load-icon').addClass("active");
                 return CharacterSheetFactory.getCurrentCharacter($stateParams.characterid)
+                .then(function (character) {
+                    $('#load-icon').removeClass("active");
+                    $('#load-icon').addClass("inactive");
+                    return character
+                })
             }
         }
     });
