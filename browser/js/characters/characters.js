@@ -877,6 +877,12 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
     }
     
     $scope.submitCharacter = function (newCharacter) {
+
+        $('#character-submit-button').attr("disabled", true);
+
+        $('#load-icon').removeClass("inactive");
+        $('#load-icon').addClass("active");
+
         CharacterSheetFactory.submitNewCharacter(newCharacter, user._id).then(function (savedCharacter) {
             $state.reload();
             return savedCharacter
@@ -884,6 +890,9 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
             $scope.updateCharacters();
             return savedCharacter
         }).then(function (savedCharacter) {
+            $('#load-icon').removeClass("active");
+            $('#load-icon').addClass("inactive");
+            $('#character-submit-button').removeAttr("disabled");
             $scope.goToCharacter(savedCharacter)
             return
         })
@@ -903,6 +912,5 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         // modal initialization
         $('.modal-trigger').leanModal();
     });
-
 
 });

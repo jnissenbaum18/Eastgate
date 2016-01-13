@@ -22,12 +22,12 @@
 	<div class="row character-input">
 
 		<div class="input-field col s6">
-		 <label class="active calculated-value">Number of Die</label>
+		 <label class="active">Number of Die</label>
 		 <input type="number" class="form-control blue-grey darken-3" ng-model="dienumber" ng-change="recalculate()">
 		</div>
 
 		<div class="input-field col s6">
-		 <label class="active calculated-value">Dietype</label>
+		 <label class="active">Dietype</label>
 		 <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="dietype" ng-change="recalculate(); setRollType('Normal')">
           <option ng-repeat="(key, value) in dietypes" value='{{value}}'><a href="#">{{key}}</a></option>
          </select>
@@ -38,14 +38,14 @@
 	<div class="row character-input">
 
 		<div class="input-field col s6">
-		 <label class="active calculated-value">Action Roll</label>
+		 <label class="active">Action Roll</label>
 		 <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="rolltype" ng-change="recalculate(); setSubActions(rolltype)">
       	  <option ng-repeat="(key, value) in actions" value='{{value}}'><a href="#">{{key}}</a></option>
       	 </select>
 		</div>
 
 		<div class="input-field col s6">
-		 <label class="active calculated-value">Subactions</label>
+		 <label class="active">Subactions</label>
 		 <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="rollsubtype" ng-change="recalculate()">
        	  <option ng-repeat="(key, value) in subactions" value='{{key}}'><a href="#">{{value}}</a></option>
       	 </select>
