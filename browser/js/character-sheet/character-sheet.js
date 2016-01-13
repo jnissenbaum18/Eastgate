@@ -96,9 +96,9 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
 
                 dmgbonus += attack.modifier
 
-                if (dmgbonus > 0) {
-                    dmgbonus = '+' + String(dmgbonus)
-                }
+                // if (dmgbonus > 0) {
+                //     dmgbonus = '+' + String(dmgbonus)
+                // }
 
                 attack.damagebonus = dmgbonus
                 return
@@ -128,7 +128,7 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
 
             for (var i = $scope.characterstats.classarray.length - 1; i >= 0; i--) {
                 totallevel += $scope.characterstats.classarray[i].level
-            };
+            }
 
             $scope.spells.savedcs = {}
             var relevantabilitymod = $scope.abilitymodifiers[$scope.spells.relevantability]
@@ -152,17 +152,17 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
 
             for (var money in $scope.inventory.money) {
                 if (money === 'pp') {
-                    moneytotal += $scope.inventory.money['pp'] * 10
+                    moneytotal += $scope.inventory.money.pp * 10
                 } else if (money === 'gp') {
-                    moneytotal += $scope.inventory.money['gp'] 
+                    moneytotal += $scope.inventory.money.gp
                 } else if (money === 'sp') {
-                    moneytotal += $scope.inventory.money['sp'] / 10
+                    moneytotal += $scope.inventory.money.sp / 10
                 } else if (money === 'cp') {
-                    moneytotal += $scope.inventory.money['cp'] / 100
+                    moneytotal += $scope.inventory.money.cp / 100
                 }
             }
 
-            $scope.inventory.money.total = moneytotal
+            $scope.inventory.money.total = (Math.floor(moneytotal * 1000) / 1000)
 
             $scope.skills.sort(function (a,b) {
                 if(a.name < b.name) return -1;
@@ -200,7 +200,7 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
 
                 currentskillpoints += $scope.skills[i].ranks
 
-            };
+            }
 
             $scope.calculatedskills = {
                 totalskillpoints: (totallevel + 3) * $scope.combatstats.skillpointsperlevel,

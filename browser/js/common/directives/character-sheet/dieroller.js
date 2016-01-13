@@ -38,6 +38,8 @@ app.directive('dieroller', function ($state, $rootScope) {
 
             scope.dietype = 0
 
+            scope.rolls = []
+
             scope.results = []
 
             scope.total = 0
@@ -50,64 +52,85 @@ app.directive('dieroller', function ($state, $rootScope) {
                 console.log(type)
 
                 if (max === 0 && type === '') {
-                    scope.results = 'You forgot something'
-                    scope.total = "Die type maybe?"
+                    scope.results = "Die type?"
+                    scope.total = 'Did you forget'
                     return
                 }
 
+                scope.rolls = []
                 scope.results = []
                 scope.total = 0
                 var roll = 0
                 if (type === "Normal") {
                     for (var i = number - 1; i >= 0; i--) {
                         roll = Math.floor(Math.random()*(max)+1)
+                        scope.rolls.push(roll)
                         scope.results.push(roll)
-                        console.log('Base Roll: ', roll)
-                    };   
+                    }   
                 } else if (type === "Ability Check") {
                     for (var i = number - 1; i >= 0; i--) {
                         roll = Math.floor(Math.random()*(20)+1)
+                        scope.rolls.push(roll)
                         scope.results.push(roll + scope.abilitymodifiers[subtype])
-                        console.log('Base Roll: ', roll)
-                    }; 
+                    } 
                 } else if (type === "Saving Throw") {
                     for (var i = number - 1; i >= 0; i--) {
                         roll = Math.floor(Math.random()*(20)+1)
+                        scope.rolls.push(roll)
                         scope.results.push(roll + scope.calculatedcombatstats[subtype])
-                        console.log('Base Roll: ', roll)
-                    }; 
+                    } 
                 } else if (type === "Attack Roll") {
                     for (var i = number - 1; i >= 0; i--) {
                         roll = Math.floor(Math.random()*(20)+1)
+                        scope.rolls.push(roll)
                         scope.results.push(roll + scope.attacks[subtype].attackbonus)
-                        console.log('Base Roll: ', roll)
-                    }; 
+                    } 
                 } else if (type === "Damage Roll") {
                     for (var i = (scope.attacks[subtype].damagenumber * number) - 1; i >= 0; i--) {
                         roll = Math.floor(Math.random()*(Number(scope.attacks[subtype].damagedie))+1)
+                        scope.rolls.push(roll)
                         scope.results.push(roll + scope.attacks[subtype].damagebonus)
-                        console.log('Base Roll: ', roll)
-                    }; 
+                    } 
+                } else if (type === "Full Attack") {
+                    for (var i = 0; i <= scope.combatstats.baseattackbonus; i += 5) {
+                        var roll = Math.floor(Math.random()*(20)+1)
+                        scope.rolls.push(roll)
+                        scope.results.push(roll + scope.attacks[subtype].attackbonus - i)
+                    }
                 } else if (type === "Skill Check") {
                     for (var i = number - 1; i >= 0; i--) {
                         roll = Math.floor(Math.random()*(20)+1)
+                        scope.rolls.push(roll)
                         scope.results.push(roll + scope.skills[subtype].skillmodifier)
-                        console.log('Base Roll: ', roll)
-                    }; 
+                    } 
                 } else if (type === "Initiative") {
                     roll = Math.floor(Math.random()*(20)+1)
+                    scope.rolls.push(roll)
                     scope.results.push(roll + scope.calculatedcombatstats.initiative)
-                    console.log('Base Roll: ', roll)
                 }
 
                 for (var i = scope.results.length - 1; i >= 0; i--) {
-                    scope.total += scope.results[i]
+                    if (type === "Normal" || type === "Damage Roll") {
+                        scope.total += scope.results[i]
+                    } else {
+                        
+                    }
                     if (scope.results[i].length < 1) {
                         console.log('roll error')
-                        scope.results = 'Did you forget'
-                        scope.total = "something?"
+                        scope.results = "something?"
+                        scope.total = 'Did you forget'
                         break
                     }
+                }
+
+                for (var i = scope.rolls.length - 1; i >= 0; i--) {
+
+                    if (scope.rolls[i] === 20) {
+                        Materialize.toast('Critical Success!', 5000, 'toast, success')
+                    } else if (scope.rolls[i] === 1) {
+                        Materialize.toast('Critical Failure :(', 5000, 'toast, failure')
+                    }
+
                 };
 
             }
@@ -121,6 +144,7 @@ app.directive('dieroller', function ($state, $rootScope) {
                 "Saving Throw": "Saving Throw",
                 "Attack Roll": "Attack Roll",
                 "Damage Roll": "Damage Roll",
+                "Full Attack": "Full Attack",
                 "Skill Check": "Skill Check",
                 "Initiative": "Initiative"
             }
@@ -142,15 +166,19 @@ app.directive('dieroller', function ($state, $rootScope) {
                 } else if (menutype === "Attack Roll") {
                     for (var i = scope.attacks.length - 1; i >= 0; i--) {
                         scope.subactions[i] = scope.attacks[i].name
-                    };
+                    }
                 } else if (menutype === "Damage Roll") {
                     for (var i = scope.attacks.length - 1; i >= 0; i--) {
                         scope.subactions[i] = scope.attacks[i].name
-                    };
+                    }
+                } else if (menutype === "Full Attack") {
+                    for (var i = scope.attacks.length - 1; i >= 0; i--) {
+                        scope.subactions[i] = scope.attacks[i].name
+                    }
                 } else if (menutype === "Skill Check") {
                     for (var i = scope.skills.length - 1; i >= 0; i--) {
                         scope.subactions[i] = scope.skills[i].name
-                    };
+                    }
                 } else if (menutype === "Initiative") {
                     scope.subactions[0] = 'N/A'
                 }
@@ -158,7 +186,6 @@ app.directive('dieroller', function ($state, $rootScope) {
                 for (var subaction in scope.subactions) {
                     scope.subactions[subaction] = toTitleCase(scope.subactions[subaction])
                 }
-                console.log(scope.subactions)
             }
 
             // ability check, saving throw, grapple, attack roll, damage roll, skill check

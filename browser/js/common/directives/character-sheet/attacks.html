@@ -18,7 +18,7 @@
 
 	  <div class="input-field col s6 l1">
  	   <label class="active calculated-value">Attack Bonus</label>
- 	   <input disabled type="text" class="form-control blue-grey darken-3" ng-model="attackbonus" ng-change="recalculate()">
+ 	   <input disabled type="text" class="form-control blue-grey darken-3" ng-model="attack.attackbonus" ng-change="recalculate()">
  	  </div>
 
  	  <div class="input-field col s3 l1">
@@ -63,7 +63,7 @@
 	 	 </div>
 
 	     <div class="input-field col s3 l2">
-		  <label class="active">Weapon Type</label>
+		  <label class="active">Wield Type</label>
 	 	  <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="attack.weapontype" ng-change="recalculate()">
 	       <option ng-repeat="(key, value) in weapontypes" value='{{value}}'><a href="#">{{key}}</a></option>
 	      </select>

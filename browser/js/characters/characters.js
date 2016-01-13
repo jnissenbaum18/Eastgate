@@ -846,6 +846,7 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
             }).then(function () {
                 $state.go('characters')
             })
+            .catch(function(e) {console.log(e);});
         } else if (characterId) {
             // Delete character selected from the characters dropdown. Unused at the moment. 
             CharacterSheetFactory.deleteCharacter(characterId).then(function (result) {
@@ -861,7 +862,8 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
 
     $scope.goToCharacter = function (character) {
         $scope.setCharacter(character)
-        $state.go('characters.characterSheet', {charactername: character.characterstats.name, characterid: character._id});
+        $state.go('characters.characterSheet', {charactername: character.characterstats.name, characterid: character._id})
+        .catch(function(e) {console.log(e);});
     };
 
     $scope.updateCharacters = function () {
@@ -869,11 +871,20 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         .then(function (characters) {
             $scope.characters = characters
         })
+        .catch(function(e) {console.log(e);});
 
     }
 
     $scope.saveCharacter = function () {
-        CharacterSheetFactory.saveCharacter($rootScope.character);
+        $('#load-icon').removeClass("inactive");
+        $('#load-icon').addClass("active");
+        CharacterSheetFactory.saveCharacter($rootScope.character)
+        .then(function () {
+            $('#load-icon').removeClass("active");
+            $('#load-icon').addClass("inactive");
+            return
+        })
+        .catch(function(e) {console.log(e);});
     }
     
     $scope.submitCharacter = function (newCharacter) {
