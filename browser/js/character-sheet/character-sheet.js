@@ -28,18 +28,18 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
         console.log(character)
         $scope.character = character
         $scope.abilityscores = $scope.character.abilityscores
-        $scope.combatstats = $scope.character.combatstats
-        $scope.characterstats = $scope.character.characterstats
         $scope.attacks = $scope.character.attacks
-        $scope.protectiveitems = $scope.character.protectiveitems
+        $scope.characterstats = $scope.character.characterstats
         $scope.classfeatures = $scope.character.classfeatures
+        $scope.combatstats = $scope.character.combatstats
         $scope.feats = $scope.character.feats
-        $scope.specialabilities = $scope.character.specialabilities
         $scope.inventory = $scope.character.inventory
         $scope.miscstats = $scope.character.miscstats
-        $scope.skills = $scope.character.skills
-        $scope.spells = $scope.character.spells
         $scope.notes = $scope.character.notes
+        $scope.protectiveitems = $scope.character.protectiveitems
+        $scope.skills = $scope.character.skills
+        $scope.specialabilities = $scope.character.specialabilities
+        $scope.spells = $scope.character.spells
 
         function calculateSheet () {
 

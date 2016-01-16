@@ -23,6 +23,7 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
     $scope.newCharacter = {
         characterstats: {
             name: '',
+            classarray: [],
             race: '',
             subtype: '',
             deity: '',
@@ -71,6 +72,8 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         combatstats: {
             maxhitpoints: 0,
             currenthitpoints: 0,
+            nonlethal: 0,
+            speed: 0,
             experience: 0,
             baseattackbonus: 0,
             saves: {
@@ -98,12 +101,14 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
             skillpointsperlevel: 0,
             initiative: 0,
             miscarmorclassbonus: 0,
+            deflectionmodifier: 0,
+            naturalarmor: 0,
             miscgrapplebonus: 0
         },
         spells: {
             spellsave: 0,
             arcanespellfailure: 0,
-            relevantability: 0,
+            relevantability: '',
             schools: {
                 specialty: '',
                 prohibited: ''
@@ -119,10 +124,47 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
                 7: 0,
                 8: 0,
                 9: 0
+            },
+            currentspellsperday: {
+                0: 0,
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0
+            },
+            level: {
+                0: [],
+                1: [],
+                2: [],
+                3: [],
+                4: [],
+                5: [],
+                6: [],
+                7: [],
+                8: [],
+                9: []
+            }
+        },
+        inventory: {
+            items: [],
+            money: {
+                pp: 0,
+                gp: 0,
+                sp: 0,
+                cp: 0
             }
         },
         miscstats: {
-            reigonoforigin: ''
+            reigonoforigin: '',
+            racialtraits: [],
+            languages: [],
+            reigonoforigin: '',
+            affiliationsandenemies: []
         },
         notes: '',
         skills: [{
@@ -909,6 +951,10 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         })
         .catch(function(e) {console.log(e);});
     }
+
+    $scope.lintCharacter = function (obj) {
+        
+    }  
 
     $scope.$on('updateCharacters', function () {
         $scope.updateCharacters()

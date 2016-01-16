@@ -45,11 +45,23 @@ app.directive('dieroller', function ($state, $rootScope) {
             scope.total = 0
 
             scope.clearResults = function () {
+                scope.rolltype = ''
+
+                scope.rollsubtype = ''
+
+                scope.dienumber = 1
+
+                scope.dietype = 0
+
+                scope.rolls = []
+
                 scope.results = []
+
+                scope.total = 0
+                
             }
 
             scope.rollDie = function (max, number, type, subtype) {
-                console.log(type)
 
                 if (max === 0 && type === '') {
                     scope.results = "Die type?"
