@@ -163,7 +163,6 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
             reigonoforigin: '',
             racialtraits: [],
             languages: [],
-            reigonoforigin: '',
             affiliationsandenemies: []
         },
         notes: '',
@@ -953,7 +952,7 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
     }
 
     $scope.lintCharacter = function (obj) {
-        
+
     }  
 
     $scope.$on('updateCharacters', function () {
