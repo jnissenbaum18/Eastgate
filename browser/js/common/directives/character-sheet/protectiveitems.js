@@ -7,9 +7,7 @@ app.directive('protectiveitems', function ($state, $rootScope) {
         templateUrl: 'js/common/directives/character-sheet/protectiveitems.html',
         link: function (scope) {
 
-        	scope.addprotectiveitem = function () {
-        		
-                var protectiveitem = {
+            var protectiveitem = {
                     name: '',
                     totalbonus: 0,
                     armorclassbonus: 0,
@@ -24,8 +22,8 @@ app.directive('protectiveitems', function ($state, $rootScope) {
                     specialqualities: []
                 }
 
+        	scope.addprotectiveitem = function () {
                 scope.protectiveitems.push(protectiveitem)
-
         	}
 
             scope.addquality = function (itm) {
@@ -54,6 +52,10 @@ app.directive('protectiveitems', function ($state, $rootScope) {
             scope.recalculate = function () {
                 scope.$emit('recalculate') 
             }
+
+            for (var i = scope.protectiveitems.length - 1; i >= 0; i--) {
+                $rootScope.lintObjects(protectiveitem, scope.protectiveitems[i])     
+            };
 
         }
    };

@@ -7,6 +7,21 @@ app.directive('attacks', function ($state, $rootScope) {
         templateUrl: 'js/common/directives/character-sheet/attacks.html',
         link: function (scope) {
 
+            var attack = {
+                name: '',
+                damagedie: '', 
+                damagenumber: 0,
+                critical: '',
+                attackbonus: 0,
+                miscatkmodifier: 0,
+                weapontype: 0,
+                damagetype: '',
+                range: 0, 
+                masterwork: false,
+                modifier: 0,
+                specialqualities: []
+            }
+
             scope.deleteattack = function (i) {
                 setTimeout(function(){
                     scope.attacks.splice(scope.attacks.indexOf(i), 1)
@@ -20,23 +35,9 @@ app.directive('attacks', function ($state, $rootScope) {
                     scope.attacks[atkidx].specialqualities.splice(scope.attacks[atkidx].specialqualities.indexOf(j), 1)
                     scope.$digest();
                 }, 0);
-            }   
+            }           
 
         	scope.addattack = function () {
-
-                var attack = {
-                    name: '',
-                    damagedie: '', 
-                    damagenumber: 0,
-                    critical: '',
-                    attackbonus: 0,
-                    weapontype: 0,
-                    damagetype: '',
-                    range: 0, 
-                    masterwork: false,
-                    modifier: 0,
-                    specialqualities: []
-                }
 
         		scope.attacks.push(attack)
                 
@@ -49,6 +50,10 @@ app.directive('attacks', function ($state, $rootScope) {
                 }
                 atk.specialqualities.push(specialquality)
             }
+            
+            for (var i = scope.attacks.length - 1; i >= 0; i--) {
+                $rootScope.lintObjects(attack, scope.attacks[i])     
+            };
 
             scope.weapontypes = {
                 'One Hand': 0,

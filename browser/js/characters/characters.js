@@ -41,32 +41,38 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
             strength: {
                 score: 8,
                 misc: 0,
-                temp: 0
+                temp: 0,
+                check: 0
             },
             dexterity: {
                 score: 8,
                 misc: 0,
-                temp: 0
+                temp: 0,
+                check: 0
             },
             constitution: {
                 score: 8,
                 misc: 0,
-                temp: 0
+                temp: 0,
+                check: 0
             },
             intelligence: {
                 score: 8,
                 misc: 0,
-                temp: 0
+                temp: 0,
+                check: 0
             },
             wisdom: {
                 score: 8,
                 misc: 0,
-                temp: 0
+                temp: 0,
+                check: 0
             },
             charisma: {
                 score: 8,
                 misc: 0,
-                temp: 0
+                temp: 0,
+                check: 0
             },
         },
         combatstats: {
@@ -878,6 +884,39 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         }]
     }
 
+    var lintCount = 0
+
+    $scope.lintObjects = function (x, y) {
+        for (var property in x) {
+            if (x.hasOwnProperty(property) && y.hasOwnProperty(property)) {
+                if (typeof x[property] == "object")
+                    $scope.lintObjects(x[property], y[property]);
+                else {
+
+                }
+            } else if (x.hasOwnProperty(property)){
+                y[property] = JSON.parse(JSON.stringify(x[property]));
+                lintCount++
+            }
+        }
+        return lintCount > 0
+    }  
+
+    $rootScope.lintObjects = function (x, y) {
+        for (var property in x) {
+            if (x.hasOwnProperty(property) && y.hasOwnProperty(property)) {
+                if (typeof x[property] == "object")
+                    $scope.lintObjects(x[property], y[property]);
+                else {
+
+                }
+            } else if (x.hasOwnProperty(property)){
+                y[property] = JSON.parse(JSON.stringify(x[property]));
+            }
+        }
+        return y
+    }  
+
     $scope.deleteCharacter = function (characterId) {
         if ($rootScope.character && !characterId) {
             // Delete current character loaded into character-sheet
@@ -901,8 +940,30 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         $scope.currentCharacter = character.characterstats.name
     }
 
+    $scope.saveCharacter = function (character) {
+        var characterToSave 
+        if (character) {
+            characterToSave = character
+        } else {
+            characterToSave = $rootScope.character
+        }
+        $('#load-icon').removeClass("inactive");
+        $('#load-icon').addClass("active");
+        CharacterSheetFactory.saveCharacter(characterToSave)
+        .then(function () {
+            $('#load-icon').removeClass("active");
+            $('#load-icon').addClass("inactive");
+            return
+        })
+        .catch(function(e) {console.log(e);});
+    }
+
     $scope.goToCharacter = function (character) {
         $scope.setCharacter(character)
+        var save = $scope.lintObjects($scope.newCharacter, character)    
+        if (save) {
+            $scope.saveCharacter(character)
+        }
         $state.go('characters.characterSheet', {charactername: character.characterstats.name, characterid: character._id})
         .catch(function(e) {console.log(e);});
     };
@@ -914,18 +975,6 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         })
         .catch(function(e) {console.log(e);});
 
-    }
-
-    $scope.saveCharacter = function () {
-        $('#load-icon').removeClass("inactive");
-        $('#load-icon').addClass("active");
-        CharacterSheetFactory.saveCharacter($rootScope.character)
-        .then(function () {
-            $('#load-icon').removeClass("active");
-            $('#load-icon').addClass("inactive");
-            return
-        })
-        .catch(function(e) {console.log(e);});
     }
     
     $scope.submitCharacter = function (newCharacter) {
@@ -950,10 +999,6 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         })
         .catch(function(e) {console.log(e);});
     }
-
-    $scope.lintCharacter = function (obj) {
-
-    }  
 
     $scope.$on('updateCharacters', function () {
         $scope.updateCharacters()

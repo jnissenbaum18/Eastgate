@@ -22,6 +22,11 @@
  	  </div>
 
  	  <div class="input-field col s3 l1">
+ 	   <label class="active">Misc Attack Modifier</label>
+ 	   <input type="number" class="form-control blue-grey darken-3" ng-model="attack.miscatkmodifier" ng-change="recalculate()">
+ 	  </div>
+
+ 	  <div class="input-field col s2 l1">
 	   <label class="active">Damage Die</label>
  	   <input type="number" class="form-control" aria-describedby="character-{{attack.name}}-{{attack.damagenumber}}" ng-model="attack.damagenumber" ng-change="recalculate()">
 	  </div>
@@ -32,12 +37,12 @@
        </select>
 	  </div>
 
-	  <div class="input-field col s4 l2">
+	  <div class="input-field col s3 l2">
 	   <label class="active calculated-value">Damage Bonus</label>
  	   <input disabled type="number" class="form-control blue-grey darken-3" ng-model="attack.damagebonus" ng-change="recalculate()">
 	  </div>
 
-	  <div class="input-field col s2 l2">
+	  <div class="input-field col s2 l1">
  	   <label class="active">Critical</label>
  	   <input type="text" class="form-control" aria-describedby="character-{{attack.name}}-{{attack.critical}}" ng-model="attack.critical" ng-change="recalculate()">
  	  </div>

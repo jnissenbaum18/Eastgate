@@ -77,6 +77,8 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
                 } else if (attack.masterwork) {
                     atkbonus += 1
                 }
+                atkbonus += attack.miscatkmodifier
+
                 attack.attackbonus = atkbonus
 
                 // Damage Bonus

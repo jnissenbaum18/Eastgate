@@ -6,6 +6,12 @@ app.directive('characterstats', function ($state, $rootScope) {
         },
         templateUrl: 'js/common/directives/character-sheet/characterstats.html',
         link: function (scope) {
+
+            var cls = {
+                name: '',
+                level: 0
+            }
+
         	scope.recalculate = function () {
                 scope.$emit('recalculate') 
             }
@@ -23,13 +29,14 @@ app.directive('characterstats', function ($state, $rootScope) {
             }
 
             scope.addclass = function () {
-                var cls = {
-                    name: '',
-                    level: 0
-                }
+                
 
                 scope.characterstats.classarray.push(cls)
             }
+
+            for (var i = scope.characterstats.classarray.length - 1; i >= 0; i--) {
+                $rootScope.lintObjects(cls, scope.characterstats.classarray[i])     
+            };
 
             scope.deleteclass = function (i) {
                 setTimeout(function(){
