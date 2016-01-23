@@ -3,6 +3,7 @@ app.directive('dieroller', function ($state, $rootScope) {
         restrict: 'E',
         scope: {
             abilitymodifiers: "=",
+            abilityscores: "=",
             combatstats: "=",
             calculatedcombatstats: "=",
             attacks: "=",
@@ -83,7 +84,7 @@ app.directive('dieroller', function ($state, $rootScope) {
                     for (var i = number - 1; i >= 0; i--) {
                         roll = Math.floor(Math.random()*(20)+1)
                         scope.rolls.push(roll)
-                        scope.results.push(roll + scope.abilitymodifiers[subtype])
+                        scope.results.push(roll + scope.abilitymodifiers[subtype] + scope.abilityscores[subtype].check)
                     } 
                 } else if (type === "Saving Throw") {
                     for (var i = number - 1; i >= 0; i--) {

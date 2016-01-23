@@ -889,7 +889,7 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
     $scope.lintObjects = function (x, y) {
         for (var property in x) {
             if (x.hasOwnProperty(property) && y.hasOwnProperty(property)) {
-                if (typeof x[property] == "object")
+                if (typeof x[property] === "object")
                     $scope.lintObjects(x[property], y[property]);
                 else {
 
@@ -905,7 +905,7 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
     $rootScope.lintObjects = function (x, y) {
         for (var property in x) {
             if (x.hasOwnProperty(property) && y.hasOwnProperty(property)) {
-                if (typeof x[property] == "object")
+                if (typeof x[property] === "object")
                     $scope.lintObjects(x[property], y[property]);
                 else {
 
