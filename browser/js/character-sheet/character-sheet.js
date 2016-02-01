@@ -136,18 +136,24 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
             var relevantabilitymod = $scope.abilitymodifiers[$scope.spells.relevantability]
 
             for (var i = 9; i >= 0; i--) {
-                $scope.spells.savedcs[i] = 10 + i + relevantabilitymod
+                $scope.spells.savedcs[i] = 10 + i + relevantabilitymod + $scope.spells.savedcmodifier
             }
 
             //bonus spells
 
             $scope.spells.totalspellsperday = {}
             for (var level in $scope.spells.spellsperday) {
-                if (level > 0 && level <= (totallevel/2 + 1)){ 
-                    $scope.spells.totalspellsperday[level] = Math.ceil((1 + relevantabilitymod - level)/4) + $scope.spells.spellsperday[level]
+
+                $scope.spells.totalspellsperday[level] = {}
+
+                if ($scope.spells.casterlevel > 0 && level <= (($scope.spells.casterlevel/2) + 1)) {
+                    $scope.spells.totalspellsperday[level].base = Math.ceil((1 + relevantabilitymod - level)/4) + $scope.spells.spellsperday[level]
                 } else {
-                    $scope.spells.totalspellsperday[level] = $scope.spells.spellsperday[level]
+                    $scope.spells.totalspellsperday[level].base = $scope.spells.spellsperday[level]
                 }
+
+                $scope.spells.totalspellsperday[level].additional = $scope.spells.additionalspellsperday[level]
+
             }
 
             var moneytotal = 0

@@ -2,6 +2,16 @@
 
 	<div class="row character-input">
 
+		<div class="input-field col s6 l2">
+			<label class="active">Caster Level</label>
+	 	 	<input type="number" class="form-control" aria-describedby="character-casterlevel" ng-model="spells.casterlevel" ng-change="recalculate()">
+	 	</div>
+
+	 	<div class="input-field col s6 l4">
+			<label class="active">Spell Save DC's Modifier</label>
+	 	 	<input type="number" class="form-control" aria-describedby="character-casterlevel-mod" ng-model="spells.savedcmodifier" ng-change="recalculate()">
+	 	</div>
+
 		<div class="input-field col s6 l3">
 			<label class="active">Arcane Spell Failure</label>
 	 	 	<input type="number" class="form-control" aria-describedby="character-arcanespellfailure" ng-model="spells.arcanespellfailure" ng-change="recalculate()">
@@ -12,14 +22,18 @@
 	 	 	<input type="number" class="form-control" aria-describedby="character-spellsave" ng-model="spells.spellsave" ng-change="recalculate()">
 	 	</div>
 
-	 	<div class="input-field col s5 l3">
+	</div>
+
+	<div class="row character-input">
+
+		<div class="input-field col s5 l3">
 	 	 <label class="active">Relevant Ability</label>
 	 	 <select class="form-control btn btn-primary dropdown-toggle blue-grey darken-2" ng-model="spells.relevantability" ng-change="recalculate()">
 	      <option ng-repeat="(key, value) in relevantabilities" value='{{value}}'><a href="#">{{key}}</a></option>
 	     </select>
 	 	</div>
 
-	 	<div class="input-field col s3 l2" ng-repeat="(key, value) in spells.schools">
+	 	<div class="input-field col s3 l4" ng-repeat="(key, value) in spells.schools">
 
 			<label class="active">{{key}}</label>
 
@@ -31,7 +45,7 @@
 
 	<div class="row character-input">
 
-		<div class="input-field col s6 l3">
+		<div class="input-field col s12 l4">
 
 			<h3>Spell Save DC's</h3>
 
@@ -44,7 +58,7 @@
 			</div>
 
 		</div>
-		<div class="input-field col s6 l3">
+		<div class="input-field col s6 l4">
 
 			<h3>Base Spells Per Day</h3>
 
@@ -58,29 +72,52 @@
 
 		</div>
 
-		<div class="input-field col s6 l3">
+		<div class="input-field col s6 l4">
 
-			<h3>Total Spells Per Day</h3>
+			<h3>Additional Spells Per Day</h3>
 
-			<div class="input-field col s6 l6" ng-repeat="(key, value) in spells.totalspellsperday">
+			<div class="input-field col s6 l6" ng-repeat="(key, value) in spells.additionalspellsperday">
 
 				<label class="active calculated-value">{{key}}</label>
 
-				<input disabled type="number" class="form-control blue-grey darken-3" value='{{value}}'>
+				<input type="number" class="form-control" aria-describedby="character-additionalspellsperday-{{key}}" ng-model="spells.additionalspellsperday[key]" ng-change="recalculate()">
 
 			</div>
 
 		</div>
 
-		<div class="input-field col s6 l3">
+		<div class="input-field col s12 l6">
+
+			<h3>Total Spells Per Day</h3>
+
+			<div class="input-field col s6 l6" ng-repeat="(key, value) in spells.totalspellsperday">
+
+					<label class="active calculated-value col s12 l12">{{key}}</label>
+
+				<div class="row" style="margin: 0">
+					<input disabled type="number" class="form-control blue-grey darken-3 col s6 l6" value='{{value.base}}'>
+
+					<input disabled type="number" class="form-control blue-grey darken-3 col s6 l6" value='{{value.additional}}'>
+				</div>
+
+
+			</div>
+
+		</div>
+
+		<div class="input-field col s12 l6">
 
 			<h3>Current Spells Per Day</h3>
 
 			<div class="input-field col s6 l6" ng-repeat="(key, value) in spells.currentspellsperday">
 
-				<label class="active calculated-value">{{key}}</label>
+				<label class="active calculated-value col s12 l12">{{key}}</label>
 
-				<input type="number" class="form-control" aria-describedby="character-spellsperday-{{key}}" ng-model="spells.currentspellsperday[key]" ng-change="recalculate()">
+				<div class="row" style="margin: 0">
+					<input type="number" class="form-control col s6 l6" aria-describedby="character-spellsperday-{{key}}-base" ng-model="spells.currentspellsperday[key].base" ng-change="recalculate()">
+
+					<input type="number" class="form-control col s6 l6" aria-describedby="character-spellsperday-{{key}}-additional" ng-model="spells.currentspellsperday[key].additional" ng-change="recalculate()">
+				</div>
 
 			</div>
 

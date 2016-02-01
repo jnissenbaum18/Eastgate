@@ -113,11 +113,25 @@ app.controller('CharactersCtrl', function ($scope, AuthService, characters, user
         },
         spells: {
             spellsave: 0,
+            casterlevel: 0,
+            savedcmodifier: 0,
             arcanespellfailure: 0,
             relevantability: '',
             schools: {
                 specialty: '',
                 prohibited: ''
+            },
+            additionalspellsperday: {
+                0: 0,
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0
             },
             spellsperday: {
                 0: 0,
