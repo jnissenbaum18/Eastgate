@@ -211,7 +211,7 @@ app.controller('CharacterSheetCtrl', function ($scope, AuthService, $state, char
             }
 
             $scope.calculatedskills = {
-                totalskillpoints: (totallevel + 3) * $scope.combatstats.skillpointsperlevel,
+                totalskillpoints: (totallevel + 3) * ($scope.combatstats.skillpointsperlevel + $scope.abilitymodifiers.intelligence),
                 maxranks: totallevel + 3,
                 crossclass: Math.floor((totallevel + 3)/2),
                 currentskillpoints: currentskillpoints
